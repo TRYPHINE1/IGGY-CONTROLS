@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | IGGY-CONTROLS TECHNOLOGIES</title>
+     <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --red-main: #dc2626; 
+            --red-light: #ef4444;
+            --blue-main: #1e40af; 
+            --blue-dark: #0f172a;
+            --blue-light: #3b82f6;
+            --gray-300: #d1d5db;
+            --teal: #14b8a6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.75));
+        }
+        .mission-number {
+            font-size: clamp(5rem, 15vw, 8rem);
+            line-height: 1;
+            opacity: 0.08;
+            position: absolute;
+            left: -0.5rem;
+            top: -1.5rem;
+            font-weight: 900;
+            pointer-events: none;
+        }
+        .value-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @media (hover: hover) {
+            .value-card:hover {
+                transform: translateY(-10px);
+                border-color: var(--red-main);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+        /* Mobile menu styling */
+        #mobileMenu {
+            display: none;
+        }
+        #mobileMenu.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+.gallery-item{cursor:pointer;overflow:hidden;position:relative;background:#000;border-radius:0.75rem;}
+.gallery-item img{transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);width:100%;height:100%;object-fit:cover;}
+.gallery-item:hover img{transform:scale(1.08);}
+.gallery-overlay{position:absolute;inset:0;background:rgba(30,64,175,0.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s ease;backdrop-filter:blur(2px);}
+.gallery-item:hover .gallery-overlay{opacity:1;}
+#lightbox{display:none;position:fixed;inset:0;z-index:100;background:rgba(15,23,42,0.98);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1rem;}
+#lightbox.active{display:flex;}
+
+
+/* Dropdown logic for desktop */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile menu styling */
+        #mobileMenu {
+            display: none;
+        }
+        #mobileMenu.active {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-dropdown-content {
+            display: none;
+        }
+        .mobile-dropdown-content.active {
+            display: block;
+        }
+
+
+
+
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- ================= HEADER ================= -->
+    <header id="mainHeader" class="fixed top-0 left-0 w-full bg-white shadow-sm py-2 z-50 border-b border-gray-100 header-transition">
+        <nav class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="flex justify-between items-center w-full">
+                <!-- LOGO -->
+                <div class="flex items-center">
+                    <div class="flex flex-col items-center">
+                        <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png" 
+                             alt="Iggy Controls Logo" class="h-10 w-auto mb-1">
+                        <div class="inline-block text-center">
+                            <span class="font-extrabold text-[10px] md:text-xs block">
+                                <span class="text-[var(--red-main)]">IGGY-CONTROLS</span>
+                            </span>
+                            <div class="flex items-center justify-center gap-2 mt-0.5">
+                                <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
+                                <span class="text-[8px] tracking-widest text-[var(--blue-main)] font-bold">TECHNOLOGIES</span>
+                                <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DESKTOP MENU -->
+                <div class="hidden md:flex gap-8 font-medium items-center">
+                    <a href="index.html" class="hover:text-[var(--blue-main)] transition-colors text-xs uppercase tracking-widest">Home</a>
+                    <a href="about.html" class="hover:text-[var(--blue-main)] transition-colors text-xs uppercase tracking-widest">About</a>
+                    
+                    <!-- PRODUCTS DROPDOWN -->
+                    <div class="relative dropdown group py-4">
+                        <a href="" class="hover:text-[var(--blue-main)] transition-colors text-xs uppercase tracking-widest flex items-center gap-1">
+                            Products <i class="fas fa-chevron-down text-[10px]"></i>
+                        </a>
+                        <div class="dropdown-menu absolute top-full left-0 bg-white shadow-xl rounded-xl border border-gray-100 w-64 overflow-hidden z-50">
+                            <div class="flex flex-col py-2">
+                                <a href="laundry.html" class="px-6 py-3 hover:bg-gray-50 text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-[var(--blue-main)] border-b border-gray-50 last:border-0 transition-all">
+                                    Laundry Solutions
+                                </a>
+                                <a href="kitchen.html" class="px-6 py-3 hover:bg-gray-50 text-xs font-bold uppercase tracking-wider text-gray-700 hover:text-[var(--blue-main)] border-b border-gray-50 last:border-0 transition-all">
+                                    Kitchen Solutions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="services.html" class="hover:text-[var(--blue-main)] transition-colors text-xs uppercase tracking-widest">Services</a>
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="flex items-center gap-4">
+                    <a href="contact.html" class="bg-[var(--red-main)] text-white px-6 py-2 rounded-lg font-bold hidden md:block hover:bg-red-700 transition-all text-xs uppercase tracking-widest text-center">
+                        Contact Us
+                    </a>
+                    
+                    <!-- MOBILE TOGGLE BUTTON -->
+                    <button class="md:hidden p-2 text-gray-700 hover:text-[var(--red-main)] transition-colors focus:outline-none" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+                        <i id="menuIcon" class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobileMenu" class="md:hidden border-t mt-2 bg-white w-full max-h-[80vh] overflow-y-auto">
+                <a href="index.html" class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">Home</a>
+                <a href="about.html" class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">About</a>
+                
+                <!-- MOBILE PRODUCTS DROPDOWN -->
+                <div class="border-b">
+                    <button onclick="toggleMobileDropdown('productsMobile')" class="w-full text-left py-4 px-2 font-medium flex justify-between items-center">
+                        Products <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="productsMobile" class="mobile-dropdown-content bg-gray-50 px-4 pb-4 space-y-3">
+                        
+                        <a href="laundry.html" class="block text-sm text-gray-600">Laundry Solutions</a>
+                        <a href="kitchen.html" class="block text-sm text-gray-600">Kitchen Solutions</a>
+                    </div>
+                </div>
+
+                <a href="services.html" class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">Services</a>
+                <div class="p-4">
+                    <a href="contact.html" class="block w-full bg-[var(--red-main)] text-white py-3 rounded-lg font-bold text-xs uppercase tracking-widest shadow-md text-center">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386792/P1140318_lczdwc.jpg" 
+                 class="w-full h-full object-cover" alt="Industrial Facility">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        <div class="relative z-10 container mx-auto px-6 max-w-6xl text-center">
+            <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight mb-4">
+                About Iggy Controls
+            </h1>
+        </div>
+    </section>
+
+    <!-- ================= WHO WE ARE ================= -->
+    <section class="py-16 md:py-28 bg-white overflow-hidden">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="relative group order-2 lg:order-1">
+                    <div class="absolute -inset-4 bg-red-600/5 rounded-2xl scale-95 group-hover:scale-100 transition-transform duration-700"></div>
+                    <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777387016/P1140381_pxn9t5.jpg" 
+                         alt="Our Team" class="relative rounded-2xl shadow-2xl z-10 object-cover aspect-[4/3] w-full">
+                    <div class="absolute -bottom-6 -right-6 md:right-0 bg-[var(--blue-main)] text-white p-6 rounded-2xl z-20 shadow-xl hidden sm:block">
+                        <span class="block text-3xl font-black">Professional</span>
+                        <span class="text-sm font-medium tracking-widest uppercase opacity-80">Engineering Standards</span>
+                    </div>
+                </div>
+                
+                <div class="space-y-8 order-1 lg:order-2">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 leading-tight">Who We Are</h2>
+                    <div class="space-y-6">
+                        <p class="text-lg md:text-xl text-gray-700 leading-relaxed font-light">
+                            <span class="font-extrabold text-[var(--blue-main)]">IGGY-CONTROLS TECHNOLOGIES</span> is a professional engineering company specializing in the supply, installation, and maintenance of electrical, laundry, kitchen, and industrial equipment.
+                        </p>
+                        <p class="text-base md:text-lg text-gray-600 leading-relaxed">
+                            We serve hotels, hospitals, industries, and institutions across East and Central Africa, delivering efficient, reliable, and cost-effective solutions tailored to meet the dynamic needs of our clients. Our expertise ensures that your infrastructure operates at peak performance, minimizing downtime and maximizing productivity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MISSION & VISION ================= -->
+    <section class="py-16 md:py-28 bg-gray-50/50 border-t border-b border-gray-100">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="grid md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-200 bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+                <!-- Mission Section -->
+                <div class="p-8 sm:p-12 md:p-16 relative overflow-hidden group">
+                    <span class="mission-number text-[var(--red-main)]">01</span>
+                    <div class="relative z-10">
+                        <h3 class="text-xs font-black tracking-widest uppercase text-red-600 mb-4 flex items-center gap-2">
+                            <span class="w-8 h-[1px] bg-red-600"></span> The Purpose
+                        </h3>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                        <p class="text-gray-600 text-lg leading-relaxed font-light italic border-l-4 border-red-100 pl-6">
+                            To provide high-quality and customized repair, installation, and maintenance services for laundry and kitchen equipment. We focus on enhancing the lifespan and efficiency of your critical assets through technical precision.
+                        </p>
+                    </div>
+                </div>
+                <!-- Vision Section -->
+                <div class="p-8 sm:p-12 md:p-16 relative overflow-hidden group">
+                    <span class="mission-number text-[var(--blue-main)]">02</span>
+                    <div class="relative z-10">
+                        <h3 class="text-xs font-black tracking-widest uppercase text-blue-800 mb-4 flex items-center gap-2">
+                            <span class="w-8 h-[1px] bg-blue-800"></span> The Future
+                        </h3>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Vision</h2>
+                        <p class="text-gray-600 text-lg leading-relaxed font-light italic border-l-4 border-blue-100 pl-6">
+                            To be the most reliable and trusted technical service provider in East and Central Africa, setting new benchmarks for responsiveness and engineering quality in the region by 2030.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#0f172a] overflow-hidden py-20">
+<div class="container mx-auto px-6 max-w-7xl mb-12">
+<div class="flex flex-col md:flex-row justify-between items-end gap-4">
+<div><h2 class="text-3xl md:text-4xl font-black text-white mb-2">Technical Portfolio</h2><p class="text-blue-100/60 text-sm">Engineering projects delivered with precision across the region.</p></div>
+<div class="flex gap-1"><span class="h-1 w-8 bg-[var(--red-main)]"></span><span class="h-1 w-4 bg-[var(--blue-light)]"></span></div>
+</div>
+</div>
+<div class="container mx-auto px-6 max-w-7xl">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+<!-- Row 1 & 2 Left: Large Feature -->
+<div class="gallery-item col-span-2 row-span-2 aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200')">
+<img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777387039/P1140382_igjpp9.jpg" alt="Industrial Installation">
+<div class="gallery-overlay"><i class="fas fa-expand text-white text-3xl"></i></div>
+</div>
+<!-- Small Tiles -->
+<div class="gallery-item aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=1200')">
+<img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777387037/P1140377_ukvr34.jpg" alt="Kitchen Tech">
+<div class="gallery-overlay"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+</div>
+<div class="gallery-item aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=1200')">
+<img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386966/P1140367_uxdlc5.jpg" alt="Electrical Panel">
+<div class="gallery-overlay"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+</div>
+<div class="gallery-item aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1516937622178-749a189e4b51?auto=format&fit=crop&q=80&w=1200')">
+<img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386949/P1140363_e5uind.jpg" alt="Maintenance">
+<div class="gallery-overlay"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+</div>
+<div class="gallery-item aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?auto=format&fit=crop&q=80&w=1200')">
+<img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386886/P1140343_xpdzxn.jpg" alt="Automation">
+<div class="gallery-overlay"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+</div>
+<!-- Row 3 & 4 Symmetry Flip -->
+<div class="gallery-item aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=1200')">
+<img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386728/P1140308_pa0wt8.jpg" alt="Factory Support">
+<div class="gallery-overlay"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+</div>
+<div class="gallery-item aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1454165833767-027ffea9e778?auto=format&fit=crop&q=80&w=1200')">
+<img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386866/P1140328_zyp7ne.jpg" alt="Logistics">
+<div class="gallery-overlay"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+</div>
+<div class="gallery-item col-span-2 row-span-2 aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200')">
+<img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386936/P1140360_n9dvwk.jpg" alt="Facility Management">
+<div class="gallery-overlay"><i class="fas fa-expand text-white text-3xl"></i></div>
+</div>
+<div class="gallery-item aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200')">
+<img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386925/P1140342_hrnrzx.jpg" alt="Teamwork">
+<div class="gallery-overlay"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+</div>
+<div class="gallery-item aspect-square" onclick="openLightbox('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200')">
+<img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777387026/P1140376_uaff3g.jpg" alt="Planning">
+<div class="gallery-overlay"><i class="fas fa-search-plus text-white text-2xl"></i></div>
+</div>
+</div>
+</div>
+</section>
+
+    <!-- ================= CORE VALUES ================= -->
+    <section class="py-16 md:py-28 bg-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">Values That Drive Us</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="value-card bg-slate-50 p-10 rounded-3xl border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-8">
+                        <i class="fas fa-shield-alt text-2xl text-[var(--red-main)]"></i>
+                    </div>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-3 tracking-tight">Integrity</h5>
+                    <p class="text-red-600 leading-relaxed text-sm font-bold italic mb-6">"Honesty in every wire."</p>
+                    <p class="text-gray-500 leading-relaxed">
+                        We believe in radical transparency and unwavering ethical standards. Every handshake is a contract, and every promise is a commitment we stand by.
+                    </p>
+                </div>
+                <div class="value-card bg-slate-50 p-10 rounded-3xl border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-8">
+                        <i class="fas fa-award text-2xl text-[var(--blue-main)]"></i>
+                    </div>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-3 tracking-tight">Excellence</h5>
+                    <p class="text-blue-700 leading-relaxed text-sm font-bold italic mb-6">"Precision in every weld."</p>
+                    <p class="text-gray-500 leading-relaxed">
+                        Good enough is never enough. We pursue precision in every circuit and installation, ensuring world-class results that exceed expectations.
+                    </p>
+                </div>
+                <div class="value-card bg-slate-50 p-10 rounded-3xl border border-gray-100 flex flex-col items-center text-center sm:col-span-2 lg:col-span-1">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-8">
+                        <i class="fas fa-clock text-2xl text-[var(--red-main)]"></i>
+                    </div>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-3 tracking-tight">Reliability</h5>
+                    <p class="text-red-600 leading-relaxed text-sm font-bold italic mb-6">"Always at your service."</p>
+                    <p class="text-gray-500 leading-relaxed">
+                        Downtime costs money. We position ourselves as the safety net for your infrastructure, responding with speed and competence whenever you call.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/256742262000" 
+       class="fixed bottom-6 right-6 bg-green-500 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white text-2xl md:text-3xl shadow-2xl hover:scale-110 active:scale-90 transition-all z-[90]"
+       aria-label="Contact on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="bg-[var(--blue-dark)] text-[var(--gray-300)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- BRAND -->
+        <div class="flex flex-col items-center text-center md:items-start md:text-left">
+          <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png" class="h-10 md:h-12 mb-2">
+          <p class="font-extrabold text-xs md:text-sm text-[var(--red-main)]">IGGY-CONTROLS</p>
+          <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
+            <span class="h-[1.5px] w-3 bg-[var(--red-main)]"></span>
+            <span class="text-[8px] tracking-widest text-[var(--blue-light)]">TECHNOLOGIES</span>
+            <span class="h-[1.5px] w-3 bg-[var(--red-main)]"></span>
+          </div>
+          <p class="text-xs md:text-sm">Professional supply, installation and maintenance of laundry and kitchen equipment.</p>
+        </div>
+        <!-- SERVICES -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Services</h3>
+          <ul class="space-y-2 text-sm">
+            <li>Laundry Equipment</li>
+            <li>Kitchen Equipment</li>
+            <li>Industrial Automation</li>
+            <li>Service & Maintenance</li>
+          </ul>
+        </div>
+        <!-- LINKS -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="hover:text-[var(--red-light)]">Home</a></li>
+            <li><a href="about.html" class="hover:text-[var(--red-light)]">About</a></li>
+            <li><a href="products.html" class="hover:text-[var(--red-light)]">Products</a></li>
+            <li><a href="services.html" class="hover:text-[var(--red-light)]">Services</a></li>
+          </ul>
+        </div>
+        <!-- CONTACT -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Contact</h3>
+          <div class="space-y-3 text-sm">
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-location-dot text-[var(--blue-light)]"></i> Kampala, Uganda
+            </p>
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-phone text-[var(--blue-light)]"></i>
+              <a href="tel:+256742262000" class="hover:text-[var(--red-light)]">+256 742262000</a>
+            </p>
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-envelope text-[var(--blue-light)]"></i>
+              <a href="mailto:info@iggycontrols.com" class="hover:text-[var(--red-light)]">info@iggycontrols.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-[var(--blue-main)]/30"></div>
+      <div class="text-center py-6 text-sm text-[var(--gray-300)]">
+        © 2026 Iggy Controls • Crafted by Brykon Technologies
+      </div>
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+
+
+function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            const isActive = menu.classList.toggle('active');
+            
+            if (isActive) {
+                icon.classList.replace('fa-bars', 'fa-times');
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+                document.body.style.overflow = 'auto'; 
+            }
+        }
+
+        function toggleMobileDropdown(id) {
+            const content = document.getElementById(id);
+            const icon = event.currentTarget.querySelector('i');
+            content.classList.toggle('active');
+            icon.classList.toggle('rotate-180');
+        }
+
+
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            
+            const isActive = menu.classList.toggle('active');
+            
+            if (isActive) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto'; 
+            }
+        }
+
+        // Close menu when clicking outside
+        window.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('[onclick="toggleMobileMenu()"]');
+            
+            if (menu.classList.contains('active') && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                toggleMobileMenu();
+            }
+        });
+
+
+
+        function toggleMobileMenu(){const m=document.getElementById('mobileMenu'),i=document.getElementById('menuIcon');if(m.classList.toggle('active')){i.className='fas fa-times';document.body.style.overflow='hidden';}else{i.className='fas fa-bars';document.body.style.overflow='auto';}}
+function openLightbox(s){const l=document.getElementById('lightbox'),i=document.getElementById('lightboxImg');i.src=s;l.classList.add('active');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow='auto';}
+window.addEventListener('click',e=>{const m=document.getElementById('mobileMenu'),b=document.querySelector('[onclick="toggleMobileMenu()"]');if(m.classList.contains('active')&&!m.contains(e.target)&&!b.contains(e.target))toggleMobileMenu();});
+window.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+        
+    </script>
+</body>
+</html>

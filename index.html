@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGGY-CONTROLS TECHNOLOGIES | Laundry & Kitchen Equipment Solutions</title>
+
+ <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+<!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+  /* Primary Colors */
+  --red-dark:#970005;
+  --red-main:#ED0101;
+  --blue-main:#0C44AC;
+  --blue-dark:#000052;
+  --white:#FFFFFF;
+  
+  /* Secondary Colors */
+  --red-light:#FF6B6B;
+  --red-pale:#FFE5E5;
+  --blue-light:#4A90D9;
+  --blue-pale:#E8F1FC;
+  --gold:#D4AF37;
+  --gold-light:#F5E6B3;
+  --teal:#20B2AA;
+  --teal-light:#E0F7F5;
+  --gray-100:#F8FAFC;
+  --gray-200:#E2E8F0;
+  --gray-300:#CBD5E1;
+  --gray-500:#64748B;
+  --gray-700:#334155;
+}
+
+body { font-family: 'Inter', sans-serif; }
+
+/* ========================
+   ANIMATIONS
+   ======================== */
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Left Animation */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade In Right Animation */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Float Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Animation Classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.8s ease forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Initial hidden state for scroll animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+
+
+/* Staggered animation delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+
+ /* Dropdown transition logic for desktop */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile menu styling */
+        #mobileMenu { display: none; }
+        #mobileMenu.active { display: flex; flex-direction: column; }
+        
+        .mobile-dropdown-content { display: none; }
+        .mobile-dropdown-content.active { display: block; }
+
+
+/* Hero Video Styles */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(2,6,23,0.75), rgba(2,6,23,0.9));
+}
+.glass { backdrop-filter: blur(14px); background: rgba(255,255,255,0.7); }
+.card { transition: all .3s ease; }
+.card:hover { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0,0,0,.1); }
+.badge { background: rgba(59,130,246,0.1); color:#2563eb; }
+.section-title { letter-spacing: -0.02em; }
+
+/* Enhanced Card Hover Effects */
+.enhanced-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enhanced-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Button Hover Animation */
+.btn-animate {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-animate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: all 0.5s ease;
+}
+
+.btn-animate:hover::before {
+  left: 100%;
+}
+
+/* Icon Spin on Hover */
+.icon-spin {
+  transition: transform 0.4s ease;
+}
+
+.group:hover .icon-spin {
+  transform: rotate(360deg);
+}
+
+/* Gradient Text Animation */
+.gradient-text {
+  background: linear-gradient(135deg, var(--red-main), var(--blue-main), var(--teal));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease infinite;
+}
+
+/* Mobile menu styling */
+        #mobileMenu {
+            display: none;
+        }
+        #mobileMenu.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+/* SWIPER ARROW OVERRIDES */
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 20px !important;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            background: var(--blue-main);
+            width: 45px !important;
+            height: 45px !important;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: var(--red-main);
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--red-main) !important;
+        }
+
+        /* LOGO SLIDER ANIMATION */
+        .logo-track {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            width: max-content;
+            animation: smoothScroll 30s linear infinite;
+        }
+
+        @keyframes smoothScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .logo-track:hover { animation-play-state: paused; }
+
+ /* Dropdown/Accordion Styling */
+        .service-dropdown-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        
+        .service-dropdown-item.active {
+            background-color: white;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+            border-color: var(--blue-main);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .service-dropdown-item.active .dropdown-content {
+            max-height: 600px;
+            opacity: 1;
+            padding-top: 1.5rem;
+        }
+
+        .chevron-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .service-dropdown-item.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+
+</style>
+</head>
+
+<body class="bg-slate-50 text-slate-900">
+
+ <!-- CONTACT BAR -->
+    <div class="bg-[var(--blue-dark)] text-white py-1 text-sm">
+        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-6">
+                <a href="mailto:info@iggycontrols.com" class="flex items-center gap-2 hover:text-[var(--red-light)]">
+                    <i class="fas fa-envelope text-[10px]"></i> info@iggycontrols.com
+                </a>
+                <a href="tel:+256742262000" class="flex items-center gap-2 hover:text-[var(--red-light)]">
+                    <i class="fas fa-phone text-[10px]"></i> +256 742262000
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#" class="hover:text-[var(--blue-light)] transition-colors"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-[var(--blue-light)] transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-[var(--blue-light)] transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-[var(--red-light)] transition-colors"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="bg-white shadow-md py-2 sticky top-0 z-[100]">
+        <nav class="max-w-6xl mx-auto px-8">
+            <div class="flex justify-between items-center w-full">
+
+                <!-- LOGO -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex flex-col items-center">
+                        <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png" alt="Iggy Controls Logo" class="h-10 w-auto mb-1">
+                        <div class="inline-block text-center">
+                            <span class="font-extrabold text-[10px] md:text-xs block">
+                                <span class="text-[var(--red-main)]">IGGY-CONTROLS</span>
+                            </span>
+                            <div class="flex items-center justify-center gap-2 mt-0.5">
+                                <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
+                                <span class="text-[8px] tracking-widest text-[var(--blue-main)] font-bold">TECHNOLOGIES</span>
+                                <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- DESKTOP MENU -->
+                <div class="hidden md:flex gap-8 font-medium items-center">
+                    <a href="index.html" class="hover:text-[var(--blue-main)] transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-[var(--blue-main)] transition-colors">About</a>
+                    
+                    <!-- PRODUCTS DROPDOWN (Desktop) -->
+                    <div class="relative dropdown group py-4">
+                        <button class="flex items-center gap-1 hover:text-[var(--blue-main)] font-medium transition-colors">
+                            Products <i class="fas fa-chevron-down text-[10px]"></i>
+                        </button>
+                        <div class="dropdown-menu absolute top-full left-0 bg-white shadow-xl rounded-xl border border-gray-100 w-56 overflow-hidden z-50">
+                            <div class="flex flex-col py-1">
+                                <a href="laundry.html" class="px-6 py-3 hover:bg-gray-50 text-sm font-medium text-gray-700 hover:text-[var(--blue-main)] border-b border-gray-50 last:border-0 transition-all">
+                                    Laundry Solutions
+                                </a>
+                                <a href="kitchen.html" class="px-6 py-3 hover:bg-gray-50 text-sm font-medium text-gray-700 hover:text-[var(--blue-main)] border-b border-gray-50 last:border-0 transition-all">
+                                    Kitchen Solutions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="services.html" class="hover:text-[var(--blue-main)] transition-colors">Services</a>
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="flex items-center gap-4">
+                    <a href="contact.html" class="bg-[var(--red-main)] text-white px-6 py-2 rounded-lg font-bold hidden md:block hover:bg-red-700 transition-all text-xs uppercase tracking-widest text-center shadow-md">
+                        Contact Us
+                    </a>
+                    
+                    <!-- MOBILE TOGGLE BUTTON -->
+                    <button class="md:hidden p-2 text-gray-700 hover:text-[var(--red-main)] transition-colors focus:outline-none" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+                        <i id="menuIcon" class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobileMenu" class="md:hidden border-t mt-2 bg-white w-full max-h-[80vh] overflow-y-auto">
+                <a href="index.html" class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">Home</a>
+                <a href="about.html" class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">About</a>
+                
+                <!-- MOBILE PRODUCTS DROPDOWN -->
+                <div class="border-b">
+                    <button onclick="toggleMobileDropdown('productsMobile')" class="w-full text-left py-4 px-2 font-medium flex justify-between items-center">
+                        Products <i class="fas fa-chevron-down text-xs transition-transform duration-300" id="productsChevron"></i>
+                    </button>
+                    <div id="productsMobile" class="mobile-dropdown-content bg-gray-50 px-4 pb-4 space-y-3">
+                        <a href="laundry.html" class="block text-sm pt-2 text-gray-600">Laundry Solutions</a>
+                        <a href="kitchen.html" class="block text-sm text-gray-600">Kitchen Solutions</a>
+                    </div>
+                </div>
+
+                <a href="services.html" class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">Services</a>
+                <div class="p-4">
+                    <a href="contact.html" class="block w-full bg-[var(--red-main)] text-white py-3 rounded-lg font-bold text-xs uppercase tracking-widest shadow-md text-center">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<!-- HERO -->
+<section id="home" class="relative h-screen flex items-center justify-center text-white overflow-hidden text-center">
+
+<!-- video -->
+<video autoplay muted loop playsinline preload="auto" class="hero-video">
+  <source src="https://www.pexels.com/download/video/8756883/" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<!-- overlay -->
+<div class="hero-overlay"></div>
+
+<!-- content -->
+<div class="relative z-10 max-w-4xl px-6">
+
+<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mt-6 mb-6 leading-tight animate-fade-in-up">
+Smart solutions for seamless operations
+</h1>
+
+<p class="text-base sm:text-lg text-slate-300 mb-10 animate-fade-in-up delay-200">
+Providing reliable, efficient and modern laundry & kitchen equipment solutions across East Africa.
+</p>
+
+<div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-400">
+<a href="services.html" class="bg-[var(--red-main)] px-8 py-4 rounded-full font-bold hover:bg-[var(--red-dark)] btn-animate">
+Explore Services →
+</a>
+
+<a href="contact.html" class="border border-white/30 px-8 py-4 rounded-full hover:bg-white/10 transition-all">
+Contact Us
+</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+<section class="py-12 bg-[var(--blue-pale)] border-b relative z-20 -mt-10 max-w-6xl mx-auto rounded-xl shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+    <div class="border-r border-[var(--blue-light)]/20"><h3 class="text-3xl font-black text-[var(--blue-dark)]">8+</h3><p class="text-[var(--gray-500)] font-medium">Expert Engineers</p></div>
+    <div class="md:border-r border-[var(--blue-light)]/20"><h3 class="text-3xl font-black text-[var(--red-main)]">100%</h3><p class="text-[var(--gray-500)] font-medium">Client Satisfaction</p></div>
+    <div class="border-r border-[var(--blue-light)]/20"><h3 class="text-3xl font-black text-[var(--blue-main)]">Fast</h3><p class="text-[var(--gray-500)] font-medium">Delivery Speed</p></div>
+    <div><h3 class="text-3xl font-black text-[var(--red-main)]">24/7</h3><p class="text-[var(--gray-500)] font-medium">Technical Support</p></div>
+</section>
+
+<!-- ABOUT & CAPABILITIES -->
+<section id="about" class="py-12 md:py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div class="relative">
+            <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386861/P1140338_bw5fex.jpg" class="rounded-3xl shadow-2xl relative z-10 w-full h-auto">
+            
+        </div>
+        <div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mt-2 mb-6 text-[var(--blue-dark)]">Expert Engineering for Modern Facilities</h2>
+            <p class="text-sm md:text-base text-slate-600 mb-4 md:mb-6 leading-relaxed">
+                Iggy-Controls Technologies delivers reliable technical solutions in laundry and kitchen equipment for hotels, hospitals, laundromats and institutions. 
+            </p>
+            <p class="text-sm md:text-base text-slate-600 mb-6 md:mb-8 leading-relaxed">
+                We are a legally registered and fully compliant business guided by principles of efficiency and financial stability. Our team is capable of undertaking projects of any size to the full satisfaction of our customers across the East African region.
+            </p>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-[var(--teal)] mt-1"></i>
+                    <span class="font-semibold text-slate-800">Legal Compliance</span>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-[var(--teal)] mt-1"></i>
+                    <span class="font-semibold text-slate-800">Genuine Parts</span>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-[var(--teal)] mt-1"></i>
+                    <span class="font-semibold text-slate-800">24/7 Response</span>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-[var(--teal)] mt-1"></i>
+                    <span class="font-semibold text-slate-800">Expert Team</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-[var(--blue-dark)]">Premium Equipment</h2>
+                
+
+            <!-- Swiper Container -->
+            <div class="swiper mySwiper pb-12">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1: Washer Extractor -->
+                    <div class="swiper-slide h-auto">
+                        <a href="washers.html" class="block bg-slate-100 rounded-3xl overflow-hidden group relative transition-all duration-300 hover:shadow-xl">
+                            <div class="h-80 relative overflow-hidden">
+                                <img src="https://tolon.com/wp-content/uploads/2025/10/TWE10-15-18.png" 
+                                     alt="Washers"
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                     onerror="this.src='https://placehold.co/800x800/1e293b/white?text=Washer+Extractor'">
+                                
+                                <!-- Hover Overlay for Interactivity -->
+                                <div class="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                        View Details
+                                    </span>
+                                </div>
+
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white pointer-events-none">
+                                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold">Washers</h3>
+                                    
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 2: Tumble Dryer -->
+                    <div class="swiper-slide h-auto">
+                        <a href="dryers.html" class="block bg-slate-100 rounded-3xl overflow-hidden group relative transition-all duration-300 hover:shadow-xl">
+                            <div class="h-80 relative overflow-hidden">
+                                <img src="https://tolon.com/wp-content/uploads/2025/09/2020-S-330-TOLON_COIN-kl-1-copy-1.png" 
+                                     alt="Tumble Dryer"
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                     onerror="this.src='https://placehold.co/800x800/1e293b/white?text=Tumble+Dryer'">
+                                
+                                <div class="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                        View Details
+                                    </span>
+                                </div>
+
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white pointer-events-none">
+                                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold"> Dryers</h3>
+                                   
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 3: Ironers -->
+                    <div class="swiper-slide h-auto">
+                        <a href="ironers.html" class="block bg-slate-100 rounded-3xl overflow-hidden group relative transition-all duration-300 hover:shadow-xl">
+                            <div class="h-80 relative overflow-hidden">
+                                <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777387045/P1140385_cogkom.jpg" 
+                                     alt="Ironers"
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                     onerror="this.src='https://placehold.co/800x800/1e293b/white?text=Kitchen+Equipment'">
+                                
+                                <div class="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                        View Details
+                                    </span>
+                                </div>
+
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white pointer-events-none">
+                                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold">Ironers</h3>
+                                    
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 4: folders-->
+                    <div class="swiper-slide h-auto">
+                        <a href="folders.html" class="block bg-slate-100 rounded-3xl overflow-hidden group relative transition-all duration-300 hover:shadow-xl">
+                            <div class="h-80 relative overflow-hidden">
+                                <img src="https://tolon.com/wp-content/uploads/2024/11/TTF-200.png" 
+                                     alt="Folders"
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                     onerror="this.src='https://placehold.co/800x800/1e293b/white?text=Spare+Parts'">
+                                
+                                <div class="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                        View Details
+                                    </span>
+                                </div>
+
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white pointer-events-none">
+                                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold">Folders</h3>
+                                    
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+
+<!-- Slide 5: Spare Parts -->
+                    <div class="swiper-slide h-auto">
+                        <a href="spare-parts.html" class="block bg-slate-100 rounded-3xl overflow-hidden group relative transition-all duration-300 hover:shadow-xl">
+                            <div class="h-80 relative overflow-hidden">
+                                <img src="https://astec.pk/wp-content/uploads/2023/12/10-2.jpg" 
+                                     alt="Spare Parts"
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                     onerror="this.src='https://placehold.co/800x800/1e293b/white?text=Kitchen+Equipment'">
+                                
+                                <div class="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                        View Details
+                                    </span>
+                                </div>
+
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white pointer-events-none">
+                                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold">Spare Parts</h3>
+                                    
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <!-- Slide 6: Kitchen Equipment -->
+                    <div class="swiper-slide h-auto">
+                        <a href="kitchen-equipment.html" class="block bg-slate-100 rounded-3xl overflow-hidden group relative transition-all duration-300 hover:shadow-xl">
+                            <div class="h-80 relative overflow-hidden">
+                                <img src="https://aeno.com/blog/wp-content/uploads/2024/11/jt65re-1.png" 
+                                     alt="Kitchen Equipment"
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                     onerror="this.src='https://placehold.co/800x800/1e293b/white?text=Kitchen+Equipment'">
+                                
+                                <div class="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                        View Details
+                                    </span>
+                                </div>
+
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white pointer-events-none">
+                                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold">Kitchen Equipment</h3>
+                                    
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                </div>
+                
+                <!-- Swiper Navigation & Pagination -->
+                <div class="swiper-pagination !static mt-10"></div>
+                <div class="swiper-button-prev hidden md:flex"></div>
+                <div class="swiper-button-next hidden md:flex"></div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- ... existing code ... -->
+    <!-- Optimized Section Container -->
+    <section class="py-16 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto overflow-hidden rounded-[2rem] shadow-[0_32px_64px_-15px_rgba(0,0,82,0.15)] bg-white flex flex-col lg:flex-row min-h-[550px]">
+            
+            <!-- Left Side: Content & Messaging -->
+            <div class="lg:w-1/2 p-8 md:p-12 lg:p-14 flex flex-col justify-center bg-white">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-[#000052] leading-[1.15] mb-6 tracking-tight">
+                    Discover Our Comprehensive Solutions for Commercial Kitchen and Laundry Systems.
+                </h2>
+                
+                <p class="text-slate-600 text-base leading-relaxed mb-8 font-medium">
+                    At Iggy-Controls Technologies, we specialize in the supply, installation, and precision maintenance 
+                    of world-class equipment across East Africa. From five-star hotel kitchens to high-capacity 
+                    industrial laundries, we ensure your operations never miss a beat.
+                </p>
+                
+                <div>
+                    <a href="about.html" class="inline-flex items-center gap-3 text-[#0C44AC] font-bold text-sm uppercase tracking-widest hover:text-[#ED0101] transition-all group">
+                        Read More About Us
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side: The Visual Solutions (Blue Highlight Area) -->
+            <div class="lg:w-1/2 p-6 md:p-8 bg-[#000052] flex items-center justify-center relative overflow-hidden">
+                <!-- Subtle grid background pattern for texture -->
+                <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
+                
+                <!-- Cards Container -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full relative z-10">
+                    
+                    <!-- Kitchen Solutions Card -->
+                    <a href="kitchen.html" class="solution-card group block relative h-[350px] rounded-[2rem] overflow-hidden shadow-2xl cursor-pointer">
+                        <img 
+                            src="https://alsaedco.com/staging/8110/wp-content/uploads/2026/04/687a396b45555f289e338602_IMG_6063-1.jpg" 
+                            alt="Commercial Kitchen Solutions" 
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        >
+                        <div class="card-overlay absolute inset-0 flex flex-col justify-end p-6 text-right bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                            <div class="h-1 bg-[#ED0101] mb-3 hover-line w-12 ml-auto transition-all group-hover:w-20"></div>
+                            <h3 class="text-2xl font-extrabold text-white leading-tight">
+                                Kitchen<br>Solutions
+                            </h3>
+                            <p class="text-white/70 text-xs mt-2 font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                Premium Equipment
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- Laundry Solutions Card -->
+                    <a href="laundry.html" class="solution-card group block relative h-[350px] rounded-[2rem] overflow-hidden shadow-2xl cursor-pointer">
+                        <img 
+                            src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777387000/P1140375_shoyrv.jpg" 
+                            alt="Industrial Laundry Solutions" 
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            onerror="this.src='https://placehold.co/800x800/000052/white?text=Laundry+Solutions'"
+                        >
+                        <div class="card-overlay absolute inset-0 flex flex-col justify-end p-6 text-right bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                            <div class="h-1 bg-[#ED0101] mb-3 hover-line w-12 ml-auto transition-all group-hover:w-20"></div>
+                            <h3 class="text-2xl font-extrabold text-white leading-tight">
+                                Laundry<br>Solutions
+                            </h3>
+                            <p class="text-white/70 text-xs mt-2 font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                Industrial Efficiency
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EQUIPMENT SWIPER -->
+<!-- ... existing code ... -->
+
+
+
+
+    <!-- ADDITIONAL SERVICES -->
+<section id="services" class="py-12 md:py-24 bg-[var(--gray-100)]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10 md:mb-16">
+        <h2 class="text-2xl md:text-4xl font-black mt-2 mb-4 text-[var(--blue-dark)]">Our Core Services</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Service 1 -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-[var(--blue-main)]">
+            <div class="w-16 h-16 bg-[var(--blue-main)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-industry text-white text-2xl"></i>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold text-[var(--blue-dark)] mb-3">Supply & Installations</h3>
+            <p class="text-[var(--gray-500)] text-sm">Professional supply and installation of electrical and mechanical equipment for commercial and industrial applications.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-[var(--red-main)]">
+            <div class="w-16 h-16 bg-[var(--red-main)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-tools text-white text-2xl"></i>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold text-[var(--blue-dark)] mb-3">Maintenance Services</h3>
+            <p class="text-[var(--gray-500)] text-sm">Preventive and curative maintenance for electrical equipment including laundry machines, lift and escalator systems.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-[var(--teal)]">
+            <div class="w-16 h-16 bg-[var(--teal)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-drafting-compass text-white text-2xl"></i>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold text-[var(--blue-dark)] mb-3">Consultancy & Design</h3>
+            <p class="text-[var(--gray-500)] text-sm">Expert consultation and professional design of laundry setups tailored to your specific operational needs.</p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-[var(--gold)]">
+            <div class="w-16 h-16 bg-[var(--gold)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-flask text-white text-2xl"></i>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold text-[var(--blue-dark)] mb-3">Chemicals & Detergents</h3>
+            <p class="text-[var(--gray-500)] text-sm">Supply and distribution of high-quality laundry chemicals and detergents for industrial use.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- STRENGTH & DELIVERY -->
+<section class="py-12 md:py-24 bg-[var(--blue-dark)] text-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-6 md:gap-10">
+
+<div class="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10">
+<h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white">Personal Strength</h3>
+<p class="text-slate-300 leading-relaxed">
+Iggy-Controls Technologies has a team of 8 specialized professionals in technical services and project management. This gives us confidence and stability in undertaking customer projects and assignments successfully.
+</p>
+</div>
+
+<div class="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10">
+<h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white">Delivery Capacity</h3>
+<p class="text-slate-300 leading-relaxed">
+Our team combined with the latest technical experience ensures we deliver exactly what our customers expect. We work closely with our clients and always deliver what is promised.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients" class="py-12 md:py-20 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <h2 class="text-center text-lg sm:text-xl md:text-2xl font-bold text-slate-400 mb-8 md:mb-12 uppercase tracking-widest">Our Trusted Partners</h2>
+        <div class="relative">
+            <div class="logo-track">
+                <!-- Set 1 -->
+                <div class="flex items-center gap-20">
+                    <img src="https://www.spekeapartments.com/wampewo/wp-content/uploads/2021/09/Speke-Apartments-Wampewo-black_logo.png" class="h-24 cursor-pointer">
+                    <img src="https://www.musicinafrica.net/sites/default/files/styles/profile_images_large/public/images/music_professional_profile/201501/kabiracountryclubedit.jpg?itok=rb_FUKwN" class="h-20 cursor-pointer">
+                    <img src="https://bukotoheights.com/wp-content/uploads/2023/09/Bukoto-Heights-Logo__-2.png" class="h-24 cursor-pointer">
+                     <img src="https://www.breakingtravelnews.com/images/sized/images/uploads/logos/serena-hotels-193x155.jpg"class="h-24 cursor-pointer">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMiM6j35krpLv4sLSvsyKizr12RGlyBAmL5g&s"class="h-24 cursor-pointer">
+                <img src="https://www.nyaikahotel.com/images/logo.png"class="h-24 cursor-pointer">
+                                <img src="https://recovery.preventionweb.net/sites/default/files/styles/large_no_crop/public/2025-10/image001.png?itok=T9pnjW5s"class="h-24 cursor-pointer">
+                
+                </div>
+
+                <!-- Duplicate for Loop -->
+                <div class="flex items-center gap-20">
+                     <img src="https://www.spekeapartments.com/wampewo/wp-content/uploads/2021/09/Speke-Apartments-Wampewo-black_logo.png" class="h-24 cursor-pointer">
+                    <img src="https://www.musicinafrica.net/sites/default/files/styles/profile_images_large/public/images/music_professional_profile/201501/kabiracountryclubedit.jpg?itok=rb_FUKwN" class="h-20 cursor-pointer">
+                    <img src="https://bukotoheights.com/wp-content/uploads/2023/09/Bukoto-Heights-Logo__-2.png" class="h-24 cursor-pointer">
+                     <img src="https://www.breakingtravelnews.com/images/sized/images/uploads/logos/serena-hotels-193x155.jpg"class="h-24 cursor-pointer">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMiM6j35krpLv4sLSvsyKizr12RGlyBAmL5g&s"class="h-24 cursor-pointer">
+                <img src="https://www.nyaikahotel.com/images/logo.png"class="h-24 cursor-pointer">
+                                <img src="https://recovery.preventionweb.net/sites/default/files/styles/large_no_crop/public/2025-10/image001.png?itok=T9pnjW5s"class="h-24 cursor-pointer">
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- WHO WE SERVE -->
+<section class="py-12 md:py-24 bg-gradient-to-r from-[var(--blue-pale)] via-[var(--gray-100)] to-[var(--red-pale)]">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+
+<h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-10 text-[var(--blue-dark)] section-title">Who We Serve</h2>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 text-left">
+
+<div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=250&fit=crop" class="w-full h-32 md:h-40 object-cover">
+  <div class="p-3 md:p-4 border-l-4 border-[var(--red-main)]"><h3 class="font-bold text-base md:text-lg">Hotels</h3></div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+  <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=250&fit=crop" class="w-full h-32 md:h-40 object-cover">
+  <div class="p-3 md:p-4 border-l-4 border-[var(--blue-main)]"><h3 class="font-bold text-base md:text-lg">Restaurants</h3></div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+  <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1778230623/Health_kvzc7l.png" class="w-full h-32 md:h-40 object-cover">
+  <div class="p-3 md:p-4 border-l-4 border-[var(--teal)]"><h3 class="font-bold text-base md:text-lg">Healthcare Centres</h3></div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+  <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=250&fit=crop" class="w-full h-32 md:h-40 object-cover">
+  <div class="p-3 md:p-4 border-l-4 border-[var(--gold)]"><h3 class="font-bold text-base md:text-lg">Industrial & Commercial</h3></div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKY1ISEBepf8-hZA2bocvFfn30WiPKbhbE5w&s" class="w-full h-32 md:h-40 object-cover">
+  <div class="p-3 md:p-4 border-l-4 border-[var(--red-main)]"><h3 class="font-bold text-base md:text-lg">Residentials</h3></div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+  <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1778231322/bakery_wjmkbj.png" class="w-full h-32 md:h-40 object-cover">
+  <div class="p-3 md:p-4 border-l-4 border-[var(--blue-main)]"><h3 class="font-bold text-base md:text-lg">Bakeries</h3></div>
+</div>
+
+<div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+  <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400&h=250&fit=crop" class="w-full h-32 md:h-40 object-cover">
+  <div class="p-3 md:p-4 border-l-4 border-[var(--gold)]"><h3 class="font-bold text-base md:text-lg">Fast Food</h3></div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+  <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1778231127/catering_fjca6h.png" class="w-full h-32 md:h-40 object-cover">
+  <div class="p-3 md:p-4 border-l-4 border-[var(--red-main)]"><h3 class="font-bold text-base md:text-lg">Contract Caterers</h3></div>
+</div>
+
+<div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1">
+  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=250&fit=crop" class="w-full h-32 md:h-40 object-cover">
+  <div class="p-3 md:p-4 border-l-4 border-[var(--teal)]"><h3 class="font-bold text-base md:text-lg">Corporate Facilities</h3></div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- SPARE PARTS ADVANTAGE -->
+<section class="py-12 md:py-24 bg-[var(--blue-dark)] text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 bg-[url('https://res.cloudinary.com/drno0hj9z/image/upload/v1777387026/P1140376_uaff3g.jpg')] bg-cover bg-center"></div>
+
+<div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+
+<h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6 section-title">Spare Parts Advantage</h2>
+
+<p class="text-lg text-slate-200 leading-relaxed mb-6">
+Iggy-Controls Technologies has strong links with various spare parts manufacturers, giving us the ability to offer the best and most competitive prices to our customers.
+</p>
+
+<p class="text-lg text-slate-200 leading-relaxed">
+We supply genuine parts with guaranteed quality, making us a trusted and leading company. Our efficient supply chain also ensures the shortest delivery time for spare parts.
+</p>
+
+</div>
+</section>
+
+
+<!-- SERVICES COMMITMENT -->
+<section class="py-12 md:py-24 bg-gradient-to-r from-[var(--blue-pale)] via-[var(--gray-100)] to-[var(--red-pale)]">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+
+<h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-[var(--blue-dark)] section-title">Our Services Commitment</h2>
+
+<p class="text-lg text-[var(--gray-700)] leading-relaxed mb-6">
+Iggy-Controls Technologies is built upon a foundation of solid technical knowledge and superior client services, resulting in high quality products and services delivered on time.
+</p>
+
+<p class="text-lg text-[var(--gray-700)] leading-relaxed">
+Our promise is to work with you, listen to your needs, queries and requirements, advise you when necessary and take stress out of your laundry and kitchen. That is why hotels, health sector, restaurants, laundromats and institutions prefer to work with us.
+</p>
+
+</div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section id="contact" class="py-12 md:py-24 bg-[var(--gray-100)]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="text-2xl md:text-4xl font-black mb-6 md:mb-8 text-[var(--blue-dark)]">Ready to upgrade your equipment?</h2>
+        <p class="text-base md:text-xl text-[var(--gray-500)] mb-8 md:mb-12">Contact our technical experts today for a site assessment or a competitive quote on our premium range.</p>
+        
+        <div class="flex flex-col md:flex-row flex-wrap justify-center gap-4 md:gap-8">
+            <div class="flex items-center gap-4 text-left p-4 md:p-6 bg-white rounded-2xl shadow-lg w-full md:w-auto hover:shadow-xl transition-shadow">
+                <div class="text-2xl md:text-3xl text-[var(--red-main)]"><i class="fab fa-whatsapp"></i></div>
+                <div>
+                    <span class="block text-sm text-[var(--gray-500)] uppercase font-bold tracking-wider">WhatsApp Us</span>
+                    <a href="https://wa.me/256742262000" class="text-xl font-bold">+256 742 262 000</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 text-left p-6 bg-white rounded-2xl shadow-lg w-full md:w-auto hover:shadow-xl transition-shadow">
+                <div class="text-2xl md:text-3xl text-[var(--blue-main)]"><i class="fas fa-envelope"></i></div>
+                <div>
+                    <span class="block text-sm text-slate-500 uppercase font-bold tracking-wider">Email Us</span>
+                    <a href="mailto:info@iggycontrols.com" class="text-xl font-bold">info@iggycontrols.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/256742262000" class="fixed bottom-6 right-6 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center text-white text-3xl shadow-2xl hover:scale-110 transition-transform z-50">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- FOOTER -->
+    <footer class="bg-[var(--blue-dark)] text-[var(--gray-300)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- BRAND -->
+        <div class="flex flex-col items-center text-center md:items-start md:text-left">
+          <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png" class="h-10 md:h-12 mb-2">
+          <p class="font-extrabold text-xs md:text-sm text-[var(--red-main)]">IGGY-CONTROLS</p>
+          <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
+            <span class="h-[1.5px] w-3 bg-[var(--red-main)]"></span>
+            <span class="text-[8px] tracking-widest text-[var(--blue-light)]">TECHNOLOGIES</span>
+            <span class="h-[1.5px] w-3 bg-[var(--red-main)]"></span>
+          </div>
+          <p class="text-xs md:text-sm">Professional supply, installation and maintenance of laundry and kitchen equipment.</p>
+        </div>
+        <!-- SERVICES -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Services</h3>
+          <ul class="space-y-2 text-sm">
+            <li>Laundry Equipment</li>
+            <li>Kitchen Equipment</li>
+            <li>Industrial Automation</li>
+            <li>Service & Maintenance</li>
+          </ul>
+        </div>
+        <!-- LINKS -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="hover:text-[var(--red-light)]">Home</a></li>
+            <li><a href="about.html" class="hover:text-[var(--red-light)]">About</a></li>
+            <li><a href="products.html" class="hover:text-[var(--red-light)]">Products</a></li>
+            <li><a href="services.html" class="hover:text-[var(--red-light)]">Services</a></li>
+          </ul>
+        </div>
+        <!-- CONTACT -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Contact</h3>
+          <div class="space-y-3 text-sm">
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-location-dot text-[var(--blue-light)]"></i> Kampala, Uganda
+            </p>
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-phone text-[var(--blue-light)]"></i>
+              <a href="tel:+256742262000" class="hover:text-[var(--red-light)]">+256 742262000</a>
+            </p>
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-envelope text-[var(--blue-light)]"></i>
+              <a href="mailto:info@iggycontrols.com" class="hover:text-[var(--red-light)]">info@iggycontrols.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-[var(--blue-main)]/30"></div>
+      <div class="text-center py-6 text-sm text-[var(--gray-300)]">
+        © 2026 Iggy Controls • Crafted by Brykon Technologies
+      </div>
+    </footer>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+
+  function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            const isActive = menu.classList.toggle('active');
+            
+            if (isActive) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        }
+
+        function toggleMobileDropdown(id) {
+            const content = document.getElementById(id);
+            const chevron = document.getElementById('productsChevron');
+            content.classList.toggle('active');
+            chevron.classList.toggle('rotate-180');
+        }
+
+
+
+function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            
+            const isActive = menu.classList.toggle('active');
+            
+            if (isActive) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto'; 
+            }
+        }
+
+        // Close menu when clicking outside
+        window.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('[onclick="toggleMobileMenu()"]');
+            
+            if (menu.classList.contains('active') && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Sticky Header effect on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+    // Initialize Swiper
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+    });
+
+    // ========================
+    // SCROLL ANIMATIONS
+    // ========================
+    
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all elements with scroll-animate class
+    document.querySelectorAll('.scroll-animate').forEach(el => {
+        observer.observe(el);
+    });
+
+    // ========================
+    // PARALLAX EFFECT
+    // ========================
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('[data-parallax]');
+        
+        parallaxElements.forEach(el => {
+            const speed = el.getAttribute('data-parallax') || 0.5;
+            el.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+
+    // ========================
+    // SMOOTH SCROLL ENHANCEMENT
+    // ========================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // ========================
+    // COUNTER ANIMATION
+    // ========================
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = target + (target === 100 ? '%' : '+');
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current) + (target === 100 ? '%' : '+');
+            }
+        }, 30);
+    }
+
+    // Observe counter elements
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.getAttribute('data-target'));
+                animateCounter(entry.target, target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => {
+        counterObserver.observe(el);
+    });
+
+    // ========================
+    // ENHANCED HOVER EFFECTS
+    // ========================
+    
+    // Add ripple effect to buttons
+    document.querySelectorAll('.btn-animate').forEach(btn => {
+        btn.addEventListener('mouseenter', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            this.style.setProperty('--ripple-x', x + 'px');
+            this.style.setProperty('--ripple-y', y + 'px');
+        });
+    });
+
+    // ========================
+    // LAZY LOAD ENHANCEMENT
+    // ========================
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                imageObserver.unobserve(img);
+            }
+        });
+    }, { rootMargin: '50px' });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+
+    // ========================
+    // HEADER SCROLL EFFECT
+    // ========================
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+            header.classList.remove('-translate-y-full');
+            return;
+        }
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            // Scroll down - hide header
+            header.classList.add('-translate-y-full');
+        } else {
+            // Scroll up - show header
+            header.classList.remove('-translate-y-full');
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+</script>
+
+
+</body>
+</html>

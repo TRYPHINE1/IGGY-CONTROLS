@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ironers | Iggy-Controls Technologies</title>
+     <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --red-main: #dc2626; 
+            --red-light: #ef4444;
+            --blue-main: #1e40af; 
+            --blue-dark: #0f172a;
+            --blue-light: #3b82f6;
+            --gray-300: #d1d5db;
+            --tolon-teal: #234d85; 
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+ .dropdown-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .group:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-submenu.active {
+            max-height: 200px;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.75));
+        }
+
+        /* Updated Card Style: Shorter and more compact */
+        .tolon-card {
+            background-color: var(--tolon-teal);
+            border-radius: 2rem; /* Slightly reduced radius for better proportions */
+            padding: 2rem 1.25rem; /* Reduced padding from 3.5rem to 2rem */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 380px; /* Reduced from 520px */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tolon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Adjusted image wrapper height */
+        .img-wrap {
+            width: 100%;
+            height: 220px; /* Reduced from 300px to fit shorter card */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tolon-card img {
+            max-width: 85%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+            transition: transform 0.5s ease;
+        }
+
+        .tolon-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Scaled down typography for better balance */
+        .tolon-card .model-name {
+            color: white;
+            font-size: 2.25rem; /* Reduced from 3.05rem */
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            margin-bottom: 0.5rem;
+        }
+
+        .tolon-card .model-desc {
+            color: white;
+            text-align: center;
+            font-size: 0.8rem; /* Slightly smaller */
+            font-weight: 600;
+            line-height: 1.2;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #mobileMenu { display: none; }
+        #mobileMenu.active { display: flex; flex-direction: column; }
+
+        .section-header {
+            margin-bottom: 3rem;
+            border-left: 6px solid var(--tolon-teal);
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- ================= HEADER ================= -->
+   <header id="mainHeader" class="fixed top-0 left-0 w-full bg-white shadow-sm z-[100] border-b border-gray-100">
+        <nav class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="flex justify-between h-20 items-center w-full">
+                <!-- Brand Identity -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex flex-col items-center">
+                        <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png" 
+                             alt="Iggy Controls Logo" class="h-10 w-auto mb-1">
+                        <div class="inline-block text-center">
+                            <span class="font-extrabold text-[10px] md:text-xs block">
+                                <span class="text-[var(--red-main)] uppercase">Iggy-Controls</span>
+                            </span>
+                            <div class="flex items-center justify-center gap-2 mt-0.5">
+                                <span class="h-[1.5px] w-2 bg-[var(--red-main)]"></span>
+                                <span class="text-[8px] tracking-[0.2em] text-[var(--blue-main)] font-bold uppercase">Technologies</span>
+                                <span class="h-[1.5px] w-2 bg-[var(--red-main)]"></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex gap-8 items-center h-full">
+                    <a href="index.html" class="text-slate-600 hover:text-[var(--blue-main)] transition-colors text-[11px] font-bold uppercase tracking-widest">Home</a>
+                    <a href="about.html" class="text-slate-600 hover:text-[var(--blue-main)] transition-colors text-[11px] font-bold uppercase tracking-widest">About</a>
+                    
+                    <!-- Products Dropdown -->
+                    <div class="relative group h-full flex items-center">
+                        <button class="flex items-center gap-1 text-[var(--blue-main)] font-bold text-[11px] uppercase tracking-widest border-b-2 border-[var(--blue-main)] h-full">
+                            Products
+                            <i class="fa-solid fa-chevron-down text-[8px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        
+                        <div class="dropdown-content absolute top-full left-0 w-56 bg-white shadow-xl rounded-b-xl py-4 border-t-2 border-[var(--red-main)]">
+                            <a href="kitchen.html" class="block px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-600 hover:bg-slate-50 hover:text-[var(--red-main)] transition-all">Kitchen Solutions</a>
+                            <a href="laundry.html" class="block px-6 py-3 text-xs font-bold uppercase tracking-wider text-[var(--red-main)] bg-slate-50">   Laundry Solutions</a>
+                           
+                        </div>
+                    </div>
+
+                    <a href="services.html" class="text-slate-600 hover:text-[var(--blue-main)] transition-colors text-[11px] font-bold uppercase tracking-widest">Services</a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-4">
+                    <a href="contact.html" class="bg-[var(--red-main)] text-white px-6 py-2.5 rounded-lg font-bold hidden md:block hover:bg-[#c40101] hover:shadow-lg transition-all text-[11px] uppercase tracking-widest text-center">
+                    Contact Us
+                    </a>
+                    <button class="md:hidden p-2 text-gray-700 hover:text-[var(--red-main)] transition-colors" onclick="toggleMobileMenu()">
+                        <i id="menuIcon" class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden border-t bg-white w-full pb-6">
+                <a href="index.html" class="block py-4 border-b px-2 text-xs font-bold uppercase tracking-widest text-slate-600">Home</a>
+                <a href="about.html" class="block py-4 border-b px-2 text-xs font-bold uppercase tracking-widest text-slate-600">About</a>
+                
+                <div class="border-b">
+                    <button onclick="toggleMobileSubmenu()" class="flex justify-between items-center w-full py-4 px-2 text-xs font-bold uppercase tracking-widest text-[var(--blue-main)]">
+                        Products
+                        <i id="subIcon" class="fa-solid fa-plus text-[10px]"></i>
+                    </button>
+                    <div id="mobileSubmenu" class="mobile-submenu bg-slate-50 px-4">
+                        <a href="kitchen.html" class="block py-3 text-[10px] font-bold uppercase tracking-widest text-slate-500">Kitchen Solutions</a>
+                        <a href="laundry.html" class="block py-3 text-[10px] font-bold uppercase tracking-widest text-[var(--red-main)]">Laundry Solutions</a>
+
+                    </div>
+                </div>
+
+                <a href="services.html" class="block py-4 border-b px-2 text-xs font-bold uppercase tracking-widest text-slate-600">Services</a>
+                <div class="pt-6">
+                    <a href="contact.html" class="block w-full bg-[var(--red-main)] text-white py-4 rounded-lg font-bold text-xs uppercase tracking-widest text-center shadow-md">Contact Us</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386809/P1140316_o7t5pu.jpg" 
+                 class="w-full h-full object-cover" alt="Industrial Facility">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        <div class="relative z-10 container mx-auto px-6 max-w-6xl text-center">
+            <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter leading-tight mb-4 uppercase">
+                Ironers
+            </h1>
+            
+        </div>
+    </section>
+
+    <section class="bg-slate-50 px-6 md:px-12 py-24 max-w-7xl mx-auto">
+        
+        <div class="mb-24">
+            <div class="section-header">
+                
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="tolon-card scroll-reveal">
+                    <div class="img-wrap"><img src="https://tolon.com/wp-content/uploads/2025/09/tfsi.png" alt="TFI3516"></div>
+                    <div class="text-center">
+                        <div class="model-name">TFI3516</div>
+                        <div class="model-desc">Small Ironers</div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="tolon-card scroll-reveal">
+                    <div class="img-wrap"><img src="https://tolon.com/wp-content/uploads/2025/09/tfsi.png" alt="TFI3521"></div>
+                    <div class="text-center">
+                        <div class="model-name">TFI3521</div>
+                        <div class="model-desc">Small Ironers</div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="tolon-card scroll-reveal">
+                    <div class="img-wrap"><img src="https://tolon.com/wp-content/uploads/2025/09/TFI6032-26.webp" alt="TFI6026"></div>
+                    <div class="text-center">
+                        <div class="model-name">TFI6026</div>
+                        <div class="model-desc">Large Ironers<br>(With Folding Option)</div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="tolon-card scroll-reveal">
+                    <div class="img-wrap"><img src="https://tolon.com/wp-content/uploads/2025/09/TFI6032-26.webp" alt="TFI6032"></div>
+                    <div class="text-center">
+                        <div class="model-name">TFI6032</div>
+                        <div class="model-desc">Large Ironers<br>(With Folding Option)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/256742262000" 
+       class="fixed bottom-6 right-6 bg-green-500 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white text-2xl md:text-3xl shadow-2xl hover:scale-110 active:scale-90 transition-all z-[90]"
+       aria-label="Contact on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="bg-[var(--blue-dark)] text-[var(--gray-300)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- BRAND -->
+        <div class="flex flex-col items-center text-center md:items-start md:text-left">
+          <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png" class="h-10 md:h-12 mb-2">
+          <p class="font-extrabold text-xs md:text-sm text-[var(--red-main)]">IGGY-CONTROLS</p>
+          <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
+            <span class="h-[1.5px] w-3 bg-[var(--red-main)]"></span>
+            <span class="text-[8px] tracking-widest text-[var(--blue-light)]">TECHNOLOGIES</span>
+            <span class="h-[1.5px] w-3 bg-[var(--red-main)]"></span>
+          </div>
+          <p class="text-xs md:text-sm">Professional supply, installation and maintenance of laundry and kitchen equipment.</p>
+        </div>
+        <!-- SERVICES -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Services</h3>
+          <ul class="space-y-2 text-sm">
+            <li>Laundry Equipment</li>
+            <li>Kitchen Equipment</li>
+            <li>Industrial Automation</li>
+            <li>Service & Maintenance</li>
+          </ul>
+        </div>
+        <!-- LINKS -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-[var(--red-light)]">Home</a></li>
+            <li><a href="#" class="hover:text-[var(--red-light)]">About</a></li>
+            <li><a href="#" class="hover:text-[var(--red-light)]">Products</a></li>
+            <li><a href="#" class="hover:text-[var(--red-light)]">Services</a></li>
+          </ul>
+        </div>
+        <!-- CONTACT -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Contact</h3>
+          <div class="space-y-3 text-sm">
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-location-dot text-[var(--blue-light)]"></i> Kampala, Uganda
+            </p>
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-phone text-[var(--blue-light)]"></i>
+              <a href="tel:+256742262000" class="hover:text-[var(--red-light)]">+256 742262000</a>
+            </p>
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-envelope text-[var(--blue-light)]"></i>
+              <a href="mailto:info@iggycontrols.com" class="hover:text-[var(--red-light)]">info@iggycontrols.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-[var(--blue-main)]/30"></div>
+      <div class="text-center py-6 text-sm text-[var(--gray-300)]">
+        © 2026 Iggy Controls • Crafted by Brykon Technologies
+      </div>
+    </footer>
+
+    <script>
+function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        }
+
+        function toggleMobileSubmenu() {
+            const submenu = document.getElementById('mobileSubmenu');
+            const icon = document.getElementById('subIcon');
+            submenu.classList.toggle('active');
+            icon.classList.toggle('fa-plus');
+            icon.classList.toggle('fa-minus');
+        }
+
+
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('active');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        });
+    </script> 
+</body>
+</html>

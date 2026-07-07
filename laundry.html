@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry Solutions | Iggy-Controls Technologies</title>
+     <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper.js for Sliding Hero -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        :root {
+            --red-main: #ED0101;
+            --blue-main: #000052;
+            --blue-dark: #00003a; 
+            --blue-light: #0C44AC;
+            --gray-300: #d1d5db;
+        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        
+        .dropdown-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .group:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-submenu.active {
+            max-height: 200px;
+        }
+
+        .solution-card:hover .hover-image { transform: scale(1.05); }
+        .red-line {
+            height: 4px;
+            width: 40px;
+            background-color: var(--red-main);
+            transition: width 0.3s ease;
+        }
+        .solution-card:hover .red-line { width: 80px; }
+        
+        .hero-swiper { height: 70vh; min-height: 500px; }
+        .swiper-pagination-bullet-active { background: var(--red-main) !important; }
+
+        .part-card:hover .part-icon { background-color: var(--red-main); color: white; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <header id="mainHeader" class="fixed top-0 left-0 w-full bg-white shadow-sm z-[100] border-b border-gray-100">
+        <nav class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="flex justify-between h-20 items-center w-full">
+                <!-- Brand Identity -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex flex-col items-center">
+                        <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png" 
+                             alt="Iggy Controls Logo" class="h-10 w-auto mb-1">
+                        <div class="inline-block text-center">
+                            <span class="font-extrabold text-[10px] md:text-xs block">
+                                <span class="text-[var(--red-main)] uppercase">Iggy-Controls</span>
+                            </span>
+                            <div class="flex items-center justify-center gap-2 mt-0.5">
+                                <span class="h-[1.5px] w-2 bg-[var(--red-main)]"></span>
+                                <span class="text-[8px] tracking-[0.2em] text-[var(--blue-main)] font-bold uppercase">Technologies</span>
+                                <span class="h-[1.5px] w-2 bg-[var(--red-main)]"></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex gap-8 items-center h-full">
+                    <a href="index.html" class="text-slate-600 hover:text-[var(--blue-main)] transition-colors text-[11px] font-bold uppercase tracking-widest">Home</a>
+                    <a href="about.html" class="text-slate-600 hover:text-[var(--blue-main)] transition-colors text-[11px] font-bold uppercase tracking-widest">About</a>
+                    
+                    <!-- Products Dropdown -->
+                    <div class="relative group h-full flex items-center">
+                        <button class="flex items-center gap-1 text-[var(--blue-main)] font-bold text-[11px] uppercase tracking-widest border-b-2 border-[var(--blue-main)] h-full">
+                            Products
+                            <i class="fa-solid fa-chevron-down text-[8px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        
+                        <div class="dropdown-content absolute top-full left-0 w-56 bg-white shadow-xl rounded-b-xl py-4 border-t-2 border-[var(--red-main)]">
+                            <a href="kitchen.html" class="block px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-600 hover:bg-slate-50 hover:text-[var(--red-main)] transition-all">Kitchen Solutions</a>
+                            <a href="laundry-solutions.html" class="block px-6 py-3 text-xs font-bold uppercase tracking-wider text-[var(--red-main)] bg-slate-50">Laundry Solutions</a>
+                           
+                        </div>
+                    </div>
+
+                    <a href="services.html" class="text-slate-600 hover:text-[var(--blue-main)] transition-colors text-[11px] font-bold uppercase tracking-widest">Services</a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-4">
+                    <a href="contact.html" class="bg-[var(--red-main)] text-white px-6 py-2.5 rounded-lg font-bold hidden md:block hover:bg-[#c40101] hover:shadow-lg transition-all text-[11px] uppercase tracking-widest text-center">
+                        Contact Us
+                    </a>
+                    <button class="md:hidden p-2 text-gray-700 hover:text-[var(--red-main)] transition-colors" onclick="toggleMobileMenu()">
+                        <i id="menuIcon" class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden border-t bg-white w-full pb-6">
+                <a href="index.html" class="block py-4 border-b px-2 text-xs font-bold uppercase tracking-widest text-slate-600">Home</a>
+                <a href="about.html" class="block py-4 border-b px-2 text-xs font-bold uppercase tracking-widest text-slate-600">About</a>
+                
+                <div class="border-b">
+                    <button onclick="toggleMobileSubmenu()" class="flex justify-between items-center w-full py-4 px-2 text-xs font-bold uppercase tracking-widest text-[var(--blue-main)]">
+                        Products
+                        <i id="subIcon" class="fa-solid fa-plus text-[10px]"></i>
+                    </button>
+                    <div id="mobileSubmenu" class="mobile-submenu bg-slate-50 px-4">
+                        <a href="kitchen.html" class="block py-3 text-[10px] font-bold uppercase tracking-widest text-slate-500">Kitchen Solutions</a>
+                        <a href="laundry-solutions.html" class="block py-3 text-[10px] font-bold uppercase tracking-widest text-[var(--red-main)]">Laundry Solutions</a>
+                        
+                </div>
+
+                <a href="services.html" class="block py-4 border-b px-2 text-xs font-bold uppercase tracking-widest text-slate-600">Services</a>
+                <div class="pt-6">
+                    <a href="contact.html" class="block w-full bg-[var(--red-main)] text-white py-4 rounded-lg font-bold text-xs uppercase tracking-widest text-center shadow-md">Contact Us</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <header class="relative overflow-hidden h-[70vh] min-h-[500px] mt-20">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide relative">
+                    <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386866/P1140328_zyp7ne.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Industrial Laundry">
+                    <div class="absolute inset-0 bg-[#000052]/50"></div>
+                </div>
+                <div class="swiper-slide relative">
+                    <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777386750/P1140312_zsm7rp.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Laundry Systems">
+                    <div class="absolute inset-0 bg-[#000052]/50"></div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+        <div class="absolute inset-0 z-10 flex items-center">
+            <div class="max-w-7xl mx-auto px-6 w-full text-center">
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-8 tracking-tighter uppercase">
+                    LAUNDRY SOLUTIONS
+                </h1>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#equipment" class="bg-[var(--red-main)] text-white px-10 py-5 rounded-xl font-bold hover:bg-white hover:text-[var(--blue-main)] transition-all shadow-2xl uppercase tracking-widest text-xs">Explore Equipment</a>
+                    <a href="contact.html" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-10 py-5 rounded-xl font-bold hover:bg-white hover:text-[var(--blue-main)] transition-all uppercase tracking-widest text-xs">Get Technical Support</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Equipment Section -->
+    <section id="equipment" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-4xl font-black text-[var(--blue-main)] mb-4 tracking-tight uppercase">High-Performance Equipment</h2>
+                    <p class="text-slate-500 font-medium leading-relaxed">Precision-engineered machinery designed for industrial durability and peak efficiency. Our curated selection of laundry technology ensures maximum throughput with minimum utility consumption.</p>
+                </div>
+                <div class="red-line w-24 hidden md:block"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Washers -->
+                <a href="washers.html" class="solution-card group bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 transition-all hover:shadow-2xl block">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777387000/P1140375_shoyrv.jpg" class="hover-image w-full h-full object-cover transition-transform duration-700" alt="Washers">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-main)]/80 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-extrabold text-[var(--blue-main)] mb-6 uppercase tracking-tight group-hover:text-[var(--red-main)] transition-colors">Washers</h3>
+                        <div class="red-line mb-4"></div>
+                        <span class="flex items-center gap-2 text-[var(--blue-light)] font-black text-[10px] uppercase tracking-[0.2em]">View Series <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Dryers -->
+                <a href="dryers.html" class="solution-card group bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 transition-all hover:shadow-2xl block">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1778228832/dryer_pagqp6.webp" class="hover-image w-full h-full object-cover transition-transform duration-700" alt="Dryers">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-main)]/80 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-extrabold text-[var(--blue-main)] mb-6 uppercase tracking-tight group-hover:text-[var(--red-main)] transition-colors">Dryers</h3>
+                        <div class="red-line mb-4"></div>
+                        <span class="flex items-center gap-2 text-[var(--blue-light)] font-black text-[10px] uppercase tracking-[0.2em]">View Series <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Ironers -->
+                <a href="ironers.html" class="solution-card group bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 transition-all hover:shadow-2xl block">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777387045/P1140385_cogkom.jpg" class="hover-image w-full h-full object-cover transition-transform duration-700" alt="Ironers">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-main)]/80 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-extrabold text-[var(--blue-main)] mb-6 uppercase tracking-tight group-hover:text-[var(--red-main)] transition-colors">Ironers</h3>
+                        <div class="red-line mb-4"></div>
+                        <span class="flex items-center gap-2 text-[var(--blue-light)] font-black text-[10px] uppercase tracking-[0.2em]">View Series <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Folders -->
+                <a href="folders.html" class="solution-card group bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 transition-all hover:shadow-2xl block">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://tolon.com/wp-content/uploads/2024/11/TTF-200.png" class="hover-image w-full h-full object-cover transition-transform duration-700" alt="Folders">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-main)]/80 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-extrabold text-[var(--blue-main)] mb-6 uppercase tracking-tight group-hover:text-[var(--red-main)] transition-colors">Folders</h3>
+                        <div class="red-line mb-4"></div>
+                        <span class="flex items-center gap-2 text-[var(--blue-light)] font-black text-[10px] uppercase tracking-[0.2em]">View Series <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- SPARE PARTS ADVANTAGE -->
+<section class="py-12 md:py-24 bg-[var(--blue-dark)] text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 bg-[url('https://res.cloudinary.com/drno0hj9z/image/upload/v1777387026/P1140376_uaff3g.jpg')] bg-cover bg-center"></div>
+
+<div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+
+<h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6 section-title">Spare Parts Advantage</h2>
+
+<p class="text-lg text-slate-200 leading-relaxed mb-6">
+Iggy-Controls Technologies has strong links with various spare parts manufacturers, giving us the ability to offer the best and most competitive prices to our customers.
+</p>
+
+<p class="text-lg text-slate-200 leading-relaxed">
+We supply genuine parts with guaranteed quality, making us a trusted and leading company. Our efficient supply chain also ensures the shortest delivery time for spare parts.
+</p>
+
+</div>
+</section>
+
+ <!-- ADDITIONAL SERVICES -->
+<section id="services" class="py-12 md:py-24 bg-[var(--gray-100)]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10 md:mb-16">
+        <h2 class="text-2xl md:text-4xl font-black mt-2 mb-4 text-[var(--blue-dark)]">Our Core Services</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Service 1 -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-[var(--blue-main)]">
+            <div class="w-16 h-16 bg-[var(--blue-main)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-industry text-white text-2xl"></i>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold text-[var(--blue-dark)] mb-3">Supply & Installations</h3>
+            <p class="text-[var(--gray-500)] text-sm">Professional supply and installation of electrical and mechanical equipment for commercial and industrial applications.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-[var(--red-main)]">
+            <div class="w-16 h-16 bg-[var(--red-main)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-tools text-white text-2xl"></i>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold text-[var(--blue-dark)] mb-3">Maintenance Services</h3>
+            <p class="text-[var(--gray-500)] text-sm">Preventive and curative maintenance for electrical equipment including laundry machines, lift and escalator systems.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-[var(--teal)]">
+            <div class="w-16 h-16 bg-[var(--teal)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-drafting-compass text-white text-2xl"></i>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold text-[var(--blue-dark)] mb-3">Consultancy & Design</h3>
+            <p class="text-[var(--gray-500)] text-sm">Expert consultation and professional design of laundry setups tailored to your specific operational needs.</p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-[var(--gold)]">
+            <div class="w-16 h-16 bg-[var(--gold)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-flask text-white text-2xl"></i>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold text-[var(--blue-dark)] mb-3">Chemicals & Detergents</h3>
+            <p class="text-[var(--gray-500)] text-sm">Supply and distribution of high-quality laundry chemicals and detergents for industrial use.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+
+   
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/256742262000" 
+       class="fixed bottom-6 right-6 bg-green-500 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white text-2xl md:text-3xl shadow-2xl hover:scale-110 active:scale-90 transition-all z-[90]"
+       aria-label="Contact on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="bg-[var(--blue-dark)] text-[var(--gray-300)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- BRAND -->
+        <div class="flex flex-col items-center text-center md:items-start md:text-left">
+          <img src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png" class="h-10 md:h-12 mb-2">
+          <p class="font-extrabold text-xs md:text-sm text-[var(--red-main)]">IGGY-CONTROLS</p>
+          <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
+            <span class="h-[1.5px] w-3 bg-[var(--red-main)]"></span>
+            <span class="text-[8px] tracking-widest text-[var(--blue-light)]">TECHNOLOGIES</span>
+            <span class="h-[1.5px] w-3 bg-[var(--red-main)]"></span>
+          </div>
+          <p class="text-xs md:text-sm">Professional supply, installation and maintenance of laundry and kitchen equipment.</p>
+        </div>
+        <!-- SERVICES -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Services</h3>
+          <ul class="space-y-2 text-sm">
+            <li>Laundry Equipment</li>
+            <li>Kitchen Equipment</li>
+            <li>Industrial Automation</li>
+            <li>Service & Maintenance</li>
+          </ul>
+        </div>
+        <!-- LINKS -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="hover:text-[var(--red-light)]">Home</a></li>
+            <li><a href="about.html" class="hover:text-[var(--red-light)]">About</a></li>
+            <li><a href="products.html" class="hover:text-[var(--red-light)]">Products</a></li>
+            <li><a href="services.html" class="hover:text-[var(--red-light)]">Services</a></li>
+          </ul>
+        </div>
+        <!-- CONTACT -->
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold mb-4">Contact</h3>
+          <div class="space-y-3 text-sm">
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-location-dot text-[var(--blue-light)]"></i> Kampala, Uganda
+            </p>
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-phone text-[var(--blue-light)]"></i>
+              <a href="tel:+256742262000" class="hover:text-[var(--red-light)]">+256 742262000</a>
+            </p>
+            <p class="flex items-center justify-center md:justify-start gap-2">
+              <i class="fa-solid fa-envelope text-[var(--blue-light)]"></i>
+              <a href="mailto:info@iggycontrols.com" class="hover:text-[var(--red-light)]">info@iggycontrols.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-[var(--blue-main)]/30"></div>
+      <div class="text-center py-6 text-sm text-[var(--gray-300)]">
+        © 2026 Iggy Controls • Crafted by Brykon Technologies
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        }
+
+        function toggleMobileSubmenu() {
+            const submenu = document.getElementById('mobileSubmenu');
+            const icon = document.getElementById('subIcon');
+            submenu.classList.toggle('active');
+            icon.classList.toggle('fa-plus');
+            icon.classList.toggle('fa-minus');
+        }
+
+        window.onload = function() {
+            new Swiper('.hero-swiper', {
+                effect: 'slide',
+                speed: 1000,
+                loop: true,
+                autoplay: { 
+                    delay: 5000,
+                    disableOnInteraction: false
+                },
+                pagination: { el: '.swiper-pagination', clickable: true }
+            });
+        };
+    </script>
+</body>
+</html>
