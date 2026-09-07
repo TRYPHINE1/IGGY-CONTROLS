@@ -3,10 +3,11 @@
 <html lang="en">
 
  <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png">
 
 <meta
 name="description"
@@ -1281,6 +1282,645 @@ content="IGGY-CONTROLS TECHNOLOGIES chemical product catalogue and product finde
         font-size: 11px;
       }
     }
+
+
+    /* =========================================================
+       RESPONSIVE SYSTEM — ALL SCREEN SIZES
+       These overrides use the existing design and keep the
+       catalogue comfortable from small phones to large monitors.
+    ========================================================= */
+
+    :root {
+      --content-max: 1380px;
+      --page-gutter: clamp(14px, 3vw, 42px);
+      --section-space: clamp(56px, 7vw, 88px);
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      scroll-padding-top: 82px;
+    }
+
+    body {
+      min-width: 320px;
+    }
+
+    button,
+    a,
+    input {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button,
+    .category-card,
+    .chip,
+    .filter,
+    .request-btn,
+    .view-btn {
+      touch-action: manipulation;
+    }
+
+    .container,
+    .finder-wrap,
+    .results,
+    .about-grid,
+    .category-grid,
+    .footer-grid {
+      width: min(100% - (var(--page-gutter) * 2), var(--content-max));
+    }
+
+    .finder-wrap,
+    .results {
+      max-width: var(--content-max);
+    }
+
+    /* Header: keep the Tailwind header fluid without changing the design. */
+    header > nav,
+    header nav {
+      width: min(100%, 1380px) !important;
+      margin-inline: auto;
+      padding-left: var(--page-gutter) !important;
+      padding-right: var(--page-gutter) !important;
+    }
+
+    header .flex.justify-between.items-center.w-full {
+      min-height: 64px;
+      gap: 16px;
+    }
+
+    header nav > div:first-child {
+      min-width: 0;
+    }
+
+    header nav .hidden.md\:flex {
+      flex-wrap: nowrap;
+    }
+
+    header nav .gap-8 {
+      gap: clamp(14px, 2vw, 32px);
+    }
+
+    /* Mobile menu uses the JS .open class. */
+    #mobileMenu.open {
+      display: block !important;
+    }
+
+    #mobileMenu {
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      border-radius: 0 0 14px 14px;
+    }
+
+    #productsMobile.open {
+      display: block !important;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: clamp(220px, 25vw, 330px);
+    }
+
+    .hero-content {
+      padding: clamp(42px, 6vw, 72px) var(--page-gutter);
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 6vw, 58px);
+      overflow-wrap: anywhere;
+    }
+
+    .hero p {
+      font-size: clamp(13px, 1.4vw, 15px);
+    }
+
+    /* Finder */
+    .finder-section {
+      padding: var(--section-space) var(--page-gutter);
+    }
+
+    .finder-heading h2,
+    .section-head h2,
+    .about h2,
+    .cta h2 {
+      overflow-wrap: anywhere;
+    }
+
+    .finder-heading h2,
+    .section-head h2 {
+      font-size: clamp(27px, 4vw, 40px);
+    }
+
+    .main-search {
+      width: 100%;
+      min-height: 86px;
+    }
+
+    .main-search input {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .search-btn {
+      flex: 0 0 155px;
+    }
+
+    .popular,
+    .filters {
+      width: 100%;
+    }
+
+    .filters {
+      scrollbar-width: thin;
+      scrollbar-color: #b7c4d6 transparent;
+    }
+
+    .filter,
+    .chip {
+      min-height: 44px;
+    }
+
+    /* Product cards */
+    .products-grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 265px), 1fr));
+      align-items: stretch;
+    }
+
+    .card {
+      min-width: 0;
+      height: 100%;
+    }
+
+    .card-image {
+      height: clamp(180px, 18vw, 220px);
+      aspect-ratio: 4 / 3;
+    }
+
+    .card-image img {
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: clamp(16px, 1.8vw, 20px);
+    }
+
+    .card h3 {
+      font-size: clamp(16px, 1.35vw, 18px);
+    }
+
+    .request-btn,
+    .view-btn {
+      min-height: 44px;
+    }
+
+    /* About */
+    .about {
+      padding: var(--section-space) var(--page-gutter);
+    }
+
+    .about-grid {
+      max-width: 1250px;
+      gap: clamp(32px, 5vw, 65px);
+    }
+
+    .about-image {
+      height: clamp(270px, 34vw, 420px);
+    }
+
+    .about h2 {
+      font-size: clamp(29px, 4vw, 39px);
+    }
+
+    /* Categories */
+    .categories {
+      padding: var(--section-space) var(--page-gutter);
+    }
+
+    .category-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: 1250px;
+    }
+
+    .category-card {
+      height: clamp(185px, 19vw, 220px);
+    }
+
+    .category-card h3 {
+      font-size: clamp(15px, 1.5vw, 18px);
+    }
+
+    /* CTA */
+    .cta {
+      padding: var(--section-space) var(--page-gutter);
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 4vw, 38px);
+    }
+
+    /* Footer */
+    footer {
+      padding-left: var(--page-gutter);
+      padding-right: var(--page-gutter);
+    }
+
+    footer .container {
+      width: 100%;
+      max-width: 1380px;
+    }
+
+    .footer-grid {
+      grid-template-columns: minmax(220px, 1.4fr) repeat(3, minmax(150px, 1fr));
+      gap: clamp(24px, 4vw, 45px);
+    }
+
+    .footer-bottom {
+      flex-wrap: wrap;
+    }
+
+    /* Modal */
+    .modal {
+      padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    }
+
+    .modal-box {
+      width: min(900px, 100%);
+      max-height: min(90vh, 900px);
+      max-height: min(90svh, 900px);
+      padding: clamp(18px, 3vw, 30px);
+    }
+
+    .modal-image {
+      height: clamp(210px, 34vw, 320px);
+      aspect-ratio: 16 / 9;
+    }
+
+    .modal-box h2 {
+      font-size: clamp(22px, 3vw, 29px);
+      overflow-wrap: anywhere;
+    }
+
+    /* Large desktops */
+    @media (min-width: 1500px) {
+      .products-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .category-grid {
+        gap: 22px;
+      }
+    }
+
+    /* Laptops / small desktops */
+    @media (max-width: 1180px) {
+      header nav .gap-8 {
+        gap: 16px;
+      }
+
+      header nav .hidden.md\:flex {
+        font-size: 14px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Tablets */
+    @media (max-width: 900px) {
+      .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        max-height: 420px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Phones and portrait tablets */
+    @media (max-width: 767px) {
+      header > nav,
+      header nav {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+      }
+
+      header .flex.justify-between.items-center.w-full {
+        min-height: 62px;
+      }
+
+      .topbar-inner {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+
+      .hero {
+        min-height: 220px;
+      }
+
+      .hero-content {
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+
+      .main-search {
+        display: grid;
+        grid-template-columns: 46px minmax(0, 1fr);
+        align-items: center;
+        gap: 0;
+        padding: 7px;
+      }
+
+      .search-icon {
+        width: 46px;
+        min-width: 46px;
+        font-size: 21px;
+      }
+
+      .main-search input {
+        width: 100%;
+        padding: 14px 5px;
+        font-size: 16px;
+      }
+
+      .search-btn {
+        grid-column: 1 / -1;
+        width: 100%;
+        min-width: 0;
+        height: 52px;
+        margin-top: 5px;
+      }
+
+      .popular {
+        justify-content: flex-start;
+      }
+
+      .popular > span {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 2px;
+      }
+
+      .chips,
+      .filters {
+        justify-content: flex-start;
+      }
+
+      .filters {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 5px 2px 12px;
+        margin-left: -2px;
+        margin-right: -2px;
+      }
+
+      .filter {
+        flex: 0 0 auto;
+        white-space: nowrap;
+      }
+
+      .results {
+        margin-top: 32px;
+      }
+
+      .results-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .card-image {
+        height: auto;
+        aspect-ratio: 4 / 3;
+      }
+
+      .card-body {
+        padding: 15px;
+      }
+
+      .card p {
+        -webkit-line-clamp: 4;
+      }
+
+      .meta span {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+      }
+
+      .request-btn,
+      .view-btn {
+        font-size: 12px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .category-card {
+        height: 190px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 22px;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .modal-box {
+        max-height: 92svh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .modal-image {
+        height: auto;
+        aspect-ratio: 4 / 3;
+      }
+
+      .modal-meta {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 520px) {
+      .hero h1 {
+        font-size: clamp(31px, 11vw, 40px);
+        letter-spacing: -1px;
+      }
+
+      .finder-heading {
+        margin-bottom: 24px;
+      }
+
+      .finder-heading p,
+      .section-head p {
+        font-size: 14px;
+      }
+
+      .chip {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .card-image {
+        aspect-ratio: 16 / 10;
+      }
+
+      .card-body {
+        padding: 17px;
+      }
+
+      .card h3 {
+        font-size: 17px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-card {
+        height: 185px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-about {
+        max-width: none;
+      }
+
+      .modal {
+        padding: 8px;
+      }
+
+      .modal-box {
+        padding: 16px;
+        border-radius: 16px;
+      }
+
+      .modal-close {
+        width: 38px;
+        height: 38px;
+        right: 10px;
+        top: 10px;
+      }
+
+      .modal-image {
+        aspect-ratio: 4 / 3;
+        margin-bottom: 18px;
+      }
+
+      .modal-meta {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Very small phones */
+    @media (max-width: 360px) {
+      .hero-content {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .main-search input {
+        font-size: 15px;
+      }
+
+      .main-search input::placeholder {
+        font-size: 11px;
+      }
+
+      .filter {
+        padding-left: 13px;
+        padding-right: 13px;
+      }
+    }
+
+    /* Landscape phones: prevent short screens from wasting vertical space. */
+    @media (max-height: 520px) and (orientation: landscape) {
+      .hero {
+        min-height: 180px;
+      }
+
+      .hero-content {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+
+      .modal-box {
+        max-height: 94svh;
+      }
+
+      .modal-image {
+        height: 180px;
+      }
+    }
+
+    /* Keyboard / accessibility focus */
+    :focus-visible {
+      outline: 3px solid rgba(237, 1, 1, 0.45);
+      outline-offset: 3px;
+    }
+
+    /* Avoid hover-only movement on touch devices. */
+    @media (hover: none) {
+      .card:hover,
+      .request-btn:hover,
+      .chip:hover,
+      .filter:hover,
+      .cta-btn:hover {
+        transform: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
   </style>
 
 </head>
@@ -1483,8 +2123,8 @@ content="IGGY-CONTROLS TECHNOLOGIES chemical product catalogue and product finde
       <button
         id="menuButton"
         class="md:hidden p-2 text-gray-700 hover:text-[var(--red-main)] transition-colors focus:outline-none"
-        onclick="toggleMobileMenu()"
         aria-label="Toggle Menu"
+        aria-expanded="false"
         type="button"
       >
         <i id="menuIcon" class="fas fa-bars text-xl"></i>
@@ -1519,9 +2159,10 @@ content="IGGY-CONTROLS TECHNOLOGIES chemical product catalogue and product finde
     <div class="border-b">
 
       <button
-        onclick="toggleMobileDropdown('productsMobile')"
         class="w-full text-left py-4 px-2 font-medium flex justify-between items-center"
         type="button"
+        aria-controls="productsMobile"
+        aria-expanded="false"
       >
         Products
 
@@ -1906,7 +2547,6 @@ content="IGGY-CONTROLS TECHNOLOGIES chemical product catalogue and product finde
   </div>
 
 </div>
-```
 
   </section>
 
@@ -2133,7 +2773,6 @@ content="IGGY-CONTROLS TECHNOLOGIES chemical product catalogue and product finde
     aria-hidden="true"
   >
 
-```
 <div
   class="modal-box"
   role="dialog"
@@ -2227,7 +2866,6 @@ content="IGGY-CONTROLS TECHNOLOGIES chemical product catalogue and product finde
   </div>
 
 </div>
-```
 
   </div>
 
@@ -3652,18 +4290,7 @@ content="IGGY-CONTROLS TECHNOLOGIES chemical product catalogue and product finde
     const modalType = document.getElementById("modalType");
     const modalRequestButton = document.getElementById("modalRequestButton");
 
-    const menuButton = document.getElementById("menuButton");
     const menuIcon = document.getElementById("menuIcon");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    const mobileProductsButton =
-      document.getElementById("mobileProductsButton");
-
-    const mobileProducts =
-      document.getElementById("mobileProducts");
-
-    const productsChevron =
-      document.getElementById("productsChevron");
 
 
     /* =======================================================
@@ -4353,83 +4980,81 @@ Please let me know about availability, price and how I can order.`;
        MOBILE MENU
     ======================================================== */
 
-    menuButton.addEventListener(
-      "click",
-      function() {
-
-        const isOpen =
-          mobileMenu.classList.toggle("open");
-
-        menuButton.setAttribute(
-          "aria-expanded",
-          String(isOpen)
-        );
-
-        if (isOpen) {
-
-          menuIcon.className =
-            "fa-solid fa-xmark";
-
-        } else {
-
-          menuIcon.className =
-            "fa-solid fa-bars";
-
-        }
-
-      }
+    const mobileMenuButton = document.getElementById("menuButton");
+    const mobileMenuPanel = document.getElementById("mobileMenu");
+    const mobileProductsButton = document.querySelector(
+      '#mobileMenu button[aria-controls="productsMobile"], #mobileMenu > div > button'
     );
+    const mobileProducts = document.getElementById("productsMobile");
+    const productsChevron = document.getElementById("productsChevron");
 
+    function closeMobileMenu() {
+      if (!mobileMenuPanel || !mobileMenuButton) return;
 
-    /* =======================================================
-       MOBILE PRODUCT DROPDOWN
-    ======================================================== */
+      mobileMenuPanel.classList.remove("open");
+      mobileMenuButton.setAttribute("aria-expanded", "false");
 
-    mobileProductsButton.addEventListener(
-      "click",
-      function() {
+      if (menuIcon) {
+        menuIcon.className = "fas fa-bars text-xl";
+      }
+    }
 
-        const isOpen =
-          mobileProducts.classList.toggle("open");
+    function closeMobileProducts() {
+      if (!mobileProducts) return;
+      mobileProducts.classList.remove("open");
+      mobileProducts.classList.add("hidden");
 
-        productsChevron.style.transform =
-          isOpen
+      if (productsChevron) {
+        productsChevron.style.transform = "rotate(0deg)";
+      }
+    }
+
+    if (mobileMenuButton && mobileMenuPanel) {
+      mobileMenuButton.addEventListener("click", function () {
+        const isOpen = mobileMenuPanel.classList.toggle("open");
+
+        mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+
+        if (menuIcon) {
+          menuIcon.className = isOpen
+            ? "fas fa-xmark text-xl"
+            : "fas fa-bars text-xl";
+        }
+      });
+    }
+
+    if (mobileProductsButton && mobileProducts) {
+      mobileProductsButton.setAttribute("aria-controls", "productsMobile");
+      mobileProductsButton.setAttribute("aria-expanded", "false");
+
+      mobileProductsButton.addEventListener("click", function () {
+        const isOpen = mobileProducts.classList.toggle("open");
+        mobileProducts.classList.toggle("hidden", !isOpen);
+        mobileProductsButton.setAttribute("aria-expanded", String(isOpen));
+
+        if (productsChevron) {
+          productsChevron.style.transform = isOpen
             ? "rotate(180deg)"
             : "rotate(0deg)";
-
-      }
-    );
-
-
-    /* =======================================================
-       CLOSE MOBILE MENU AFTER LINK CLICK
-    ======================================================== */
-
-    mobileMenu
-      .querySelectorAll("a")
-      .forEach(function(link) {
-
-        link.addEventListener(
-          "click",
-          function() {
-
-            mobileMenu.classList.remove(
-              "open"
-            );
-
-            menuButton.setAttribute(
-              "aria-expanded",
-              "false"
-            );
-
-            menuIcon.className =
-              "fa-solid fa-bars";
-
-          }
-        );
-
+        }
       });
+    }
 
+    if (mobileMenuPanel) {
+      mobileMenuPanel.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          closeMobileMenu();
+          closeMobileProducts();
+        });
+      });
+    }
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 768) {
+        closeMobileMenu();
+        closeMobileProducts();
+      }
+    });
 
     /* =======================================================
        REVEAL ANIMATION
