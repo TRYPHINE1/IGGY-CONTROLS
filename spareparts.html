@@ -1,43 +1,38 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
- 
 <head>
   <meta charset="UTF-8">
+
   <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png">
+  <link rel="icon" type="image/png"
+    href="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-name="description"
-content="Find spare parts for commercial dryers, ironers and washers from IGGY-CONTROLS TECHNOLOGIES."
-
->
+  <meta name="description"
+    content="Find spare parts for commercial dryers, ironers and washers from IGGY-CONTROLS TECHNOLOGIES.">
 
   <title>Spare Parts | IGGY-CONTROLS TECHNOLOGIES</title>
 
   <!-- GOOGLE FONTS -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+    rel="stylesheet">
 
   <!-- FONT AWESOME -->
-
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <!-- TAILWIND -->
-
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
+
     :root {
       --blue-main: #0C44AC;
       --blue-dark: #000052;
@@ -56,14 +51,22 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       --transition: all 0.3s ease;
     }
 
-    * {
+    /* =====================================================
+       GLOBAL
+    ===================================================== */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
     }
 
     body {
@@ -72,6 +75,8 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       background: var(--white);
       line-height: 1.7;
       overflow-x: hidden;
+      width: 100%;
+      min-width: 0;
     }
 
     a {
@@ -86,14 +91,45 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       font-family: inherit;
     }
 
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
     img {
       display: block;
       max-width: 100%;
+      height: auto;
     }
 
+    /*
+      IMPORTANT:
+      Use padding instead of relying only on width calculations.
+      This prevents content from touching mobile screen edges.
+    */
+
     .container {
-      width: min(1180px, 92%);
+      width: 100%;
+      max-width: 1180px;
       margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    /* =====================================================
+       CONTACT BAR
+    ===================================================== */
+
+    .contact-bar {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .contact-inner {
+      width: 100%;
+      max-width: 1152px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     /* =====================================================
@@ -101,8 +137,8 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     ===================================================== */
 
     .hero {
-      height: 200px;
       min-height: 200px;
+      height: 200px;
       position: relative;
       display: flex;
       align-items: center;
@@ -129,24 +165,26 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       bottom: -220px;
       border: 1px solid rgba(237, 1, 1, 0.20);
       border-radius: 50%;
+      pointer-events: none;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 100%;
-      padding: 0;
+      width: 100%;
+      padding: 20px 0;
       color: white;
       text-align: center;
     }
 
     .hero h1 {
       font-family: "Montserrat", sans-serif;
-      font-size: 38px;
-      line-height: 1;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.05;
       letter-spacing: -1px;
       margin: 0;
       text-transform: uppercase;
+      word-break: normal;
     }
 
     .hero h1 span {
@@ -158,21 +196,21 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     ===================================================== */
 
     .group-dynamics {
-      padding: 65px 0;
+      padding: clamp(50px, 7vw, 65px) 0;
       background: #ffffff;
-      border-top: 1px solid rgba(12,68,172,0.10);
-      border-bottom: 1px solid rgba(12,68,172,0.10);
+      border-top: 1px solid rgba(12, 68, 172, 0.10);
+      border-bottom: 1px solid rgba(12, 68, 172, 0.10);
     }
 
     .group-dynamics-heading {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: clamp(30px, 5vw, 40px);
     }
 
     .group-dynamics-heading h2 {
       color: var(--blue-dark);
       font-family: "Montserrat", sans-serif;
-      font-size: clamp(36px, 5vw, 54px);
+      font-size: clamp(32px, 5vw, 54px);
       line-height: 1.1;
       margin-bottom: 12px;
     }
@@ -185,14 +223,16 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
     .group-dynamics-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 45px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(25px, 4vw, 45px);
     }
 
     .group-dynamics-column {
       color: var(--blue-dark);
       font-size: 16px;
       line-height: 1.8;
+      min-width: 0;
+      overflow-wrap: break-word;
     }
 
     /* =====================================================
@@ -200,11 +240,12 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     ===================================================== */
 
     .finder {
-      padding: 100px 0 105px;
+      padding: clamp(65px, 9vw, 100px) 0 clamp(70px, 9vw, 105px);
       background: var(--light);
     }
 
     .finder-heading {
+      width: 100%;
       max-width: 760px;
       margin: 0 auto 38px;
       text-align: center;
@@ -222,13 +263,14 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     .finder-heading h2 {
       color: var(--dark);
       font-family: "Montserrat", sans-serif;
-      font-size: clamp(32px, 5vw, 50px);
+      font-size: clamp(30px, 5vw, 50px);
       line-height: 1.1;
       margin-bottom: 14px;
     }
 
     .finder-heading p {
       font-size: 15px;
+      line-height: 1.7;
     }
 
     /* =====================================================
@@ -236,6 +278,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     ===================================================== */
 
     .search-wrapper {
+      width: 100%;
       max-width: 920px;
       margin: 0 auto;
       position: relative;
@@ -245,22 +288,26 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     .search-box {
       display: flex;
       align-items: center;
+      width: 100%;
+      min-width: 0;
       padding: 7px;
       background: white;
       border: 1px solid var(--border);
       border-radius: 14px;
-      box-shadow: 0 20px 45px rgba(0,0,82,0.08);
+      box-shadow: 0 20px 45px rgba(0, 0, 82, 0.08);
     }
 
     .search-icon {
+      flex: 0 0 auto;
       margin-left: 18px;
       color: var(--blue-main);
       font-size: 19px;
     }
 
     .search-box input {
-      flex: 1;
+      flex: 1 1 auto;
       min-width: 0;
+      width: 100%;
       border: none;
       outline: none;
       background: transparent;
@@ -274,6 +321,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     }
 
     .search-button {
+      flex: 0 0 auto;
       padding: 14px 27px;
       border: none;
       border-radius: 9px;
@@ -291,8 +339,6 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
     /* =====================================================
        AUTOCOMPLETE
-       NOW SITS DIRECTLY UNDER SEARCH BAR
-       AND PUSHES CONTENT DOWN
     ===================================================== */
 
     .autocomplete {
@@ -302,12 +348,13 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       background: white;
       border: 1px solid var(--border);
       border-radius: 13px;
-      box-shadow: 0 20px 45px rgba(0,0,82,0.15);
+      box-shadow: 0 20px 45px rgba(0, 0, 82, 0.15);
       overflow: hidden;
       display: none;
       max-height: 390px;
       overflow-y: auto;
       z-index: 999;
+      -webkit-overflow-scrolling: touch;
     }
 
     .autocomplete.show {
@@ -328,13 +375,14 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       display: flex;
       align-items: center;
       width: 100%;
+      min-width: 0;
       padding: 13px 17px;
       border: none;
       border-bottom: 1px solid #f1f3f6;
       background: white;
       text-align: left;
       cursor: pointer;
-      transition: background .2s ease;
+      transition: background 0.2s ease;
     }
 
     .suggestion:last-child {
@@ -356,6 +404,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       font-weight: 700;
       font-size: 13px;
       line-height: 1.3;
+      overflow-wrap: anywhere;
     }
 
     .suggestion-name strong {
@@ -366,9 +415,11 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       margin-top: 2px;
       color: #8a949f;
       font-size: 10px;
+      overflow-wrap: anywhere;
     }
 
     .suggestion-category {
+      flex: 0 0 auto;
       margin-left: 15px;
       padding: 5px 9px;
       border-radius: 20px;
@@ -405,14 +456,15 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     }
 
     .search-tips button {
-      padding: 6px 12px;
-      border: 1px solid #D8E3F0;
+      padding: 7px 12px;
+      border: 1px solid #d8e3f0;
       border-radius: 30px;
       background: white;
       color: var(--blue-main);
       font-size: 11px;
       cursor: pointer;
       transition: var(--transition);
+      white-space: nowrap;
     }
 
     .search-tips button:hover {
@@ -442,6 +494,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       font-weight: 700;
       cursor: pointer;
       transition: var(--transition);
+      white-space: nowrap;
     }
 
     .category-filter:hover,
@@ -456,14 +509,17 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     ===================================================== */
 
     #resultsArea {
+      width: 100%;
       max-width: 1050px;
       margin: 50px auto 0;
+      min-width: 0;
     }
 
     .results-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 15px;
       margin-bottom: 18px;
     }
 
@@ -476,20 +532,23 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     .results-count {
       color: #78847f;
       font-size: 12px;
+      white-space: nowrap;
     }
 
     .results-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 17px;
     }
 
     .part-card {
+      min-width: 0;
       padding: 24px;
       background: white;
       border: 1px solid var(--border);
       border-radius: 15px;
       transition: var(--transition);
+      overflow: hidden;
     }
 
     .part-card:hover {
@@ -502,7 +561,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       width: 100%;
       height: 210px;
       overflow: hidden;
-      background: #F8FAFC;
+      background: #f8fafc;
       border-radius: 11px;
       margin-bottom: 17px;
     }
@@ -511,7 +570,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       width: 100%;
       height: 100%;
       object-fit: contain;
-      transition: transform .5s ease;
+      transition: transform 0.5s ease;
     }
 
     .part-card:hover .part-image img {
@@ -522,6 +581,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      max-width: 100%;
       margin-bottom: 9px;
       padding: 5px 9px;
       border-radius: 20px;
@@ -530,7 +590,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       font-size: 9px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: .7px;
+      letter-spacing: 0.7px;
     }
 
     .part-card h4 {
@@ -539,12 +599,14 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       font-size: 16px;
       line-height: 1.3;
       margin-bottom: 8px;
+      overflow-wrap: anywhere;
     }
 
     .part-card p {
       margin-bottom: 6px;
       font-size: 12px;
       line-height: 1.55;
+      overflow-wrap: anywhere;
     }
 
     .part-number {
@@ -552,10 +614,12 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       color: var(--blue-main);
       font-size: 11px;
       font-weight: 800;
+      overflow-wrap: anywhere;
     }
 
     .request-part-btn {
       width: 100%;
+      min-height: 44px;
       margin-top: 17px;
       padding: 10px;
       border: 1px solid var(--blue-main);
@@ -585,7 +649,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       place-items: center;
       margin: 0 auto 18px;
       border-radius: 50%;
-      background: #E8F1FC;
+      background: #e8f1fc;
       color: var(--blue-main);
       font-size: 22px;
     }
@@ -624,12 +688,14 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       align-items: center;
       justify-content: center;
       gap: 8px;
+      min-height: 44px;
       padding: 13px 22px;
       border-radius: 8px;
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       transition: var(--transition);
+      text-align: center;
     }
 
     .btn-primary {
@@ -647,7 +713,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     .btn-outline {
       background: transparent;
       color: white;
-      border: 1px solid rgba(255,255,255,0.45);
+      border: 1px solid rgba(255, 255, 255, 0.45);
     }
 
     .btn-outline:hover {
@@ -660,19 +726,21 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     ===================================================== */
 
     .request-section {
-      padding: 105px 0;
+      padding: clamp(70px, 9vw, 105px) 0;
       background: var(--blue-dark);
+      overflow: hidden;
     }
 
     .request-layout {
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 65px;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: clamp(35px, 6vw, 65px);
       align-items: center;
     }
 
     .request-content {
       color: white;
+      min-width: 0;
     }
 
     .request-content .section-tag {
@@ -681,13 +749,14 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
     .request-content h2 {
       font-family: "Montserrat", sans-serif;
-      font-size: clamp(31px, 4vw, 48px);
+      font-size: clamp(30px, 4vw, 48px);
       line-height: 1.12;
       margin-bottom: 18px;
+      overflow-wrap: break-word;
     }
 
     .request-content > p {
-      color: rgba(255,255,255,0.70);
+      color: rgba(255, 255, 255, 0.70);
       font-size: 15px;
       margin-bottom: 30px;
     }
@@ -699,21 +768,25 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
     .request-point {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 11px;
-      color: rgba(255,255,255,0.82);
+      color: rgba(255, 255, 255, 0.82);
       font-size: 13px;
     }
 
     .request-point i {
+      flex: 0 0 auto;
+      margin-top: 5px;
       color: var(--red-main);
     }
 
     .request-card {
-      padding: 35px;
+      min-width: 0;
+      width: 100%;
+      padding: clamp(22px, 4vw, 35px);
       background: white;
       border-radius: 20px;
-      box-shadow: 0 25px 65px rgba(0,0,0,0.22);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.22);
     }
 
     .request-card h3 {
@@ -730,7 +803,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
     .form-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 15px;
     }
 
@@ -738,6 +811,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       display: flex;
       flex-direction: column;
       gap: 7px;
+      min-width: 0;
     }
 
     .form-group.full {
@@ -754,14 +828,21 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     .form-group textarea,
     .form-group select {
       width: 100%;
+      max-width: 100%;
+      min-width: 0;
       padding: 13px 14px;
       border: 1px solid var(--border);
       border-radius: 8px;
       outline: none;
-      background: #FAFCFF;
+      background: #fafcff;
       color: var(--dark);
       font-size: 13px;
       transition: var(--transition);
+    }
+
+    .form-group input,
+    .form-group select {
+      min-height: 46px;
     }
 
     .form-group textarea {
@@ -774,7 +855,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     .form-group select:focus {
       border-color: var(--blue-main);
       background: white;
-      box-shadow: 0 0 0 3px rgba(12,68,172,0.08);
+      box-shadow: 0 0 0 3px rgba(12, 68, 172, 0.08);
     }
 
     .upload-box {
@@ -783,17 +864,18 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       align-items: center;
       justify-content: center;
       gap: 4px;
+      width: 100%;
       padding: 19px;
-      border: 1.5px dashed #C7D4E5;
+      border: 1.5px dashed #c7d4e5;
       border-radius: 9px;
-      background: #FFFFFF;
+      background: #ffffff;
       cursor: pointer;
       text-align: center;
       transition: var(--transition);
     }
 
     .upload-box:hover {
-      background: #F0F6FD;
+      background: #f0f6fd;
       border-color: var(--blue-main);
     }
 
@@ -807,6 +889,8 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       color: var(--blue-main);
       font-size: 12px;
       font-weight: 700;
+      max-width: 100%;
+      overflow-wrap: anywhere;
     }
 
     .upload-box small {
@@ -828,7 +912,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     ===================================================== */
 
     .why {
-      padding: 105px 0;
+      padding: clamp(70px, 9vw, 105px) 0;
     }
 
     .why-heading {
@@ -840,7 +924,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     .why-heading h2 {
       color: var(--dark);
       font-family: "Montserrat", sans-serif;
-      font-size: clamp(31px, 4vw, 45px);
+      font-size: clamp(30px, 4vw, 45px);
       line-height: 1.12;
       margin-bottom: 13px;
     }
@@ -851,11 +935,12 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
     .why-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
     }
 
     .why-card {
+      min-width: 0;
       padding: 28px;
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -897,7 +982,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     ===================================================== */
 
     .cta {
-      padding: 0 0 100px;
+      padding: 0 0 clamp(70px, 9vw, 100px);
     }
 
     .cta-box {
@@ -907,7 +992,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       justify-content: space-between;
       gap: 35px;
       overflow: hidden;
-      padding: 60px;
+      padding: clamp(35px, 5vw, 60px);
       border-radius: 23px;
       background: linear-gradient(
         110deg,
@@ -924,14 +1009,16 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       height: 300px;
       right: -120px;
       top: -140px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 50%;
+      pointer-events: none;
     }
 
     .cta-content {
       position: relative;
       z-index: 2;
       max-width: 680px;
+      min-width: 0;
     }
 
     .cta-content h2 {
@@ -942,7 +1029,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     }
 
     .cta-content p {
-      color: rgba(255,255,255,0.72);
+      color: rgba(255, 255, 255, 0.72);
       font-size: 14px;
     }
 
@@ -952,6 +1039,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      flex: 0 0 auto;
     }
 
     /* =====================================================
@@ -961,14 +1049,19 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     footer {
       padding: 65px 0 25px;
       background: #000052;
-      color: rgba(255,255,255,0.68);
+      color: rgba(255, 255, 255, 0.68);
+      overflow: hidden;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
       gap: 45px;
       padding-bottom: 45px;
+    }
+
+    .footer-grid > div {
+      min-width: 0;
     }
 
     .footer-about {
@@ -989,6 +1082,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       margin-bottom: 9px;
       font-size: 12px;
       transition: var(--transition);
+      overflow-wrap: anywhere;
     }
 
     .footer-col a:hover {
@@ -1006,11 +1100,17 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       display: flex;
       align-items: flex-start;
       gap: 10px;
+      min-width: 0;
     }
 
     .footer-contact i {
+      flex: 0 0 auto;
       margin-top: 5px;
       color: var(--red-main);
+    }
+
+    .footer-contact a {
+      overflow-wrap: anywhere;
     }
 
     .footer-bottom {
@@ -1019,13 +1119,18 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       justify-content: space-between;
       gap: 20px;
       padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.10);
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
       font-size: 11px;
+    }
+
+    .footer-bottom p {
+      line-height: 1.6;
     }
 
     .socials {
       display: flex;
       gap: 8px;
+      flex: 0 0 auto;
     }
 
     .socials a {
@@ -1033,7 +1138,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       height: 33px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(255,255,255,0.13);
+      border: 1px solid rgba(255, 255, 255, 0.13);
       border-radius: 50%;
       transition: var(--transition);
     }
@@ -1051,7 +1156,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     .reveal {
       opacity: 0;
       transform: translateY(25px);
-      transition: opacity .7s ease, transform .7s ease;
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
     .reveal.show {
@@ -1060,17 +1165,23 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     }
 
     /* =====================================================
-       RESPONSIVE
+       TABLETS
     ===================================================== */
 
-    @media(max-width: 1000px) {
+    @media (max-width: 1100px) {
+
+      .container {
+        max-width: 1000px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
 
       .why-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .results-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .request-layout {
@@ -1078,8 +1189,12 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
         gap: 45px;
       }
 
+      .request-content {
+        max-width: 760px;
+      }
+
       .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .group-dynamics-grid {
@@ -1087,22 +1202,48 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       }
     }
 
-    @media(max-width: 760px) {
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 767px) {
+
+      /*
+        Strong mobile side spacing.
+        This is the main fix for the screenshot.
+      */
+
+      .container {
+        width: 100%;
+        max-width: none;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .contact-inner {
+        width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      /* HERO */
 
       .hero {
-        min-height: 180px;
-        height: 180px;
+        min-height: 175px;
+        height: 175px;
         background-position: 62% center;
       }
 
       .hero-content {
-        padding-top: 0;
+        padding: 15px 5px;
       }
 
       .hero h1 {
-        font-size: 43px;
-        letter-spacing: -1.3px;
+        font-size: clamp(30px, 10vw, 40px);
+        letter-spacing: -1px;
       }
+
+      /* INTRO */
 
       .group-dynamics {
         padding: 55px 0;
@@ -1112,129 +1253,115 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
         margin-bottom: 30px;
       }
 
+      .group-dynamics-heading h2 {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .group-dynamics-heading p {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
       .group-dynamics-grid {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 25px;
       }
 
       .group-dynamics-column {
-        font-size: 16px;
+        font-size: 15px;
+        line-height: 1.75;
       }
 
+      /* FINDER */
+
       .finder {
-        padding: 75px 0;
+        padding: 70px 0;
       }
+
+      .finder-heading {
+        margin-bottom: 30px;
+      }
+
+      .finder-heading p {
+        font-size: 14px;
+      }
+
+      /* SEARCH */
 
       .search-box {
         padding: 5px;
+        border-radius: 12px;
       }
 
       .search-icon {
-        margin-left: 11px;
+        margin-left: 10px;
+        font-size: 17px;
       }
 
       .search-box input {
-        padding: 14px 8px;
+        padding: 14px 7px;
         font-size: 13px;
       }
 
       .search-button {
-        padding: 12px 15px;
-        font-size: 12px;
-      }
-
-      .search-tips {
-        justify-content: flex-start;
-      }
-
-      .results-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .category-filters {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 5px;
-        flex-wrap: nowrap;
-      }
-
-      .category-filter {
-        white-space: nowrap;
-      }
-
-      .suggestion {
         padding: 12px 14px;
-      }
-
-      .suggestion-category {
-        display: none;
-      }
-
-      .request-section {
-        padding: 75px 0;
-      }
-
-      .request-card {
-        padding: 24px 18px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .form-group.full {
-        grid-column: auto;
-      }
-
-      .why {
-        padding: 75px 0;
-      }
-
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .cta {
-        padding-bottom: 70px;
-      }
-
-      .cta-box {
-        padding: 38px 25px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    @media(max-width: 480px) {
-
-      .hero h1 {
-        font-size: 39px;
+        font-size: 11px;
+        border-radius: 8px;
       }
 
       .search-box input::placeholder {
         font-size: 11px;
       }
 
-      .group-dynamics-heading h2 {
-        font-size: 34px;
+      .search-tips {
+        justify-content: flex-start;
+        gap: 7px;
       }
 
-      .group-dynamics-heading p {
-        font-size: 20px;
+      .search-tips > span {
+        width: 100%;
+        margin-bottom: 1px;
       }
+
+      .search-tips button {
+        padding: 7px 11px;
+      }
+
+      /* CATEGORY FILTERS */
+
+      .category-filters {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 2px 2px 9px;
+        margin-right: 0;
+        padding-right: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+
+      .category-filter {
+        flex: 0 0 auto;
+        min-height: 42px;
+        padding: 10px 15px;
+      }
+
+      /* AUTOCOMPLETE */
 
       .autocomplete {
-        max-height: 330px;
+        max-height: 340px;
+        border-radius: 11px;
+      }
+
+      .suggestion {
+        padding: 13px 12px;
+        min-height: 58px;
+      }
+
+      .suggestion-category {
+        display: none;
       }
 
       .suggestion-name {
@@ -1244,9 +1371,344 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       .suggestion-meta {
         font-size: 9px;
       }
-    }
-  </style>
 
+      /* RESULTS */
+
+      #resultsArea {
+        margin-top: 40px;
+      }
+
+      .results-header {
+        align-items: flex-start;
+      }
+
+      .results-header h3 {
+        font-size: 17px;
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .part-card {
+        padding: 18px;
+      }
+
+      .part-image {
+        height: 230px;
+      }
+
+      /* REQUEST */
+
+      .request-section {
+        padding: 70px 0;
+      }
+
+      .request-layout {
+        width: 100%;
+      }
+
+      .request-content {
+        width: 100%;
+      }
+
+      .request-content h2 {
+        font-size: clamp(29px, 8vw, 40px);
+      }
+
+      .request-content > p {
+        font-size: 14px;
+      }
+
+      .request-card {
+        width: 100%;
+        padding: 24px 18px;
+        border-radius: 16px;
+      }
+
+      .request-card h3 {
+        font-size: 21px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        font-size: 16px;
+      }
+
+      /* WHY */
+
+      .why {
+        padding: 70px 0;
+      }
+
+      .why-heading {
+        margin-bottom: 35px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .why-card {
+        padding: 23px;
+      }
+
+      /* CTA */
+
+      .cta {
+        padding-bottom: 65px;
+      }
+
+      .cta-box {
+        padding: 35px 23px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        border-radius: 18px;
+      }
+
+      .cta-content h2 {
+        font-size: clamp(27px, 8vw, 36px);
+      }
+
+      .cta-actions {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .cta-actions .btn {
+        width: 100%;
+      }
+
+      /* FOOTER */
+
+      footer {
+        padding-top: 55px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-bottom: 35px;
+      }
+
+      .footer-about {
+        max-width: 100%;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+      }
+    }
+
+    /* =====================================================
+       SMALL PHONES
+    ===================================================== */
+
+    @media (max-width: 480px) {
+
+      .container {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .contact-inner {
+        width: 100%;
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      /* HERO */
+
+      .hero {
+        min-height: 155px;
+        height: 155px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      /* INTRO */
+
+      .group-dynamics-heading h2 {
+        font-size: 32px;
+      }
+
+      .group-dynamics-heading p {
+        font-size: 19px;
+      }
+
+      .group-dynamics-column {
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      /* SEARCH */
+
+      .search-box {
+        padding: 4px;
+      }
+
+      .search-icon {
+        margin-left: 8px;
+        font-size: 15px;
+      }
+
+      .search-box input {
+        padding: 13px 5px;
+        font-size: 13px;
+      }
+
+      .search-box input::placeholder {
+        font-size: 10px;
+      }
+
+      .search-button {
+        padding: 11px 12px;
+        font-size: 10px;
+      }
+
+      /* SUGGESTIONS */
+
+      .autocomplete {
+        max-height: 300px;
+      }
+
+      .autocomplete-header {
+        padding: 10px 13px 8px;
+        font-size: 9px;
+      }
+
+      .suggestion {
+        padding: 12px;
+      }
+
+      .suggestion-name {
+        font-size: 11.5px;
+      }
+
+      /* RESULTS */
+
+      .part-card {
+        padding: 16px;
+        border-radius: 13px;
+      }
+
+      .part-image {
+        height: 210px;
+      }
+
+      .part-card h4 {
+        font-size: 15px;
+      }
+
+      /* REQUEST */
+
+      .request-card {
+        padding: 21px 15px;
+      }
+
+      .request-content h2 {
+        font-size: 29px;
+      }
+
+      /* CTA */
+
+      .cta-box {
+        padding: 30px 20px;
+      }
+
+      /* FOOTER */
+
+      .footer-bottom {
+        font-size: 10px;
+      }
+    }
+
+    /* =====================================================
+       VERY SMALL PHONES
+    ===================================================== */
+
+    @media (max-width: 360px) {
+
+      .container {
+        width: 100%;
+        padding-left: 17px;
+        padding-right: 17px;
+      }
+
+      .contact-inner {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      .search-box input {
+        font-size: 12px;
+      }
+
+      .search-box input::placeholder {
+        font-size: 9px;
+      }
+
+      .search-button {
+        padding: 10px;
+      }
+
+      .part-image {
+        height: 190px;
+      }
+
+      .request-card {
+        padding: 18px 13px;
+      }
+    }
+
+    /* =====================================================
+       REDUCE MOTION
+    ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+  </style>
 </head>
 
 <body class="bg-slate-50 text-slate-900">
@@ -1255,53 +1717,55 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
        CONTACT BAR
   ===================================================== -->
 
-  <div class="bg-[var(--blue-dark)] text-white py-1 text-sm">
+  <div class="contact-bar bg-[var(--blue-dark)] text-white py-1 text-sm">
 
+    <div class="contact-inner flex flex-col md:flex-row justify-between items-center gap-2">
 
-<div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-6 flex-wrap justify-center">
 
-  <div class="flex items-center gap-6">
+        <a
+          href="mailto:info@iggycontrols.com"
+          class="flex items-center gap-2 hover:text-[var(--red-light)]">
 
-    <a
-      href="mailto:info@iggycontrols.com"
-      class="flex items-center gap-2 hover:text-[var(--red-light)]"
-    >
-      <i class="fas fa-envelope text-[10px]"></i>
-      info@iggycontrols.com
-    </a>
+          <i class="fas fa-envelope text-[10px]"></i>
 
-    <a
-      href="tel:+256742262000"
-      class="flex items-center gap-2 hover:text-[var(--red-light)]"
-    >
-      <i class="fas fa-phone text-[10px]"></i>
-      +256 742262000
-    </a>
+          <span>info@iggycontrols.com</span>
 
-  </div>
+        </a>
 
-  <div class="flex items-center gap-4">
+        <a
+          href="tel:+256742262000"
+          class="flex items-center gap-2 hover:text-[var(--red-light)]">
 
-    <a href="#" class="hover:text-[var(--blue-light)] transition-colors">
-      <i class="fab fa-facebook"></i>
-    </a>
+          <i class="fas fa-phone text-[10px]"></i>
 
-    <a href="#" class="hover:text-[var(--blue-light)] transition-colors">
-      <i class="fab fa-twitter"></i>
-    </a>
+          <span>+256 742262000</span>
 
-    <a href="#" class="hover:text-[var(--blue-light)] transition-colors">
-      <i class="fab fa-linkedin"></i>
-    </a>
+        </a>
 
-    <a href="#" class="hover:text-[var(--red-light)] transition-colors">
-      <i class="fab fa-instagram"></i>
-    </a>
+      </div>
 
-  </div>
+      <div class="flex items-center gap-4">
 
-</div>
+        <a href="#" class="hover:text-[var(--blue-light)] transition-colors">
+          <i class="fab fa-facebook"></i>
+        </a>
 
+        <a href="#" class="hover:text-[var(--blue-light)] transition-colors">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="#" class="hover:text-[var(--blue-light)] transition-colors">
+          <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a href="#" class="hover:text-[var(--red-light)] transition-colors">
+          <i class="fab fa-instagram"></i>
+        </a>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -1311,95 +1775,192 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
   <header class="bg-white shadow-md py-2 sticky top-0 z-[100]">
 
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-<nav class="max-w-6xl mx-auto px-8">
+      <div class="flex justify-between items-center w-full min-h-[58px]">
 
-  <div class="flex justify-between items-center w-full">
+        <!-- LOGO -->
 
-    <div class="flex items-center">
+        <div class="flex items-center min-w-0">
 
-      <a href="index.html" class="flex flex-col items-center">
+          <a href="index.html" class="flex flex-col items-center">
 
-        <img
-          src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png"
-          alt="Iggy Controls Logo"
-          class="h-10 w-auto mb-1"
-        >
+            <img
+              src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png"
+              alt="Iggy Controls Logo"
+              class="h-10 w-auto mb-1">
 
-        <div class="inline-block text-center">
+            <div class="inline-block text-center">
 
-          <span class="font-extrabold text-[10px] md:text-xs block">
+              <span class="font-extrabold text-[10px] md:text-xs block">
 
-            <span class="text-[var(--red-main)]">
-              IGGY-CONTROLS
-            </span>
+                <span class="text-[var(--red-main)]">
+                  IGGY-CONTROLS
+                </span>
 
-          </span>
+              </span>
 
-          <div class="flex items-center justify-center gap-2 mt-0.5">
+              <div class="flex items-center justify-center gap-2 mt-0.5">
 
-            <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
+                <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
 
-            <span class="text-[8px] tracking-widest text-[var(--blue-main)] font-bold">
-              TECHNOLOGIES
-            </span>
+                <span class="text-[8px] tracking-widest text-[var(--blue-main)] font-bold">
+                  TECHNOLOGIES
+                </span>
 
-            <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
+                <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
 
-          </div>
+              </div>
+
+            </div>
+
+          </a>
 
         </div>
 
-      </a>
+        <!-- DESKTOP MENU -->
 
-    </div>
+        <div class="hidden md:flex gap-5 lg:gap-8 font-medium items-center">
 
+          <a
+            href="index.html"
+            class="hover:text-[var(--blue-main)] transition-colors">
+            Home
+          </a>
 
-    <!-- DESKTOP MENU -->
+          <a
+            href="about.html"
+            class="hover:text-[var(--blue-main)] transition-colors">
+            About
+          </a>
 
-    <div class="hidden md:flex gap-8 font-medium items-center">
+          <div class="relative group py-4">
 
-      <a
-        href="index.html"
-        class="hover:text-[var(--blue-main)] transition-colors"
-      >
-        Home
-      </a>
+            <button
+              class="flex items-center gap-1 hover:text-[var(--blue-main)] font-medium transition-colors"
+              type="button">
 
-      <a
-        href="about.html"
-        class="hover:text-[var(--blue-main)] transition-colors"
-      >
-        About
-      </a>
+              Products
 
-      <div class="relative group py-4">
+              <i class="fas fa-chevron-down text-[10px]"></i>
 
-        <button
-          class="flex items-center gap-1 hover:text-[var(--blue-main)] font-medium transition-colors"
-          type="button"
-        >
-          Products
-          <i class="fas fa-chevron-down text-[10px]"></i>
-        </button>
+            </button>
 
-        <div
-          class="absolute top-full left-0 bg-white shadow-xl rounded-xl border border-gray-100 w-56 overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-        >
+            <div
+              class="absolute top-full left-0 bg-white shadow-xl rounded-xl border border-gray-100 w-56 overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
 
-          <div class="flex flex-col py-1">
+              <div class="flex flex-col py-1">
+
+                <a
+                  href="laundry.html"
+                  class="px-6 py-3 hover:bg-gray-50 text-sm font-medium text-gray-700 hover:text-[var(--blue-main)] border-b border-gray-50 transition-all">
+                  Laundry Solutions
+                </a>
+
+                <a
+                  href="kitchen.html"
+                  class="px-6 py-3 hover:bg-gray-50 text-sm font-medium text-gray-700 hover:text-[var(--blue-main)] transition-all">
+                  Kitchen Solutions
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <a
+            href="services.html"
+            class="hover:text-[var(--blue-main)] transition-colors">
+            Services
+          </a>
+
+          <a
+            href="spareparts.html"
+            class="hover:text-[var(--blue-main)] transition-colors">
+            Spare Parts
+          </a>
+
+          <a
+            href="chemicals.html"
+            class="hover:text-[var(--blue-main)] transition-colors">
+            Chemicals
+          </a>
+
+        </div>
+
+        <!-- ACTIONS -->
+
+        <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+
+          <a
+            href="contact.html"
+            class="bg-[var(--red-main)] text-white px-5 lg:px-6 py-2 rounded-lg font-bold hidden md:block hover:bg-red-700 transition-all text-xs uppercase tracking-widest text-center shadow-md">
+            Contact Us
+          </a>
+
+          <button
+            id="menuButton"
+            class="md:hidden p-2 text-gray-700 hover:text-[var(--red-main)] transition-colors focus:outline-none"
+            onclick="toggleMobileMenu()"
+            aria-label="Toggle Menu"
+            type="button">
+
+            <i id="menuIcon" class="fas fa-bars text-xl"></i>
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- MOBILE MENU -->
+
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden border-t mt-2 bg-white w-full max-h-[80vh] overflow-y-auto">
+
+        <a
+          href="index.html"
+          class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">
+          Home
+        </a>
+
+        <a
+          href="about.html"
+          class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">
+          About
+        </a>
+
+        <div class="border-b">
+
+          <button
+            onclick="toggleMobileDropdown('productsMobile')"
+            class="w-full text-left py-4 px-2 font-medium flex justify-between items-center"
+            type="button">
+
+            Products
+
+            <i
+              class="fas fa-chevron-down text-xs transition-transform duration-300"
+              id="productsChevron">
+            </i>
+
+          </button>
+
+          <div
+            id="productsMobile"
+            class="hidden bg-gray-50 px-4 pb-4 space-y-3">
 
             <a
               href="laundry.html"
-              class="px-6 py-3 hover:bg-gray-50 text-sm font-medium text-gray-700 hover:text-[var(--blue-main)] border-b border-gray-50 transition-all"
-            >
+              class="block text-sm pt-2 text-gray-600">
               Laundry Solutions
             </a>
 
             <a
               href="kitchen.html"
-              class="px-6 py-3 hover:bg-gray-50 text-sm font-medium text-gray-700 hover:text-[var(--blue-main)] transition-all"
-            >
+              class="block text-sm text-gray-600">
               Kitchen Solutions
             </a>
 
@@ -1407,154 +1968,37 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
         </div>
 
-      </div>
-
-      <a
-        href="services.html"
-        class="hover:text-[var(--blue-main)] transition-colors"
-      >
-        Services
-      </a>
-
-      <a
-        href="spareparts.html"
-        class="hover:text-[var(--blue-main)] transition-colors"
-      >
-        Spare Parts
-      </a>
-
-      <a
-        href="chemicals.html"
-        class="hover:text-[var(--blue-main)] transition-colors"
-      >
-        Chemicals
-      </a>
-
-    </div>
-
-
-    <!-- ACTIONS -->
-
-    <div class="flex items-center gap-4">
-
-      <a
-        href="contact.html"
-        class="bg-[var(--red-main)] text-white px-6 py-2 rounded-lg font-bold hidden md:block hover:bg-red-700 transition-all text-xs uppercase tracking-widest text-center shadow-md"
-      >
-        Contact Us
-      </a>
-
-      <button
-        id="menuButton"
-        class="md:hidden p-2 text-gray-700 hover:text-[var(--red-main)] transition-colors focus:outline-none"
-        onclick="toggleMobileMenu()"
-        aria-label="Toggle Menu"
-        type="button"
-      >
-        <i id="menuIcon" class="fas fa-bars text-xl"></i>
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- MOBILE MENU -->
-
-  <div
-    id="mobileMenu"
-    class="hidden md:hidden border-t mt-2 bg-white w-full max-h-[80vh] overflow-y-auto"
-  >
-
-    <a
-      href="index.html"
-      class="block py-4 border-b hover:bg-gray-50 px-2 font-medium"
-    >
-      Home
-    </a>
-
-    <a
-      href="about.html"
-      class="block py-4 border-b hover:bg-gray-50 px-2 font-medium"
-    >
-      About
-    </a>
-
-    <div class="border-b">
-
-      <button
-        onclick="toggleMobileDropdown('productsMobile')"
-        class="w-full text-left py-4 px-2 font-medium flex justify-between items-center"
-        type="button"
-      >
-        Products
-
-        <i
-          class="fas fa-chevron-down text-xs transition-transform duration-300"
-          id="productsChevron"
-        ></i>
-
-      </button>
-
-      <div
-        id="productsMobile"
-        class="hidden bg-gray-50 px-4 pb-4 space-y-3"
-      >
-
         <a
-          href="laundry.html"
-          class="block text-sm pt-2 text-gray-600"
-        >
-          Laundry Solutions
+          href="services.html"
+          class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">
+          Services
         </a>
 
         <a
-          href="kitchen.html"
-          class="block text-sm text-gray-600"
-        >
-          Kitchen Solutions
+          href="spareparts.html"
+          class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">
+          Spare Parts
         </a>
+
+        <a
+          href="chemicals.html"
+          class="block py-4 border-b hover:bg-gray-50 px-2 font-medium">
+          Chemicals
+        </a>
+
+        <div class="p-4">
+
+          <a
+            href="contact.html"
+            class="block w-full bg-[var(--red-main)] text-white py-3 rounded-lg font-bold text-xs uppercase tracking-widest shadow-md text-center">
+            Contact Us
+          </a>
+
+        </div>
 
       </div>
 
-    </div>
-
-    <a
-      href="services.html"
-      class="block py-4 border-b hover:bg-gray-50 px-2 font-medium"
-    >
-      Services
-    </a>
-
-    <a
-      href="spareparts.html"
-      class="block py-4 border-b hover:bg-gray-50 px-2 font-medium"
-    >
-      Spare Parts
-    </a>
-
-    <a
-      href="chemicals.html"
-      class="block py-4 border-b hover:bg-gray-50 px-2 font-medium"
-    >
-      Chemicals
-    </a>
-
-    <div class="p-4">
-
-      <a
-        href="contact.html"
-        class="block w-full bg-[var(--red-main)] text-white py-3 rounded-lg font-bold text-xs uppercase tracking-widest shadow-md text-center"
-      >
-        Contact Us
-      </a>
-
-    </div>
-
-  </div>
-
-</nav>
-
+    </nav>
 
   </header>
 
@@ -1564,19 +2008,17 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
   <section class="hero">
 
+    <div class="container">
 
-<div class="container">
+      <div class="hero-content reveal">
 
-  <div class="hero-content reveal">
+        <h1>
+          SPARE PARTS
+        </h1>
 
-    <h1>
-      SPARE PARTS
-    </h1>
+      </div>
 
-  </div>
-
-</div>
-
+    </div>
 
   </section>
 
@@ -1586,196 +2028,156 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
   <section class="finder" id="parts">
 
+    <div class="container">
 
-<div class="container">
+      <div class="finder-heading reveal">
 
-  <div class="finder-heading reveal">
+        <div class="section-tag">
+          Spare Parts Finder
+        </div>
 
-    <div class="section-tag">
-      Spare Parts Finder
-    </div>
+        <h2>
+          What part are you looking for?
+        </h2>
 
-    <h2>
-      What part are you looking for?
-    </h2>
+        <p>
+          Start typing and matching spare parts will appear automatically.
+          You can search by part name, equipment, brand, model or part number.
+        </p>
 
-    <p>
-      Start typing and matching spare parts will appear automatically.
-      You can search by part name, equipment, brand, model or part number.
-    </p>
-
-  </div>
-
-
-  <div class="search-wrapper reveal">
-
-    <!-- SEARCH BAR -->
-
-    <div class="search-box">
-
-      <i class="fa-solid fa-magnifying-glass search-icon"></i>
-
-      <input
-        type="search"
-        id="partSearch"
-        placeholder="Start typing e.g. door, belt, motor, pump..."
-        autocomplete="off"
-        aria-label="Search spare parts"
-      >
-
-      <button
-        type="button"
-        class="search-button"
-        id="searchButton"
-      >
-        Search
-      </button>
-
-    </div>
-
-
-    <!-- =================================================
-         SUGGESTIONS
-         DIRECTLY BELOW SEARCH BAR
-         NO ICONS
-    ================================================= -->
-
-    <div
-      id="autocomplete"
-      class="autocomplete"
-      role="listbox"
-    ></div>
-
-
-    <!-- QUICK SEARCH -->
-
-    <div class="search-tips">
-
-      <span>
-        Popular:
-      </span>
-
-      <button type="button" data-search="door">
-        Door
-      </button>
-
-      <button type="button" data-search="belt">
-        Belt
-      </button>
-
-      <button type="button" data-search="motor">
-        Motor
-      </button>
-
-      <button type="button" data-search="pump">
-        Pump
-      </button>
-
-      <button type="button" data-search="valve">
-        Valve
-      </button>
-
-      <button type="button" data-search="element">
-        Heating Element
-      </button>
-
-    </div>
-
-
-    <!-- CATEGORY FILTERS -->
-
-    <div class="category-filters">
-
-      <button
-        class="category-filter active"
-        data-category="all"
-        type="button"
-      >
-        All Parts
-      </button>
-
-      <button
-        class="category-filter"
-        data-category="Dryers"
-        type="button"
-      >
-        <i class="fa-solid fa-wind"></i>
-        Dryers
-      </button>
-
-      <button
-        class="category-filter"
-        data-category="Ironers"
-        type="button"
-      >
-        <i class="fa-solid fa-shirt"></i>
-        Ironers
-      </button>
-
-      <button
-        class="category-filter"
-        data-category="Washers"
-        type="button"
-      >
-        <i class="fa-solid fa-soap"></i>
-        Washers
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- RESULTS -->
-
-  <div id="resultsArea">
-
-    <div class="empty-state">
-
-      <div class="empty-icon">
-        <i class="fa-solid fa-box-open"></i>
       </div>
 
-      <h3>
-        Search our spare-parts catalogue
-      </h3>
+      <div class="search-wrapper reveal">
 
-      <p>
-        Start typing above and matching parts will appear automatically.
-        You can also select a category to browse available parts.
-      </p>
+        <div class="search-box">
+
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+
+          <input
+            type="search"
+            id="partSearch"
+            placeholder="Start typing e.g. door, belt, motor, pump..."
+            autocomplete="off"
+            aria-label="Search spare parts">
+
+          <button
+            type="button"
+            class="search-button"
+            id="searchButton">
+            Search
+          </button>
+
+        </div>
+
+        <div
+          id="autocomplete"
+          class="autocomplete"
+          role="listbox">
+        </div>
+
+        <div class="search-tips">
+
+          <span>Popular:</span>
+
+          <button type="button" data-search="door">Door</button>
+          <button type="button" data-search="belt">Belt</button>
+          <button type="button" data-search="motor">Motor</button>
+          <button type="button" data-search="pump">Pump</button>
+          <button type="button" data-search="valve">Valve</button>
+          <button type="button" data-search="element">Heating Element</button>
+
+        </div>
+
+        <div class="category-filters">
+
+          <button
+            class="category-filter active"
+            data-category="all"
+            type="button">
+            All Parts
+          </button>
+
+          <button
+            class="category-filter"
+            data-category="Dryers"
+            type="button">
+
+            <i class="fa-solid fa-wind"></i>
+            Dryers
+
+          </button>
+
+          <button
+            class="category-filter"
+            data-category="Ironers"
+            type="button">
+
+            <i class="fa-solid fa-shirt"></i>
+            Ironers
+
+          </button>
+
+          <button
+            class="category-filter"
+            data-category="Washers"
+            type="button">
+
+            <i class="fa-solid fa-soap"></i>
+            Washers
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div id="resultsArea">
+
+        <div class="empty-state">
+
+          <div class="empty-icon">
+            <i class="fa-solid fa-box-open"></i>
+          </div>
+
+          <h3>
+            Search our spare-parts catalogue
+          </h3>
+
+          <p>
+            Start typing above and matching parts will appear automatically.
+            You can also select a category to browse available parts.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="no-results" id="noResults">
+
+        <div class="empty-icon">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <h3>
+          No matching part found
+        </h3>
+
+        <p>
+          We may still be able to source or identify the part you need.
+          Send us the equipment details and our technical team will assist you.
+        </p>
+
+        <a href="#request" class="btn btn-primary">
+
+          Request Assistance
+
+          <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+      </div>
 
     </div>
-
-  </div>
-
-
-  <!-- NO RESULTS -->
-
-  <div class="no-results" id="noResults">
-
-    <div class="empty-icon">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </div>
-
-    <h3>
-      No matching part found
-    </h3>
-
-    <p>
-      We may still be able to source or identify the part you need.
-      Send us the equipment details and our technical team will assist you.
-    </p>
-
-    <a href="#request" class="btn btn-primary">
-      Request Assistance
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
-
-  </div>
-
-</div>
-
 
   </section>
 
@@ -1785,53 +2187,51 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
   <section class="group-dynamics">
 
+    <div class="container">
 
-<div class="container">
+      <div class="group-dynamics-heading reveal">
 
-  <div class="group-dynamics-heading reveal">
+        <h2>
+          Iggy Controls
+        </h2>
 
-    <h2>
-      Iggy Controls
-    </h2>
+        <p>
+          Spare-parts support for commercial laundries and service companies.
+        </p>
 
-    <p>
-      Spare-parts support for commercial laundries and service companies.
-    </p>
+      </div>
 
-  </div>
+      <div class="group-dynamics-grid">
 
-  <div class="group-dynamics-grid">
+        <div class="group-dynamics-column reveal">
 
-    <div class="group-dynamics-column reveal">
+          Iggy Controls helps customers identify and order the correct
+          spare parts for commercial laundry machines. We support
+          laundries, dry cleaners, hotels, care homes and service
+          companies with practical parts identification.
 
-      Iggy Controls helps customers identify and order the correct
-      spare parts for commercial laundry machines. We support
-      laundries, dry cleaners, hotels, care homes and service
-      companies with practical parts identification.
+        </div>
+
+        <div class="group-dynamics-column reveal">
+
+          Our spare-parts catalogue is organized around three main
+          equipment categories:
+          <strong>Dryers, Ironers and Washers.</strong>
+          Search by part name, machine model, brand or part number.
+
+        </div>
+
+        <div class="group-dynamics-column reveal">
+
+          If you are unsure of the exact part, send us the machine
+          nameplate, serial number and a photo of the damaged component.
+          Our technical team can help identify the correct replacement.
+
+        </div>
+
+      </div>
 
     </div>
-
-    <div class="group-dynamics-column reveal">
-
-      Our spare-parts catalogue is organized around three main
-      equipment categories:
-      <strong>Dryers, Ironers and Washers.</strong>
-      Search by part name, machine model, brand or part number.
-
-    </div>
-
-    <div class="group-dynamics-column reveal">
-
-      If you are unsure of the exact part, send us the machine
-      nameplate, serial number and a photo of the damaged component.
-      Our technical team can help identify the correct replacement.
-
-    </div>
-
-  </div>
-
-</div>
-
 
   </section>
 
@@ -1841,295 +2241,271 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
   <section class="request-section" id="request">
 
+    <div class="container">
 
-<div class="container">
+      <div class="request-layout">
 
-  <div class="request-layout">
+        <div class="request-content reveal">
 
-    <div class="request-content reveal">
+          <div class="section-tag">
+            Can't Find Your Part?
+          </div>
 
-      <div class="section-tag">
-        Can't Find Your Part?
-      </div>
+          <h2>
+            Let our technical team find it for you.
+          </h2>
 
-      <h2>
-        Let our technical team find it for you.
-      </h2>
+          <p>
+            You don't need to know the exact part number.
+            Send us your equipment information and, where possible,
+            a photo of the machine plate or component.
+          </p>
 
-      <p>
-        You don't need to know the exact part number.
-        Send us your equipment information and, where possible,
-        a photo of the machine plate or component.
-      </p>
+          <div class="request-points">
 
-      <div class="request-points">
+            <div class="request-point">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Equipment category and type</span>
+            </div>
 
-        <div class="request-point">
-          <i class="fa-solid fa-circle-check"></i>
-          <span>Equipment category and type</span>
+            <div class="request-point">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Equipment brand and model</span>
+            </div>
+
+            <div class="request-point">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Machine serial number</span>
+            </div>
+
+            <div class="request-point">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Part name or description</span>
+            </div>
+
+            <div class="request-point">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Photo of the part or machine plate</span>
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="request-point">
-          <i class="fa-solid fa-circle-check"></i>
-          <span>Equipment brand and model</span>
-        </div>
+        <div class="request-card reveal">
 
-        <div class="request-point">
-          <i class="fa-solid fa-circle-check"></i>
-          <span>Machine serial number</span>
-        </div>
+          <h3>
+            Request a Spare Part
+          </h3>
 
-        <div class="request-point">
-          <i class="fa-solid fa-circle-check"></i>
-          <span>Part name or description</span>
-        </div>
+          <p>
+            Give us a few details and we'll help you find the right component.
+          </p>
 
-        <div class="request-point">
-          <i class="fa-solid fa-circle-check"></i>
-          <span>Photo of the part or machine plate</span>
+          <form
+            id="partsRequestForm"
+            action="#"
+            method="POST"
+            enctype="multipart/form-data">
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label for="name">
+                  Full Name *
+                </label>
+
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your full name"
+                  required>
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="company">
+                  Company
+                </label>
+
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder="Company / organisation">
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="phone">
+                  Phone Number *
+                </label>
+
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+256 ..."
+                  required>
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="email">
+                  Email Address *
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  required>
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="equipment">
+                  Equipment Category
+                </label>
+
+                <select id="equipment" name="equipment">
+
+                  <option value="">
+                    Select equipment
+                  </option>
+
+                  <option>Dryer</option>
+                  <option>Ironer</option>
+                  <option>Washer</option>
+                  <option>Other</option>
+
+                </select>
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="brand">
+                  Brand / Manufacturer
+                </label>
+
+                <input
+                  type="text"
+                  id="brand"
+                  name="brand"
+                  placeholder="e.g. Electrolux">
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="model">
+                  Machine Model
+                </label>
+
+                <input
+                  type="text"
+                  id="model"
+                  name="model"
+                  placeholder="Model number">
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="serial">
+                  Serial Number
+                </label>
+
+                <input
+                  type="text"
+                  id="serial"
+                  name="serial"
+                  placeholder="Serial number">
+
+              </div>
+
+              <div class="form-group full">
+
+                <label for="partNumber">
+                  Part Number
+                </label>
+
+                <input
+                  type="text"
+                  id="partNumber"
+                  name="part_number"
+                  placeholder="If known">
+
+              </div>
+
+              <div class="form-group full">
+
+                <label for="message">
+                  What part do you need?
+                </label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Describe the spare part you need or the equipment issue..."></textarea>
+
+              </div>
+
+              <div class="form-group full">
+
+                <label>
+                  Upload Machine / Part Photo
+                </label>
+
+                <label class="upload-box">
+
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                  <span id="uploadText">
+                    Click to upload
+                  </span>
+
+                  <small>
+                    JPG, PNG or PDF
+                  </small>
+
+                  <input
+                    type="file"
+                    id="fileInput"
+                    name="attachment"
+                    accept=".jpg,.jpeg,.png,.pdf">
+
+                </label>
+
+              </div>
+
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary submit-btn">
+
+              Send Parts Request
+
+              <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+          </form>
+
         </div>
 
       </div>
 
     </div>
-
-
-    <!-- REQUEST FORM -->
-
-    <div class="request-card reveal">
-
-      <h3>
-        Request a Spare Part
-      </h3>
-
-      <p>
-        Give us a few details and we'll help you find the right component.
-      </p>
-
-      <form
-        id="partsRequestForm"
-        action="#"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-
-        <div class="form-grid">
-
-          <div class="form-group">
-
-            <label for="name">
-              Full Name *
-            </label>
-
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your full name"
-              required
-            >
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="company">
-              Company
-            </label>
-
-            <input
-              type="text"
-              id="company"
-              name="company"
-              placeholder="Company / organisation"
-            >
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="phone">
-              Phone Number *
-            </label>
-
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="+256 ..."
-              required
-            >
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="email">
-              Email Address *
-            </label>
-
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="you@example.com"
-              required
-            >
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="equipment">
-              Equipment Category
-            </label>
-
-            <select id="equipment" name="equipment">
-
-              <option value="">
-                Select equipment
-              </option>
-
-              <option>
-                Dryer
-              </option>
-
-              <option>
-                Ironer
-              </option>
-
-              <option>
-                Washer
-              </option>
-
-              <option>
-                Other
-              </option>
-
-            </select>
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="brand">
-              Brand / Manufacturer
-            </label>
-
-            <input
-              type="text"
-              id="brand"
-              name="brand"
-              placeholder="e.g. Electrolux"
-            >
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="model">
-              Machine Model
-            </label>
-
-            <input
-              type="text"
-              id="model"
-              name="model"
-              placeholder="Model number"
-            >
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="serial">
-              Serial Number
-            </label>
-
-            <input
-              type="text"
-              id="serial"
-              name="serial"
-              placeholder="Serial number"
-            >
-
-          </div>
-
-          <div class="form-group full">
-
-            <label for="partNumber">
-              Part Number
-            </label>
-
-            <input
-              type="text"
-              id="partNumber"
-              name="part_number"
-              placeholder="If known"
-            >
-
-          </div>
-
-          <div class="form-group full">
-
-            <label for="message">
-              What part do you need?
-            </label>
-
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Describe the spare part you need or the equipment issue..."
-            ></textarea>
-
-          </div>
-
-          <div class="form-group full">
-
-            <label>
-              Upload Machine / Part Photo
-            </label>
-
-            <label class="upload-box">
-
-              <i class="fa-solid fa-cloud-arrow-up"></i>
-
-              <span id="uploadText">
-                Click to upload
-              </span>
-
-              <small>
-                JPG, PNG or PDF
-              </small>
-
-              <input
-                type="file"
-                id="fileInput"
-                name="attachment"
-                accept=".jpg,.jpeg,.png,.pdf"
-              >
-
-            </label>
-
-          </div>
-
-        </div>
-
-        <button
-          type="submit"
-          class="btn btn-primary submit-btn"
-        >
-          Send Parts Request
-          <i class="fa-solid fa-paper-plane"></i>
-        </button>
-
-      </form>
-
-    </div>
-
-  </div>
-
-</div>
 
   </section>
 
@@ -2139,100 +2515,98 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
   <section class="why">
 
+    <div class="container">
 
-<div class="container">
+      <div class="why-heading reveal">
 
-  <div class="why-heading reveal">
+        <div class="section-tag">
+          Why IGGY-CONTROLS
+        </div>
 
-    <div class="section-tag">
-      Why IGGY-CONTROLS
-    </div>
+        <h2>
+          More than just a spare part.
+        </h2>
 
-    <h2>
-      More than just a spare part.
-    </h2>
+        <p>
+          We combine equipment knowledge with practical technical
+          support to help reduce downtime.
+        </p>
 
-    <p>
-      We combine equipment knowledge with practical technical
-      support to help reduce downtime.
-    </p>
-
-  </div>
-
-  <div class="why-grid">
-
-    <div class="why-card reveal">
-
-      <div class="why-number">
-        01
       </div>
 
-      <h3>
-        Technical Expertise
-      </h3>
+      <div class="why-grid">
 
-      <p>
-        Our technical understanding helps identify components
-        for demanding commercial laundry equipment.
-      </p>
+        <div class="why-card reveal">
 
-    </div>
+          <div class="why-number">
+            01
+          </div>
 
-    <div class="why-card reveal">
+          <h3>
+            Technical Expertise
+          </h3>
 
-      <div class="why-number">
-        02
+          <p>
+            Our technical understanding helps identify components
+            for demanding commercial laundry equipment.
+          </p>
+
+        </div>
+
+        <div class="why-card reveal">
+
+          <div class="why-number">
+            02
+          </div>
+
+          <h3>
+            Quality Components
+          </h3>
+
+          <p>
+            We focus on dependable replacement components
+            suitable for professional laundry equipment.
+          </p>
+
+        </div>
+
+        <div class="why-card reveal">
+
+          <div class="why-number">
+            03
+          </div>
+
+          <h3>
+            Reduced Downtime
+          </h3>
+
+          <p>
+            Finding the correct component quickly helps
+            keep your laundry operation moving.
+          </p>
+
+        </div>
+
+        <div class="why-card reveal">
+
+          <div class="why-number">
+            04
+          </div>
+
+          <h3>
+            Service Support
+          </h3>
+
+          <p>
+            Need more than a part? Our team can also support
+            maintenance, repairs and installation.
+          </p>
+
+        </div>
+
       </div>
 
-      <h3>
-        Quality Components
-      </h3>
-
-      <p>
-        We focus on dependable replacement components
-        suitable for professional laundry equipment.
-      </p>
-
     </div>
-
-    <div class="why-card reveal">
-
-      <div class="why-number">
-        03
-      </div>
-
-      <h3>
-        Reduced Downtime
-      </h3>
-
-      <p>
-        Finding the correct component quickly helps
-        keep your laundry operation moving.
-      </p>
-
-    </div>
-
-    <div class="why-card reveal">
-
-      <div class="why-number">
-        04
-      </div>
-
-      <h3>
-        Service Support
-      </h3>
-
-      <p>
-        Need more than a part? Our team can also support
-        maintenance, repairs and installation.
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
-
 
   </section>
 
@@ -2242,48 +2616,48 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
   <section class="cta">
 
+    <div class="container">
 
-<div class="container">
+      <div class="cta-box">
 
-  <div class="cta-box">
+        <div class="cta-content">
 
-    <div class="cta-content">
+          <h2>
+            Need help with your equipment?
+          </h2>
 
-      <h2>
-        Need help with your equipment?
-      </h2>
+          <p>
+            From spare parts to maintenance and technical
+            support, IGGY-CONTROLS is ready to help.
+          </p>
 
-      <p>
-        From spare parts to maintenance and technical
-        support, IGGY-CONTROLS is ready to help.
-      </p>
+        </div>
+
+        <div class="cta-actions">
+
+          <a
+            href="tel:+256742262000"
+            class="btn btn-primary">
+
+            <i class="fa-solid fa-phone"></i>
+            Call Us
+
+          </a>
+
+          <a
+            href="mailto:info@iggycontrols.com"
+            class="btn btn-outline">
+
+            <i class="fa-solid fa-envelope"></i>
+            Email Us
+
+          </a>
+
+        </div>
+
+      </div>
 
     </div>
-
-    <div class="cta-actions">
-
-      <a
-        href="tel:+256742262000"
-        class="btn btn-primary"
-      >
-        <i class="fa-solid fa-phone"></i>
-        Call Us
-      </a>
-
-      <a
-        href="mailto:info@iggycontrols.com"
-        class="btn btn-outline"
-      >
-        <i class="fa-solid fa-envelope"></i>
-        Email Us
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
 
   </section>
 
@@ -2293,142 +2667,127 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
   <footer>
 
+    <div class="container">
 
-<div class="container">
+      <div class="footer-grid">
 
-  <div class="footer-grid">
+        <div>
 
-    <div>
+          <a
+            href="index.html"
+            class="flex flex-col items-center w-fit">
 
-      <a
-        href="index.html"
-        class="flex flex-col items-center w-fit"
-      >
+            <img
+              src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png"
+              alt="Iggy Controls Logo"
+              class="h-12 w-auto">
 
-        <img
-          src="https://res.cloudinary.com/drno0hj9z/image/upload/v1777403931/image_nj12tq.png"
-          alt="Iggy Controls Logo"
-          class="h-12 w-auto"
-        >
+            <div class="text-center mt-1">
 
-        <div class="text-center mt-1">
+              <span class="font-extrabold text-xs text-[var(--red-main)]">
+                IGGY-CONTROLS
+              </span>
 
-          <span class="font-extrabold text-xs text-[var(--red-main)]">
-            IGGY-CONTROLS
-          </span>
+              <div class="flex items-center justify-center gap-2 mt-0.5">
 
-          <div class="flex items-center justify-center gap-2 mt-0.5">
+                <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
 
-            <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
+                <span class="text-[8px] tracking-widest text-white font-bold">
+                  TECHNOLOGIES
+                </span>
 
-            <span class="text-[8px] tracking-widest text-white font-bold">
-              TECHNOLOGIES
-            </span>
+                <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
 
-            <span class="h-[2px] w-2 bg-[var(--red-main)]"></span>
+              </div>
+
+            </div>
+
+          </a>
+
+          <p class="footer-about">
+            Professional supply, installation and maintenance
+            of laundry, kitchen, electrical and industrial equipment.
+          </p>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Quick Links</h4>
+
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="spareparts.html">Spare Parts</a>
+          <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Equipment</h4>
+
+          <a href="#parts">Dryers</a>
+          <a href="#parts">Ironers</a>
+          <a href="#parts">Washers</a>
+          <a href="services.html">Maintenance & Repairs</a>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Contact</h4>
+
+          <div class="footer-contact">
+
+            <div>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Kampala, Uganda</span>
+            </div>
+
+            <div>
+              <i class="fa-solid fa-phone"></i>
+
+              <a href="tel:+256742262000">
+                +256 742 262 000
+              </a>
+
+            </div>
+
+            <div>
+              <i class="fa-solid fa-envelope"></i>
+
+              <a href="mailto:info@iggycontrols.com">
+                info@iggycontrols.com
+              </a>
+
+            </div>
 
           </div>
 
         </div>
 
-      </a>
+      </div>
 
-      <p class="footer-about">
-        Professional supply, installation and maintenance
-        of laundry, kitchen, electrical and industrial equipment.
-      </p>
+      <div class="footer-bottom">
 
-    </div>
+        <p>
+          © 2026 IGGY-CONTROLS TECHNOLOGIES.
+          All rights reserved.
+        </p>
 
+        <div class="socials">
 
-    <div class="footer-col">
-
-      <h4>
-        Quick Links
-      </h4>
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="about.html">
-        About Us
-      </a>
-
-      <a href="services.html">
-        Services
-      </a>
-
-      <a href="spare-parts.html">
-        Spare Parts
-      </a>
-
-      <a href="contact.html">
-        Contact
-      </a>
-
-    </div>
-
-
-    <div class="footer-col">
-
-      <h4>
-        Equipment
-      </h4>
-
-      <a href="#parts">
-        Dryers
-      </a>
-
-      <a href="#parts">
-        Ironers
-      </a>
-
-      <a href="#parts">
-        Washers
-      </a>
-
-      <a href="services.html">
-        Maintenance & Repairs
-      </a>
-
-    </div>
-
-
-    <div class="footer-col">
-
-      <h4>
-        Contact
-      </h4>
-
-      <div class="footer-contact">
-
-        <div>
-
-          <i class="fa-solid fa-location-dot"></i>
-
-          <span>
-            Kampala, Uganda
-          </span>
-
-        </div>
-
-        <div>
-
-          <i class="fa-solid fa-phone"></i>
-
-          <a href="tel:+256742262000">
-            +256 742 262 000
+          <a href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
           </a>
 
-        </div>
+          <a href="#" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
 
-        <div>
-
-          <i class="fa-solid fa-envelope"></i>
-
-          <a href="mailto:info@iggycontrols.com">
-            info@iggycontrols.com
+          <a href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
           </a>
 
         </div>
@@ -2436,37 +2795,6 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       </div>
 
     </div>
-
-  </div>
-
-
-  <div class="footer-bottom">
-
-    <p>
-      © 2026 IGGY-CONTROLS TECHNOLOGIES.
-      All rights reserved.
-    </p>
-
-    <div class="socials">
-
-      <a href="#" aria-label="Facebook">
-        <i class="fa-brands fa-facebook-f"></i>
-      </a>
-
-      <a href="#" aria-label="LinkedIn">
-        <i class="fa-brands fa-linkedin-in"></i>
-      </a>
-
-      <a href="#" aria-label="Instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
 
   </footer>
 
@@ -2496,6 +2824,8 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
         menuIcon.classList.remove("fa-xmark");
         menuIcon.classList.add("fa-bars");
+
+        document.body.style.overflow = "";
 
       } else {
 
@@ -2534,24 +2864,29 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     }
 
 
-    document.querySelectorAll("#mobileMenu a").forEach(link => {
+    document
+      .querySelectorAll("#mobileMenu a")
+      .forEach(link => {
 
-      link.addEventListener("click", () => {
+        link.addEventListener(
+          "click",
+          () => {
 
-        const mobileMenu =
-          document.getElementById("mobileMenu");
+            const mobileMenu =
+              document.getElementById("mobileMenu");
 
-        const menuIcon =
-          document.getElementById("menuIcon");
+            const menuIcon =
+              document.getElementById("menuIcon");
 
-        mobileMenu.classList.add("hidden");
+            mobileMenu.classList.add("hidden");
 
-        menuIcon.classList.remove("fa-xmark");
-        menuIcon.classList.add("fa-bars");
+            menuIcon.classList.remove("fa-xmark");
+            menuIcon.classList.add("fa-bars");
+
+          }
+        );
 
       });
-
-    });
 
 
     /* =====================================================
@@ -3006,9 +3341,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
         autocomplete.innerHTML = "";
 
         return;
-
       }
-
 
       const matches =
         spareParts
@@ -3029,9 +3362,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
           })
           .slice(0, 8);
 
-
       autocomplete.innerHTML = "";
-
 
       if (!matches.length) {
 
@@ -3044,9 +3375,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
         autocomplete.classList.add("show");
 
         return;
-
       }
-
 
       const header =
         document.createElement("div");
@@ -3059,30 +3388,15 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
       autocomplete.appendChild(header);
 
-
       matches.forEach((part, index) => {
 
         const button =
           document.createElement("button");
 
         button.type = "button";
-
-        button.className =
-          "suggestion";
-
-        button.setAttribute(
-          "role",
-          "option"
-        );
-
-        button.dataset.index =
-          index;
-
-
-        /*
-          NO ICON HERE.
-          Suggestions are text-only.
-        */
+        button.className = "suggestion";
+        button.setAttribute("role", "option");
+        button.dataset.index = index;
 
         button.innerHTML = `
 
@@ -3093,23 +3407,18 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
             </div>
 
             <div class="suggestion-meta">
-
               ${escapeHTML(part.brand)}
               •
               ${escapeHTML(part.number)}
-
             </div>
 
           </div>
 
           <span class="suggestion-category">
-
             ${escapeHTML(part.category)}
-
           </span>
 
         `;
-
 
         button.addEventListener(
           "click",
@@ -3118,10 +3427,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
             searchInput.value =
               part.name;
 
-            autocomplete.classList.remove(
-              "show"
-            );
-
+            autocomplete.classList.remove("show");
             autocomplete.innerHTML = "";
 
             searchParts();
@@ -3140,11 +3446,9 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
           }
         );
 
-
         autocomplete.appendChild(button);
 
       });
-
 
       autocomplete.classList.add("show");
 
@@ -3160,12 +3464,8 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       const query =
         searchInput.value.trim().toLowerCase();
 
-      autocomplete.classList.remove(
-        "show"
-      );
-
+      autocomplete.classList.remove("show");
       autocomplete.innerHTML = "";
-
 
       if (!query) {
 
@@ -3190,19 +3490,15 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
         `;
 
-        noResults.style.display =
-          "none";
+        noResults.style.display = "none";
 
         return;
-
       }
-
 
       const activeCategory =
         document.querySelector(
           ".category-filter.active"
         )?.dataset.category || "all";
-
 
       let matches =
         spareParts.filter(part => {
@@ -3228,7 +3524,6 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
         });
 
-
       renderResults(matches, query);
 
     }
@@ -3244,17 +3539,12 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
         resultsArea.innerHTML = "";
 
-        noResults.style.display =
-          "block";
+        noResults.style.display = "block";
 
         return;
-
       }
 
-
-      noResults.style.display =
-        "none";
-
+      noResults.style.display = "none";
 
       let html = `
 
@@ -3275,7 +3565,6 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
       `;
 
-
       matches.forEach((part, index) => {
 
         const safeName =
@@ -3293,13 +3582,11 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
             .replace(/\\/g, "\\\\")
             .replace(/'/g, "\\'");
 
-
         html += `
 
           <div
             class="part-card reveal"
-            style="transition-delay:${index * 60}ms"
-          >
+            style="transition-delay:${index * 60}ms">
 
             <div class="part-image">
 
@@ -3307,11 +3594,9 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
                 src="${escapeHTML(part.image)}"
                 alt="${escapeHTML(part.name)}"
                 loading="lazy"
-                onerror="this.src='https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80'"
-              >
+                onerror="this.src='https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80'">
 
             </div>
-
 
             <div class="part-category">
 
@@ -3321,39 +3606,32 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
             </div>
 
-
             <h4>
               ${escapeHTML(part.name)}
             </h4>
 
-
             <p>
               ${escapeHTML(part.description)}
             </p>
-
 
             <p>
               <strong>Brand:</strong>
               ${escapeHTML(part.brand)}
             </p>
 
-
             <p>
               <strong>Model:</strong>
               ${escapeHTML(part.model)}
             </p>
 
-
             <div class="part-number">
               Part No: ${escapeHTML(part.number)}
             </div>
 
-
             <button
               type="button"
               class="request-part-btn"
-              onclick="requestPart('${safeName}', '${safeBrand}', '${safeNumber}')"
-            >
+              onclick="requestPart('${safeName}', '${safeBrand}', '${safeNumber}')">
 
               Request This Part
 
@@ -3367,22 +3645,16 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
       });
 
-
       html += `
         </div>
       `;
 
-
-      resultsArea.innerHTML =
-        html;
-
+      resultsArea.innerHTML = html;
 
       setTimeout(() => {
 
         document
-          .querySelectorAll(
-            "#resultsArea .reveal"
-          )
+          .querySelectorAll("#resultsArea .reveal")
           .forEach(element => {
 
             element.classList.add("show");
@@ -3410,30 +3682,19 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
               .querySelectorAll(".category-filter")
               .forEach(btn => {
 
-                btn.classList.remove(
-                  "active"
-                );
+                btn.classList.remove("active");
 
               });
 
-
-            button.classList.add(
-              "active"
-            );
-
+            button.classList.add("active");
 
             const category =
               button.dataset.category;
 
-
             const query =
-              searchInput.value
-                .trim()
-                .toLowerCase();
-
+              searchInput.value.trim().toLowerCase();
 
             let matches;
-
 
             if (category === "all") {
 
@@ -3452,16 +3713,13 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
                       ${part.description}
                       `.toLowerCase();
 
-                    return searchable.includes(
-                      query
-                    );
+                    return searchable.includes(query);
 
                   });
 
               } else {
 
-                matches =
-                  [];
+                matches = [];
 
               }
 
@@ -3487,12 +3745,9 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
             }
 
-
             if (!query && category !== "all") {
 
-              renderResults(
-                matches
-              );
+              renderResults(matches);
 
               document
                 .getElementById("resultsArea")
@@ -3503,10 +3758,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
             } else {
 
-              renderResults(
-                matches,
-                query
-              );
+              renderResults(matches, query);
 
             }
 
@@ -3561,7 +3813,6 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
             ".suggestion"
           );
 
-
         if (
           event.key === "ArrowDown" &&
           suggestions.length
@@ -3575,7 +3826,6 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
               suggestions.length - 1
             );
 
-
           suggestions.forEach(
             (item, index) => {
 
@@ -3588,9 +3838,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
           );
 
           return;
-
         }
-
 
         if (
           event.key === "ArrowUp" &&
@@ -3605,7 +3853,6 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
               0
             );
 
-
           suggestions.forEach(
             (item, index) => {
 
@@ -3618,16 +3865,13 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
           );
 
           return;
-
         }
-
 
         if (
           event.key === "Enter"
         ) {
 
           event.preventDefault();
-
 
           if (
             activeSuggestion >= 0 &&
@@ -3646,15 +3890,11 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
 
         }
 
-
         if (
           event.key === "Escape"
         ) {
 
-          autocomplete.classList.remove(
-            "show"
-          );
-
+          autocomplete.classList.remove("show");
           autocomplete.innerHTML = "";
 
         }
@@ -3668,9 +3908,7 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
     ===================================================== */
 
     document
-      .querySelectorAll(
-        ".search-tips button"
-      )
+      .querySelectorAll(".search-tips button")
       .forEach(button => {
 
         button.addEventListener(
@@ -3704,15 +3942,10 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
       event => {
 
         if (
-          !event.target.closest(
-            ".search-wrapper"
-          )
+          !event.target.closest(".search-wrapper")
         ) {
 
-          autocomplete.classList.remove(
-            "show"
-          );
-
+          autocomplete.classList.remove("show");
           autocomplete.innerHTML = "";
 
         }
@@ -3725,26 +3958,42 @@ content="Find spare parts for commercial dryers, ironers and washers from IGGY-C
        REQUEST SELECTED PART
     ===================================================== */
 
-    
- 
+    function requestPart(
+      sparePart,
+      brand,
+      partNumber
+    ) {
 
-function requestPart(sparePart, brand, partNumber) {
+      const phoneNumber =
+        "256742262000";
 
-  const phoneNumber = "256742262000";
+      const message =
+        "Hello IGGY-CONTROLS TECHNOLOGIES,%0A%0A" +
+        "I would like to request this spare part:%0A%0A" +
+        "Spare Part: " +
+        encodeURIComponent(sparePart) +
+        "%0A" +
+        "Brand: " +
+        encodeURIComponent(brand) +
+        "%0A" +
+        "Part Number: " +
+        encodeURIComponent(partNumber) +
+        "%0A%0A" +
+        "Please let me know about availability, price and delivery.";
 
- const message =
-  "Hello IGGY-CONTROLS TECHNOLOGIES,%0A%0A" +
-  "I would like to request this spare part:%0A%0A" +
-  "Spare Part: " + encodeURIComponent(sparePart) + "%0A" +
-  "Brand: " + encodeURIComponent(brand) + "%0A" +
-  "Part Number: " + encodeURIComponent(partNumber) + "%0A%0A" +
-  "Please let me know about availability, price and delivery.";
+      const whatsappURL =
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        message;
 
-  const whatsappURL =
-    "https://wa.me/" + phoneNumber + "?text=" + message;
+      window.open(
+        whatsappURL,
+        "_blank",
+        "noopener,noreferrer"
+      );
 
-  window.open(whatsappURL, "_blank");
-}
+    }
 
 
     /* =====================================================
@@ -3752,15 +4001,10 @@ function requestPart(sparePart, brand, partNumber) {
     ===================================================== */
 
     const fileInput =
-      document.getElementById(
-        "fileInput"
-      );
+      document.getElementById("fileInput");
 
     const uploadText =
-      document.getElementById(
-        "uploadText"
-      );
-
+      document.getElementById("uploadText");
 
     if (fileInput) {
 
@@ -3797,27 +4041,28 @@ function requestPart(sparePart, brand, partNumber) {
         "partsRequestForm"
       );
 
+    if (form) {
 
-    form.addEventListener(
-      "submit",
-      event => {
+      form.addEventListener(
+        "submit",
+        event => {
 
-        if (
-          form.getAttribute(
-            "action"
-          ) === "#"
-        ) {
+          if (
+            form.getAttribute("action") === "#"
+          ) {
 
-          event.preventDefault();
+            event.preventDefault();
 
-          alert(
-            "Thank you. Your spare-parts request has been received."
-          );
+            alert(
+              "Thank you. Your spare-parts request has been received."
+            );
+
+          }
 
         }
+      );
 
-      }
-    );
+    }
 
 
     /* =====================================================
@@ -3825,51 +4070,59 @@ function requestPart(sparePart, brand, partNumber) {
     ===================================================== */
 
     const revealElements =
-      document.querySelectorAll(
-        ".reveal"
-      );
+      document.querySelectorAll(".reveal");
 
+    if ("IntersectionObserver" in window) {
 
-    const observer =
-      new IntersectionObserver(
-        entries => {
+      const observer =
+        new IntersectionObserver(
+          entries => {
 
-          entries.forEach(
-            entry => {
+            entries.forEach(
+              entry => {
 
-              if (
-                entry.isIntersecting
-              ) {
+                if (
+                  entry.isIntersecting
+                ) {
 
-                entry.target.classList.add(
-                  "show"
-                );
+                  entry.target.classList.add(
+                    "show"
+                  );
 
-                observer.unobserve(
-                  entry.target
-                );
+                  observer.unobserve(
+                    entry.target
+                  );
+
+                }
 
               }
+            );
 
-            }
-          );
+          },
+          {
+            threshold: 0.12
+          }
+        );
 
-        },
-        {
-          threshold: 0.12
+      revealElements.forEach(
+        element => {
+
+          observer.observe(element);
+
         }
       );
 
+    } else {
 
-    revealElements.forEach(
-      element => {
+      revealElements.forEach(
+        element => {
 
-        observer.observe(
-          element
-        );
+          element.classList.add("show");
 
-      }
-    );
+        }
+      );
+
+    }
 
   </script>
 
