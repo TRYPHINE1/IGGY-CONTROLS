@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
@@ -709,33 +708,6 @@
             line-height: 1.15;
         }
 
-        .mobile-search {
-            position: relative;
-            padding: 14px 0 4px;
-        }
-
-        .mobile-search input {
-            width: 100%;
-            height: 46px;
-            padding: 0 46px 0 16px;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            background: #f8fafc;
-            outline: none;
-        }
-
-        .mobile-search button {
-            position: absolute;
-            right: 6px;
-            top: 20px;
-            width: 34px;
-            height: 34px;
-            border: 0;
-            border-radius: 9px;
-            background: var(--blue-main);
-            color: #fff;
-        }
-
         @media (max-width: 1279px) and (min-width: 1024px) {
             .header-search {
                 width: 190px;
@@ -1100,207 +1072,301 @@
                 transition-duration: .01ms !important;
             }
         }
-    
-/* =====================================================
-   MODERN MOBILE SEARCH + STICKY HEADER
-===================================================== */
 
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, .96);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 4px 18px rgba(15, 23, 42, .08);
-}
+        /* =====================================================
+           STICKY HEADER SHADOW
+        ===================================================== */
 
-.site-header.scrolled {
-    box-shadow: 0 8px 28px rgba(15, 23, 42, .14);
-}
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 4px 18px rgba(15, 23, 42, .08);
+        }
 
-.mobile-header-search {
-    display: none;
-}
+        .site-header.scrolled {
+            box-shadow: 0 8px 28px rgba(15, 23, 42, .14);
+        }
 
-@media (max-width: 767px) {
+        /* =====================================================
+           MOBILE SEARCH TOGGLE (icon, same line as hamburger)
+        ===================================================== */
 
-    /* Search stays directly under the sticky header */
-    .mobile-header-search {
-        display: block;
-        position: sticky;
-        top: 68px;
-        z-index: 999;
-        width: 100%;
-        padding: 8px 12px 10px;
-        background: rgba(255, 255, 255, .94);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border-bottom: 1px solid rgba(15, 23, 42, .07);
-    }
+        .mobile-search-toggle {
+            display: none;
+        }
 
-    .mobile-header-search form {
-        position: relative;
-        display: flex;
-        align-items: center;
-        width: 100%;
-    }
+        @media (max-width: 1023px) {
+            .mobile-search-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border-radius: 10px;
+                border: 0;
+                background: transparent;
+                color: var(--blue-dark);
+                font-size: 18px;
+                cursor: pointer;
+                transition: all .2s ease;
+            }
 
-    .mobile-header-search input {
-        width: 100%;
-        height: 46px;
-        padding: 0 52px 0 44px;
-        border: 1px solid #e2e8f0;
-        border-radius: 15px;
-        background: #f1f5f9;
-        color: #0f172a;
-        font-size: 13px;
-        font-weight: 500;
-        outline: none;
-        box-shadow: inset 0 1px 2px rgba(15, 23, 42, .03);
-        transition: .25s ease;
-    }
+            .mobile-search-toggle:hover,
+            .mobile-search-toggle:active {
+                background: var(--blue-pale);
+                color: var(--red-main);
+            }
+        }
 
-    .mobile-header-search input:focus {
-        background: #fff;
-        border-color: var(--blue-main);
-        box-shadow:
-            0 0 0 3px rgba(12, 68, 172, .10),
-            0 8px 20px rgba(15, 23, 42, .08);
-    }
+        @media (max-width: 380px) {
+            .mobile-search-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
 
-    .mobile-header-search input::placeholder {
-        color: #94a3b8;
-    }
+        /* =====================================================
+           MOBILE SEARCH OVERLAY (opens over the hero, blurs it)
+        ===================================================== */
 
-    .mobile-header-search form::before {
-        content: "\f002";
-        font-family: "Font Awesome 6 Free";
-        font-weight: 900;
-        position: absolute;
-        left: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--blue-main);
-        font-size: 14px;
-        pointer-events: none;
-        z-index: 2;
-    }
+        .mobile-search-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1200;
+            background: rgba(2, 6, 23, .35);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
 
-    .mobile-header-search button {
-        position: absolute;
-        right: 5px;
-        top: 4px;
-        width: 38px;
-        height: 38px;
-        border: 0;
-        border-radius: 11px;
-        background: linear-gradient(135deg, var(--blue-main), var(--blue-dark));
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 5px 12px rgba(12, 68, 172, .20);
-        transition: .2s ease;
-    }
+        .mobile-search-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
 
-    .mobile-header-search button:active {
-        transform: scale(.94);
-    }
+        .mobile-search-overlay-panel {
+            margin-top: 68px;
+            padding: 14px 14px 18px;
+            background: rgba(255, 255, 255, .98);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, .22);
+            border-bottom: 1px solid rgba(15, 23, 42, .06);
+            transform: translateY(-16px);
+            opacity: 0;
+            transition: transform .3s ease, opacity .3s ease;
+        }
 
-    .mobile-header-search button:hover {
-        background: linear-gradient(135deg, var(--red-main), var(--red-dark));
-    }
+        .mobile-search-overlay.active .mobile-search-overlay-panel {
+            transform: translateY(0);
+            opacity: 1;
+        }
 
-    /* Modern mobile result panel */
-    .mobile-header-search .search-results {
-        position: absolute;
-        top: calc(100% + 4px);
-        left: 12px;
-        right: 12px;
-        width: auto;
-        max-height: min(55vh, 360px);
-        overflow-y: auto;
-        padding: 7px;
-        background: rgba(255, 255, 255, .98);
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        box-shadow: 0 18px 45px rgba(15, 23, 42, .16);
-        z-index: 1100;
-    }
+        .mobile-search-overlay form {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
 
-    .mobile-header-search .search-result {
-        display: block;
-        padding: 12px 13px;
-        border-radius: 11px;
-        color: #1e293b;
-        font-size: 13px;
-        font-weight: 700;
-    }
+        .mobile-search-overlay input {
+            width: 100%;
+            height: 48px;
+            padding: 0 88px 0 44px;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            background: #f1f5f9;
+            color: #0f172a;
+            font-size: 14px;
+            font-weight: 500;
+            outline: none;
+            box-shadow: inset 0 1px 2px rgba(15, 23, 42, .03);
+            transition: .25s ease;
+        }
 
-    .mobile-header-search .search-result:active,
-    .mobile-header-search .search-result:hover {
-        background: var(--blue-pale);
-        color: var(--blue-main);
-    }
+        .mobile-search-overlay input:focus {
+            background: #fff;
+            border-color: var(--blue-main);
+            box-shadow:
+                0 0 0 3px rgba(12, 68, 172, .10),
+                0 8px 20px rgba(15, 23, 42, .08);
+        }
 
-    .mobile-header-search .search-result small {
-        display: block;
-        margin-top: 3px;
-        color: #94a3b8;
-        font-size: 10px;
-        font-weight: 500;
-        line-height: 1.35;
-    }
+        .mobile-search-overlay input::placeholder {
+            color: #94a3b8;
+        }
 
-    .mobile-header-search .no-search-results {
-        padding: 16px 10px;
-        color: #64748b;
-        font-size: 12px;
-        text-align: center;
-    }
+        .mobile-search-overlay form::before {
+            content: "\f002";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--blue-main);
+            font-size: 14px;
+            pointer-events: none;
+            z-index: 2;
+        }
 
-    /* Keep header content horizontal on phones */
-    .site-header,
-    .site-header * {
-        writing-mode: horizontal-tb;
-        text-orientation: mixed;
-    }
+        .mobile-search-overlay .mobile-search-submit {
+            position: absolute;
+            right: 46px;
+            top: 5px;
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 11px;
+            background: linear-gradient(135deg, var(--blue-main), var(--blue-dark));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 12px rgba(12, 68, 172, .20);
+            transition: .2s ease;
+        }
 
-    .floating-quote,
-    .floating-quote * {
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-    }
-}
+        .mobile-search-overlay .mobile-search-submit:active {
+            transform: scale(.94);
+        }
 
-@media (max-width: 380px) {
-    .mobile-header-search {
-        padding: 7px 10px 9px;
-    }
+        .mobile-search-overlay .mobile-search-submit:hover {
+            background: linear-gradient(135deg, var(--red-main), var(--red-dark));
+        }
 
-    .mobile-header-search input {
-        height: 44px;
-        padding-left: 41px;
-        padding-right: 49px;
-        font-size: 12px;
-        border-radius: 14px;
-    }
+        .mobile-search-overlay .mobile-search-close {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 11px;
+            background: #e2e8f0;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .2s ease;
+        }
 
-    .mobile-header-search button {
-        width: 36px;
-        height: 36px;
-        right: 4px;
-        top: 4px;
-        border-radius: 10px;
-    }
+        .mobile-search-overlay .mobile-search-close:hover {
+            background: #cbd5e1;
+        }
 
-    .mobile-header-search form::before {
-        left: 14px;
-    }
-}
-</style>
+        .mobile-search-overlay .search-results {
+            position: static;
+            width: 100%;
+            margin-top: 10px;
+            max-height: min(55vh, 360px);
+            overflow-y: auto;
+            padding: 7px;
+            background: rgba(255, 255, 255, .98);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, .10);
+            opacity: 0;
+            visibility: hidden;
+            transform: none;
+            transition: opacity .2s ease, visibility .2s ease;
+        }
+
+        .mobile-search-overlay .search-results.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-search-overlay .search-result {
+            display: block;
+            padding: 12px 13px;
+            border-radius: 11px;
+            color: #1e293b;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .mobile-search-overlay .search-result:active,
+        .mobile-search-overlay .search-result:hover {
+            background: var(--blue-pale);
+            color: var(--blue-main);
+        }
+
+        .mobile-search-overlay .search-result small {
+            display: block;
+            margin-top: 3px;
+            color: #94a3b8;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1.35;
+        }
+
+        .mobile-search-overlay .no-search-results {
+            padding: 16px 10px;
+            color: #64748b;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        @media (max-width: 767px) {
+            .mobile-search-overlay-panel {
+                margin-top: 68px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .mobile-search-overlay-panel {
+                margin-top: 62px;
+                padding: 10px 10px 14px;
+            }
+
+            .mobile-search-overlay input {
+                height: 44px;
+                padding-left: 41px;
+                padding-right: 82px;
+                font-size: 12px;
+                border-radius: 14px;
+            }
+
+            .mobile-search-overlay .mobile-search-submit,
+            .mobile-search-overlay .mobile-search-close {
+                width: 36px;
+                height: 36px;
+                top: 4px;
+                border-radius: 10px;
+            }
+
+            .mobile-search-overlay .mobile-search-submit {
+                right: 42px;
+            }
+
+            .mobile-search-overlay form::before {
+                left: 14px;
+            }
+        }
+
+        /* Keep header content horizontal on phones (undo any vertical writing mode) */
+        .site-header,
+        .site-header * {
+            writing-mode: horizontal-tb;
+            text-orientation: mixed;
+        }
+
+        .floating-quote,
+        .floating-quote * {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+    </style>
 </head>
 
 <body class="bg-slate-50 text-slate-900">
@@ -1429,17 +1495,30 @@
                 </div>
 
 
-                <!-- MOBILE BUTTON -->
-                <button id="menuButton"
-                    type="button"
-                    class="lg:hidden flex items-center justify-center w-11 h-11 rounded-lg text-[var(--blue-dark)] hover:bg-[var(--blue-pale)] hover:text-[var(--red-main)] transition-all focus:outline-none"
-                    aria-label="Open navigation menu"
-                    aria-expanded="false"
-                    aria-controls="mobileMenu">
+                <!-- MOBILE RIGHT-SIDE ACTIONS: search icon + hamburger, same line as logo -->
+                <div class="flex items-center gap-1 lg:hidden flex-shrink-0">
 
-                    <i id="menuIcon" class="fas fa-bars text-xl"></i>
+                    <button id="mobileSearchToggle"
+                        type="button"
+                        class="mobile-search-toggle"
+                        aria-label="Open search"
+                        aria-expanded="false"
+                        aria-controls="mobileSearchOverlay">
+                        <i class="fas fa-search"></i>
+                    </button>
 
-                </button>
+                    <button id="menuButton"
+                        type="button"
+                        class="lg:hidden flex items-center justify-center w-11 h-11 rounded-lg text-[var(--blue-dark)] hover:bg-[var(--blue-pale)] hover:text-[var(--red-main)] transition-all focus:outline-none"
+                        aria-label="Open navigation menu"
+                        aria-expanded="false"
+                        aria-controls="mobileMenu">
+
+                        <i id="menuIcon" class="fas fa-bars text-xl"></i>
+
+                    </button>
+
+                </div>
 
             </div>
 
@@ -1524,23 +1603,31 @@
         </nav>
 
     </header>
-<!-- Mobile-visible search -->
-<div class="mobile-header-search">
-  <form id="mobileSearchForm" role="search">
-    <input
-      id="mobileSearchInput"
-      type="search"
-      placeholder="Search products, services..."
-      aria-label="Search products and services"
-      autocomplete="off"
-    >
-    <button type="submit" aria-label="Search">
-      <i class="fas fa-search"></i>
-    </button>
-    <div id="mobileSearchResults" class="search-results" aria-live="polite"></div>
-  </form>
-</div>
 
+    <!-- =====================================================
+         MOBILE SEARCH OVERLAY
+         Opens above the hero and blurs it via backdrop-filter.
+    ===================================================== -->
+
+    <div id="mobileSearchOverlay" class="mobile-search-overlay" aria-hidden="true">
+        <div class="mobile-search-overlay-panel">
+            <form id="mobileSearchForm" role="search">
+                <input
+                    id="mobileSearchInput"
+                    type="search"
+                    placeholder="Search products, services..."
+                    aria-label="Search products and services"
+                    autocomplete="off">
+                <button type="submit" class="mobile-search-submit" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button type="button" id="mobileSearchClose" class="mobile-search-close" aria-label="Close search">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div id="mobileSearchResults" class="search-results" aria-live="polite"></div>
+            </form>
+        </div>
+    </div>
 
 
     <!-- =====================================================
@@ -3115,722 +3202,801 @@
          SWIPER JS
     ===================================================== -->
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ===================================================== -->
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-            /* =================================================
-               MOBILE MENU
-            ================================================= */
-
-            const menuButton = document.getElementById("menuButton");
-            const mobileMenu = document.getElementById("mobileMenu");
-            const menuIcon = document.getElementById("menuIcon");
-
-            const productsButton = document.getElementById("productsButton");
-            const productsMobile = document.getElementById("productsMobile");
-            const productsChevron = document.getElementById("productsChevron");
-
-
-            function openMobileMenu() {
-                if (!mobileMenu || !menuButton) return;
-
-                mobileMenu.classList.add("active");
-
-                menuButton.setAttribute("aria-expanded", "true");
-                mobileMenu.setAttribute("aria-hidden", "false");
-
-                if (menuIcon) {
-                    menuIcon.classList.remove("fa-bars");
-                    menuIcon.classList.add("fa-times");
-                }
-
-                document.body.style.overflow = "hidden";
-            }
-
-
-            function closeMobileMenu() {
-                if (!mobileMenu || !menuButton) return;
-
-                mobileMenu.classList.remove("active");
-
-                menuButton.setAttribute("aria-expanded", "false");
-                mobileMenu.setAttribute("aria-hidden", "true");
-
-                if (menuIcon) {
-                    menuIcon.classList.remove("fa-times");
-                    menuIcon.classList.add("fa-bars");
-                }
-
-                document.body.style.overflow = "";
-            }
-
-
-            if (menuButton) {
-
-                menuButton.addEventListener("click", function (event) {
-
-                    event.stopPropagation();
-
-                    if (mobileMenu.classList.contains("active")) {
-                        closeMobileMenu();
-                    } else {
-                        openMobileMenu();
-                    }
-
-                });
-
-            }
-
-
-            /* =================================================
-               MOBILE PRODUCTS
-            ================================================= */
-
-            if (productsButton && productsMobile) {
-
-                productsButton.addEventListener("click", function () {
-
-                    const isOpen =
-                        !productsMobile.classList.contains("hidden");
-
-                    productsMobile.classList.toggle("hidden");
-
-                    productsButton.setAttribute(
-                        "aria-expanded",
-                        isOpen ? "false" : "true"
-                    );
-
-                    if (productsChevron) {
-                        productsChevron.classList.toggle(
-                            "rotate-180",
-                            !isOpen
-                        );
-                    }
-
-                });
-
-            }
-
-
-            /* =================================================
-               CLOSE MOBILE MENU AFTER LINK CLICK
-            ================================================= */
-
-            document
-                .querySelectorAll("#mobileMenu a")
-                .forEach(function (link) {
-
-                    link.addEventListener("click", function () {
-
-                        closeMobileMenu();
-
-                    });
-
-                });
-
-
-            /* =================================================
-               CLOSE WHEN CLICKING OUTSIDE
-            ================================================= */
-
-            document.addEventListener("click", function (event) {
-
-                if (!mobileMenu || !menuButton) return;
-
-                if (
-                    mobileMenu.classList.contains("active") &&
-                    !mobileMenu.contains(event.target) &&
-                    !menuButton.contains(event.target)
-                ) {
-
-                    closeMobileMenu();
-
-                }
-
-            });
-
-
-            /* =================================================
-               ESCAPE KEY
-            ================================================= */
-
-            document.addEventListener("keydown", function (event) {
-
-                if (event.key === "Escape") {
-                    closeMobileMenu();
-                }
-
-            });
-
-
-            /* =================================================
-               CLOSE MOBILE MENU ON RESIZE
-            ================================================= */
-
-            window.addEventListener("resize", function () {
-
-                if (window.innerWidth >= 1024) {
-                    closeMobileMenu();
-                }
-
-            });
-
-
-            /* =================================================
-               HEADER SHADOW
-            ================================================= */
-
-            const header = document.getElementById("siteHeader");
-
-            function updateHeaderShadow() {
-
-                if (!header) return;
-
-                if (window.scrollY > 10) {
-                    header.classList.add("shadow-lg", "scrolled");
-                } else {
-                    header.classList.remove("shadow-lg", "scrolled");
-                }
-
-            }
-
-            window.addEventListener(
-                "scroll",
-                updateHeaderShadow,
-                { passive: true }
-            );
-
-            updateHeaderShadow();
-
-
-            /* =================================================
-               SWIPER
-            ================================================= */
-
-            if (typeof Swiper !== "undefined") {
-
-                new Swiper(".mySwiper", {
-
-                    slidesPerView: 1,
-
-                    spaceBetween: 18,
-
-                    loop: true,
-
-                    autoplay: {
-                        delay: 4000,
-                        disableOnInteraction: false
-                    },
-
-                    pagination: {
-                        el: ".swiper-pagination",
-                        clickable: true
-                    },
-
-                    navigation: {
-                        nextEl: ".swiper-button-next",
-                        prevEl: ".swiper-button-prev"
-                    },
-
-                    breakpoints: {
-
-                        640: {
-                            slidesPerView: 1,
-                            spaceBetween: 20
-                        },
-
-                        768: {
-                            slidesPerView: 2,
-                            spaceBetween: 24
-                        },
-
-                        1024: {
-                            slidesPerView: 3,
-                            spaceBetween: 30
-                        }
-
-                    }
-
-                });
-
-            }
-
-
-            /* =================================================
-               SCROLL ANIMATIONS
-            ================================================= */
-
-            const scrollElements =
-                document.querySelectorAll(".scroll-animate");
-
-            if ("IntersectionObserver" in window) {
-
-                const observer =
-                    new IntersectionObserver(
-                        function (entries) {
-
-                            entries.forEach(function (entry) {
-
-                                if (entry.isIntersecting) {
-
-                                    entry.target.classList.add("visible");
-
-                                    observer.unobserve(entry.target);
-
-                                }
-
-                            });
-
-                        },
-                        {
-                            threshold: .1
-                        }
-                    );
-
-                scrollElements.forEach(function (element) {
-                    observer.observe(element);
-                });
-
-            } else {
-
-                scrollElements.forEach(function (element) {
-                    element.classList.add("visible");
-                });
-
-            }
-
-
-            /* =================================================
-               LAZY LOADING FALLBACK
-            ================================================= */
-
-            const lazyImages =
-                document.querySelectorAll("img[data-src]");
-
-            if ("IntersectionObserver" in window) {
-
-                const imageObserver =
-                    new IntersectionObserver(
-                        function (entries) {
-
-                            entries.forEach(function (entry) {
-
-                                if (entry.isIntersecting) {
-
-                                    const image = entry.target;
-
-                                    if (image.dataset.src) {
-
-                                        image.src =
-                                            image.dataset.src;
-
-                                        image.removeAttribute(
-                                            "data-src"
-                                        );
-
-                                    }
-
-                                    imageObserver.unobserve(image);
-
-                                }
-
-                            });
-
-                        },
-                        {
-                            rootMargin: "100px"
-                        }
-                    );
-
-                lazyImages.forEach(function (image) {
-                    imageObserver.observe(image);
-                });
-
-            }
-
-
-            /* =================================================
-               SITE SEARCH
-            ================================================= */
-
-            const searchItems = [
-                { title: "Home", description: "Main page", url: "index.html" },
-                { title: "About", description: "About Iggy-Controls Technologies", url: "about.html" },
-                { title: "Laundry Solutions", description: "Commercial and industrial laundry equipment", url: "laundry.html" },
-                { title: "Kitchen Solutions", description: "Commercial kitchen equipment", url: "kitchen.html" },
-                { title: "Services", description: "Supply, installation, maintenance and consultancy", url: "services.html" },
-                { title: "Spare Parts", description: "Equipment spare parts and technical support", url: "spareparts.html" },
-                { title: "Chemicals", description: "Laundry chemicals and detergents", url: "chemicals.html" },
-                { title: "Washers", description: "Industrial washer extractors", url: "washers.html" },
-                { title: "Dryers", description: "Commercial and industrial tumble dryers", url: "dryers.html" },
-                { title: "Ironers", description: "Professional ironing equipment", url: "ironers.html" },
-                { title: "Folders", description: "Professional linen folding equipment", url: "folders.html" },
-                { title: "Kitchen Equipment", description: "Commercial kitchen equipment solutions", url: "kitchen-equipment.html" },
-                { title: "Contact", description: "Contact Iggy-Controls Technologies", url: "contact.html" }
-            ];
-
-            // The search index is broader than the navigation labels. It also reads
-            // each internal HTML page and indexes visible text, headings, images and links.
-            let siteSearchIndex = searchItems.map(item => ({
-                ...item,
-                keywords: `${item.title} ${item.description}`,
-                snippet: item.description
-            }));
-
-            const normalizeSearchText = (value) =>
-                (value || "")
-                    .replace(/\s+/g, " ")
-                    .trim();
-
-            function buildCurrentPageIndex() {
-                const pageName = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
-                const currentEntry = siteSearchIndex.find(item => item.url.toLowerCase() === pageName);
-                const main = document.querySelector("main") || document.body;
-
-                if (!main) return;
-
-                const visibleText = normalizeSearchText(main.innerText);
-                const headings = Array.from(main.querySelectorAll("h1,h2,h3,h4,h5,h6"))
-                    .map(el => normalizeSearchText(el.textContent))
-                    .filter(Boolean);
-                const altText = Array.from(main.querySelectorAll("img[alt]"))
-                    .map(img => normalizeSearchText(img.getAttribute("alt")))
-                    .filter(Boolean);
-                const linkText = Array.from(main.querySelectorAll("a"))
-                    .map(a => normalizeSearchText(a.textContent))
-                    .filter(Boolean);
-
-                const entry = currentEntry || {
-                    title: document.title.replace(/\\s*\\|\\s*Iggy.*$/i, ""),
-                    description: headings[0] || "Website page",
-                    url: pageName
-                };
-
-                const keywordSource = [
-                    entry.title,
-                    entry.description,
-                    headings.join(" "),
-                    altText.join(" "),
-                    linkText.join(" "),
-                    visibleText
-                ].join(" ");
-
-                const snippetSource = headings.slice(0, 3).join(" • ") || entry.description;
-                const indexEntry = {
-                    ...entry,
-                    keywords: keywordSource.toLowerCase(),
-                    snippet: normalizeSearchText(snippetSource).slice(0, 180)
-                };
-
-                siteSearchIndex = siteSearchIndex.filter(item => item.url.toLowerCase() !== entry.url.toLowerCase());
-                siteSearchIndex.unshift(indexEntry);
-            }
-
-            function getInternalPageUrls() {
-                const urls = new Set(searchItems.map(item => item.url));
-                document.querySelectorAll("a[href]").forEach(link => {
-                    const rawHref = link.getAttribute("href");
-                    if (!rawHref || rawHref.startsWith("#") || rawHref.startsWith("mailto:") || rawHref.startsWith("tel:") || rawHref.startsWith("javascript:")) return;
-
-                    try {
-                        const url = new URL(rawHref, window.location.href);
-                        if (url.origin !== window.location.origin) return;
-                        if (!/^https?:$/.test(url.protocol) && url.protocol !== "file:") return;
-
-                        const path = url.pathname.split("/").pop();
-                        if (path && path.toLowerCase().endsWith(".html")) {
-                            urls.add(path);
-                        }
-                    } catch (_) {}
-                });
-
-                return Array.from(urls);
-            }
-
-            async function expandSearchIndexAcrossWebsite() {
-                buildCurrentPageIndex();
-
-                const pageUrls = getInternalPageUrls();
-                const fetches = pageUrls.map(async url => {
-                        try {
-                            const response = await fetch(url, { cache: "no-store" });
-                            if (!response.ok) return null;
-
-                            const html = await response.text();
-                            const doc = new DOMParser().parseFromString(html, "text/html");
-                            const main = doc.querySelector("main") || doc.body;
-                            if (!main) return null;
-
-                            main.querySelectorAll("script,style,noscript").forEach(el => el.remove());
-
-                            const title = normalizeSearchText(
-                                doc.querySelector("h1")?.textContent ||
-                                doc.title ||
-                                url.replace(/\.html$/i, "").replace(/[-_]+/g, " ")
-                            );
-
-                            const headings = Array.from(main.querySelectorAll("h1,h2,h3,h4,h5,h6"))
-                                .map(el => normalizeSearchText(el.textContent))
-                                .filter(Boolean);
-
-                            const paragraphs = Array.from(main.querySelectorAll("p,li"))
-                                .map(el => normalizeSearchText(el.textContent))
-                                .filter(text => text.length > 20);
-
-                            const altText = Array.from(main.querySelectorAll("img[alt]"))
-                                .map(img => normalizeSearchText(img.getAttribute("alt")))
-                                .filter(Boolean);
-
-                            const visibleText = normalizeSearchText(main.innerText || main.textContent);
-                            const description = paragraphs[0] || headings[1] || "Website information";
-
-                            return {
-                                title,
-                                description: description.slice(0, 180),
-                                url,
-                                keywords: [title, headings.join(" "), paragraphs.join(" "), altText.join(" "), visibleText].join(" ").toLowerCase(),
-                                snippet: normalizeSearchText(headings.slice(0, 2).concat(paragraphs.slice(0, 1)).join(" • ")).slice(0, 220)
-                            };
-                        } catch (_) {
-                            return null;
-                        }
-                    });
-
-                const fetchedEntries = (await Promise.all(fetches)).filter(Boolean);
-                const merged = new Map(siteSearchIndex.map(item => [item.url.toLowerCase(), item]));
-                fetchedEntries.forEach(item => merged.set(item.url.toLowerCase(), item));
-                siteSearchIndex = Array.from(merged.values());
-            }
-
-            function highlightMatch(text, query) {
-                const safe = String(text || "");
-                const q = String(query || "").trim();
-                if (!q) return safe;
-
-                const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-                return safe.replace(new RegExp(`(${escaped})`, "ig"), "<mark>$1</mark>");
-            }
-
-            function setupSearch(inputId, resultsId, formId) {
-                const input = document.getElementById(inputId);
-                const results = document.getElementById(resultsId);
-                const form = document.getElementById(formId);
-
-                if (!input || !results || !form) return;
-
-                function renderResults(query) {
-                    const q = query.trim().toLowerCase();
-
-                    if (!q) {
-                        results.innerHTML = "";
-                        results.classList.remove("active");
-                        return;
-                    }
-
-                    const terms = q.split(/\s+/).filter(Boolean);
-                    const matches = siteSearchIndex
-                        .map(item => {
-                            const haystack = `${item.title} ${item.description} ${item.keywords || ""}`.toLowerCase();
-                            const score = terms.reduce((total, term) => {
-                                if (!haystack.includes(term)) return total;
-                                let points = 1;
-                                if (item.title.toLowerCase().includes(term)) points += 4;
-                                if (item.description.toLowerCase().includes(term)) points += 2;
-                                return total + points;
-                            }, 0);
-                            return { item, score };
-                        })
-                        .filter(result => result.score > 0)
-                        .sort((a, b) => b.score - a.score)
-                        .slice(0, 10)
-                        .map(result => result.item);
-
-                    if (!matches.length) {
-                        results.innerHTML = `
-                            <div class="no-search-results">
-                                <i class="fas fa-magnifying-glass"></i>
-                                <span>No matching information found across the website.</span>
-                            </div>`;
-                        results.classList.add("active");
-                        return;
-                    }
-
-                    results.innerHTML = matches.map(item => `
-                        <a class="search-result" href="${item.url}">
-                            <strong>${highlightMatch(item.title, query)}</strong>
-                            <small>${highlightMatch(item.snippet || item.description, query)}</small>
-                        </a>
-                    `).join("");
-
-                    results.classList.add("active");
-                }
-
-                input.addEventListener("input", function () {
-                    renderResults(this.value);
-                });
-
-                form.addEventListener("submit", function (event) {
-                    event.preventDefault();
-
-                    const q = input.value.trim().toLowerCase();
-                    if (!q) return;
-
-                    const terms = q.split(/\s+/).filter(Boolean);
-                    const bestMatch = siteSearchIndex
-                        .map(item => {
-                            const haystack = `${item.title} ${item.description} ${item.keywords || ""}`.toLowerCase();
-                            const score = terms.reduce((total, term) => total + (haystack.includes(term) ? 1 : 0), 0);
-                            return { item, score };
-                        })
-                        .sort((a, b) => b.score - a.score)[0];
-
-                    if (bestMatch && bestMatch.score === terms.length) {
-                        window.location.href = bestMatch.item.url;
-                    } else if (bestMatch && bestMatch.score > 0) {
-                        window.location.href = bestMatch.item.url;
-                    } else {
-                        renderResults(input.value);
-                    }
-                });
-
-                document.addEventListener("click", function (event) {
-                    if (!form.contains(event.target)) {
-                        results.classList.remove("active");
-                    }
-                });
-            }
-
-            setupSearch("desktopSearchInput", "desktopSearchResults", "desktopSearchForm");
-            setupSearch("mobileSearchInput", "mobileSearchResults", "mobileSearchForm");
-
-            // Build the broad site index in the background so the search is useful
-            // immediately and becomes more comprehensive as internal pages load.
-            expandSearchIndexAcrossWebsite();
-
-
-            /* =================================================
-               REQUEST A QUOTE FORM
-            ================================================= */
-
-            const quoteModal = document.getElementById("quoteModal");
-            const quoteForm = document.getElementById("quoteForm");
-            const quoteClose = document.getElementById("quoteClose");
-
-            function openQuoteModal() {
-                if (!quoteModal) return;
-                quoteModal.classList.add("active");
-                quoteModal.setAttribute("aria-hidden", "false");
-                document.body.classList.add("overflow-hidden");
-
-                const nameInput = document.getElementById("quoteName");
-                if (nameInput) {
-                    setTimeout(() => nameInput.focus(), 100);
-                }
-            }
-
-            function closeQuoteModal() {
-                if (!quoteModal) return;
-                quoteModal.classList.remove("active");
-                quoteModal.setAttribute("aria-hidden", "true");
-                document.body.classList.remove("overflow-hidden");
-            }
-
-            document.querySelectorAll(".quote-trigger").forEach(function (trigger) {
-                trigger.addEventListener("click", function (event) {
-                    event.preventDefault();
-                    openQuoteModal();
-                });
-            });
-
-            if (quoteClose) {
-                quoteClose.addEventListener("click", closeQuoteModal);
-            }
-
-            if (quoteModal) {
-                quoteModal.addEventListener("click", function (event) {
-                    if (event.target === quoteModal) {
-                        closeQuoteModal();
-                    }
-                });
-            }
-
-            document.addEventListener("keydown", function (event) {
-                if (event.key === "Escape" && quoteModal && quoteModal.classList.contains("active")) {
-                    closeQuoteModal();
-                }
-            });
-
-            if (quoteForm) {
-                quoteForm.addEventListener("submit", function (event) {
-                    event.preventDefault();
-
-                    const formData = new FormData(quoteForm);
-                    const subject = encodeURIComponent("Quote Request - Iggy-Controls Technologies");
-                    const body = encodeURIComponent(
-                        "Full Name: " + (formData.get("name") || "") + "\n" +
-                        "Company / Organisation: " + (formData.get("company") || "") + "\n" +
-                        "Phone Number: " + (formData.get("phone") || "") + "\n" +
-                        "Email Address: " + (formData.get("email") || "") + "\n" +
-                        "Service / Quote For: " + (formData.get("service") || "") + "\n" +
-                        "Quantity: " + (formData.get("quantity") || "") + "\n\n" +
-                        "Project / Equipment Details:\n" + (formData.get("details") || "")
-                    );
-
-                    window.location.href = "mailto:info@iggycontrols.com?subject=" + subject + "&body=" + body;
-                });
-            }
-
-            /* =================================================
-               SMOOTH INTERNAL LINKS
-            ================================================= */
-
-            document
-                .querySelectorAll('a[href^="#"]')
-                .forEach(function (anchor) {
-
-                    anchor.addEventListener(
-                        "click",
-                        function (event) {
-
-                            const targetId =
-                                this.getAttribute("href");
-
-                            if (
-                                !targetId ||
-                                targetId === "#"
-                            ) {
-                                return;
-                            }
-
-                            const target =
-                                document.querySelector(targetId);
-
-                            if (target) {
-
-                                event.preventDefault();
-
-                                target.scrollIntoView({
-                                    behavior: "smooth",
-                                    block: "start"
-                                });
-
-                            }
-
-                        }
-                    );
-
-                });
-
-        });
-    </script>
-
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+ 
+ 
+    <!-- ===================================================== 
+         JAVASCRIPT 
+    ===================================================== --> 
+ 
+    <script> 
+        document.addEventListener("DOMContentLoaded", function () { 
+ 
+            /* ================================================= 
+               MOBILE MENU 
+            ================================================= */ 
+ 
+            const menuButton = document.getElementById("menuButton"); 
+            const mobileMenu = document.getElementById("mobileMenu"); 
+            const menuIcon = document.getElementById("menuIcon"); 
+ 
+            const productsButton = document.getElementById("productsButton"); 
+            const productsMobile = document.getElementById("productsMobile"); 
+            const productsChevron = document.getElementById("productsChevron"); 
+ 
+ 
+            function openMobileMenu() { 
+                if (!mobileMenu || !menuButton) return; 
+ 
+                closeMobileSearchOverlay();
+
+                mobileMenu.classList.add("active"); 
+ 
+                menuButton.setAttribute("aria-expanded", "true"); 
+                mobileMenu.setAttribute("aria-hidden", "false"); 
+ 
+                if (menuIcon) { 
+                    menuIcon.classList.remove("fa-bars"); 
+                    menuIcon.classList.add("fa-times"); 
+                } 
+ 
+                document.body.style.overflow = "hidden"; 
+            } 
+ 
+ 
+            function closeMobileMenu() { 
+                if (!mobileMenu || !menuButton) return; 
+ 
+                mobileMenu.classList.remove("active"); 
+ 
+                menuButton.setAttribute("aria-expanded", "false"); 
+                mobileMenu.setAttribute("aria-hidden", "true"); 
+ 
+                if (menuIcon) { 
+                    menuIcon.classList.remove("fa-times"); 
+                    menuIcon.classList.add("fa-bars"); 
+                } 
+ 
+                document.body.style.overflow = ""; 
+            } 
+ 
+ 
+            if (menuButton) { 
+ 
+                menuButton.addEventListener("click", function (event) { 
+ 
+                    event.stopPropagation(); 
+ 
+                    if (mobileMenu.classList.contains("active")) { 
+                        closeMobileMenu(); 
+                    } else { 
+                        openMobileMenu(); 
+                    } 
+ 
+                }); 
+ 
+            } 
+
+
+            /* ================================================= 
+               MOBILE SEARCH OVERLAY (opens over the hero, blurs it) 
+            ================================================= */ 
+
+            const mobileSearchToggle = document.getElementById("mobileSearchToggle"); 
+            const mobileSearchOverlay = document.getElementById("mobileSearchOverlay"); 
+            const mobileSearchClose = document.getElementById("mobileSearchClose"); 
+            const mobileSearchInputEl = document.getElementById("mobileSearchInput"); 
+
+            function openMobileSearchOverlay() { 
+                if (!mobileSearchOverlay || !mobileSearchToggle) return; 
+
+                closeMobileMenu(); 
+
+                mobileSearchOverlay.classList.add("active"); 
+                mobileSearchOverlay.setAttribute("aria-hidden", "false"); 
+                mobileSearchToggle.setAttribute("aria-expanded", "true"); 
+
+                document.body.style.overflow = "hidden"; 
+
+                if (mobileSearchInputEl) { 
+                    setTimeout(() => mobileSearchInputEl.focus(), 150); 
+                } 
+            } 
+
+            function closeMobileSearchOverlay() { 
+                if (!mobileSearchOverlay || !mobileSearchToggle) return; 
+
+                mobileSearchOverlay.classList.remove("active"); 
+                mobileSearchOverlay.setAttribute("aria-hidden", "true"); 
+                mobileSearchToggle.setAttribute("aria-expanded", "false"); 
+
+                document.body.style.overflow = ""; 
+            } 
+
+            if (mobileSearchToggle) { 
+                mobileSearchToggle.addEventListener("click", function (event) { 
+                    event.stopPropagation(); 
+
+                    if (mobileSearchOverlay.classList.contains("active")) { 
+                        closeMobileSearchOverlay(); 
+                    } else { 
+                        openMobileSearchOverlay(); 
+                    } 
+                }); 
+            } 
+
+            if (mobileSearchClose) { 
+                mobileSearchClose.addEventListener("click", function (event) { 
+                    event.stopPropagation(); 
+                    closeMobileSearchOverlay(); 
+                }); 
+            } 
+
+            if (mobileSearchOverlay) { 
+                mobileSearchOverlay.addEventListener("click", function (event) { 
+                    if (event.target === mobileSearchOverlay) { 
+                        closeMobileSearchOverlay(); 
+                    } 
+                }); 
+            } 
+
+ 
+            /* ================================================= 
+               MOBILE PRODUCTS 
+            ================================================= */ 
+ 
+            if (productsButton && productsMobile) { 
+ 
+                productsButton.addEventListener("click", function () { 
+ 
+                    const isOpen = 
+                        !productsMobile.classList.contains("hidden"); 
+ 
+                    productsMobile.classList.toggle("hidden"); 
+ 
+                    productsButton.setAttribute( 
+                        "aria-expanded", 
+                        isOpen ? "false" : "true" 
+                    ); 
+ 
+                    if (productsChevron) { 
+                        productsChevron.classList.toggle( 
+                            "rotate-180", 
+                            !isOpen 
+                        ); 
+                    } 
+ 
+                }); 
+ 
+            } 
+ 
+ 
+            /* ================================================= 
+               CLOSE MOBILE MENU AFTER LINK CLICK 
+            ================================================= */ 
+ 
+            document 
+                .querySelectorAll("#mobileMenu a") 
+                .forEach(function (link) { 
+ 
+                    link.addEventListener("click", function () { 
+ 
+                        closeMobileMenu(); 
+ 
+                    }); 
+ 
+                }); 
+ 
+ 
+            /* ================================================= 
+               CLOSE WHEN CLICKING OUTSIDE 
+            ================================================= */ 
+ 
+            document.addEventListener("click", function (event) { 
+ 
+                if (!mobileMenu || !menuButton) return; 
+ 
+                if ( 
+                    mobileMenu.classList.contains("active") && 
+                    !mobileMenu.contains(event.target) && 
+                    !menuButton.contains(event.target) 
+                ) { 
+ 
+                    closeMobileMenu(); 
+ 
+                } 
+ 
+                if ( 
+                    mobileSearchOverlay && 
+                    mobileSearchOverlay.classList.contains("active") && 
+                    !mobileSearchOverlay.contains(event.target) && 
+                    mobileSearchToggle && 
+                    !mobileSearchToggle.contains(event.target) 
+                ) { 
+
+                    closeMobileSearchOverlay(); 
+
+                } 
+ 
+            }); 
+ 
+ 
+            /* ================================================= 
+               ESCAPE KEY 
+            ================================================= */ 
+ 
+            document.addEventListener("keydown", function (event) { 
+ 
+                if (event.key === "Escape") { 
+                    closeMobileMenu(); 
+                    closeMobileSearchOverlay(); 
+                } 
+ 
+            }); 
+ 
+ 
+            /* ================================================= 
+               CLOSE MOBILE MENU ON RESIZE 
+            ================================================= */ 
+ 
+            window.addEventListener("resize", function () { 
+ 
+                if (window.innerWidth >= 1024) { 
+                    closeMobileMenu(); 
+                    closeMobileSearchOverlay(); 
+                } 
+ 
+            }); 
+ 
+ 
+            /* ================================================= 
+               HEADER SHADOW 
+            ================================================= */ 
+ 
+            const header = document.getElementById("siteHeader"); 
+ 
+            function updateHeaderShadow() { 
+ 
+                if (!header) return; 
+ 
+                if (window.scrollY > 10) { 
+                    header.classList.add("shadow-lg", "scrolled"); 
+                } else { 
+                    header.classList.remove("shadow-lg", "scrolled"); 
+                } 
+ 
+            } 
+ 
+            window.addEventListener( 
+                "scroll", 
+                updateHeaderShadow, 
+                { passive: true } 
+            ); 
+ 
+            updateHeaderShadow(); 
+ 
+ 
+            /* ================================================= 
+               SWIPER 
+            ================================================= */ 
+ 
+            if (typeof Swiper !== "undefined") { 
+ 
+                new Swiper(".mySwiper", { 
+ 
+                    slidesPerView: 1, 
+ 
+                    spaceBetween: 18, 
+ 
+                    loop: true, 
+ 
+                    autoplay: { 
+                        delay: 4000, 
+                        disableOnInteraction: false 
+                    }, 
+ 
+                    pagination: { 
+                        el: ".swiper-pagination", 
+                        clickable: true 
+                    }, 
+ 
+                    navigation: { 
+                        nextEl: ".swiper-button-next", 
+                        prevEl: ".swiper-button-prev" 
+                    }, 
+ 
+                    breakpoints: { 
+ 
+                        640: { 
+                            slidesPerView: 1, 
+                            spaceBetween: 20 
+                        }, 
+ 
+                        768: { 
+                            slidesPerView: 2, 
+                            spaceBetween: 24 
+                        }, 
+ 
+                        1024: { 
+                            slidesPerView: 3, 
+                            spaceBetween: 30 
+                        } 
+ 
+                    } 
+ 
+                }); 
+ 
+            } 
+ 
+ 
+            /* ================================================= 
+               SCROLL ANIMATIONS 
+            ================================================= */ 
+ 
+            const scrollElements = 
+                document.querySelectorAll(".scroll-animate"); 
+ 
+            if ("IntersectionObserver" in window) { 
+ 
+                const observer = 
+                    new IntersectionObserver( 
+                        function (entries) { 
+ 
+                            entries.forEach(function (entry) { 
+ 
+                                if (entry.isIntersecting) { 
+ 
+                                    entry.target.classList.add("visible"); 
+ 
+                                    observer.unobserve(entry.target); 
+ 
+                                } 
+ 
+                            }); 
+ 
+                        }, 
+                        { 
+                            threshold: .1 
+                        } 
+                    ); 
+ 
+                scrollElements.forEach(function (element) { 
+                    observer.observe(element); 
+                }); 
+ 
+            } else { 
+ 
+                scrollElements.forEach(function (element) { 
+                    element.classList.add("visible"); 
+                }); 
+ 
+            } 
+ 
+ 
+            /* ================================================= 
+               LAZY LOADING FALLBACK 
+            ================================================= */ 
+ 
+            const lazyImages = 
+                document.querySelectorAll("img[data-src]"); 
+ 
+            if ("IntersectionObserver" in window) { 
+ 
+                const imageObserver = 
+                    new IntersectionObserver( 
+                        function (entries) { 
+ 
+                            entries.forEach(function (entry) { 
+ 
+                                if (entry.isIntersecting) { 
+ 
+                                    const image = entry.target; 
+ 
+                                    if (image.dataset.src) { 
+ 
+                                        image.src = 
+                                            image.dataset.src; 
+ 
+                                        image.removeAttribute( 
+                                            "data-src" 
+                                        ); 
+ 
+                                    } 
+ 
+                                    imageObserver.unobserve(image); 
+ 
+                                } 
+ 
+                            }); 
+ 
+                        }, 
+                        { 
+                            rootMargin: "100px" 
+                        } 
+                    ); 
+ 
+                lazyImages.forEach(function (image) { 
+                    imageObserver.observe(image); 
+                }); 
+ 
+            } 
+ 
+ 
+            /* ================================================= 
+               SITE SEARCH 
+            ================================================= */ 
+ 
+            const searchItems = [ 
+                { title: "Home", description: "Main page", url: "index.html" }, 
+                { title: "About", description: "About Iggy-Controls Technologies", url: "about.html" }, 
+                { title: "Laundry Solutions", description: "Commercial and industrial laundry equipment", url: "laundry.html" }, 
+                { title: "Kitchen Solutions", description: "Commercial kitchen equipment", url: "kitchen.html" }, 
+                { title: "Services", description: "Supply, installation, maintenance and consultancy", url: "services.html" }, 
+                { title: "Spare Parts", description: "Equipment spare parts and technical support", url: "spareparts.html" }, 
+                { title: "Chemicals", description: "Laundry chemicals and detergents", url: "chemicals.html" }, 
+                { title: "Washers", description: "Industrial washer extractors", url: "washers.html" }, 
+                { title: "Dryers", description: "Commercial and industrial tumble dryers", url: "dryers.html" }, 
+                { title: "Ironers", description: "Professional ironing equipment", url: "ironers.html" }, 
+                { title: "Folders", description: "Professional linen folding equipment", url: "folders.html" }, 
+                { title: "Kitchen Equipment", description: "Commercial kitchen equipment solutions", url: "kitchen-equipment.html" }, 
+                { title: "Contact", description: "Contact Iggy-Controls Technologies", url: "contact.html" } 
+            ]; 
+ 
+            // The search index is broader than the navigation labels. It also reads 
+            // each internal HTML page and indexes visible text, headings, images and links. 
+            let siteSearchIndex = searchItems.map(item => ({ 
+                ...item, 
+                keywords: `${item.title} ${item.description}`, 
+                snippet: item.description 
+            })); 
+ 
+            const normalizeSearchText = (value) => 
+                (value || "") 
+                    .replace(/\s+/g, " ") 
+                    .trim(); 
+ 
+            function buildCurrentPageIndex() { 
+                const pageName = (window.location.pathname.split("/").pop() || "index.html").toLowerCase(); 
+                const currentEntry = siteSearchIndex.find(item => item.url.toLowerCase() === pageName); 
+                const main = document.querySelector("main") || document.body; 
+ 
+                if (!main) return; 
+ 
+                const visibleText = normalizeSearchText(main.innerText); 
+                const headings = Array.from(main.querySelectorAll("h1,h2,h3,h4,h5,h6")) 
+                    .map(el => normalizeSearchText(el.textContent)) 
+                    .filter(Boolean); 
+                const altText = Array.from(main.querySelectorAll("img[alt]")) 
+                    .map(img => normalizeSearchText(img.getAttribute("alt"))) 
+                    .filter(Boolean); 
+                const linkText = Array.from(main.querySelectorAll("a")) 
+                    .map(a => normalizeSearchText(a.textContent)) 
+                    .filter(Boolean); 
+ 
+                const entry = currentEntry || { 
+                    title: document.title.replace(/\\s*\\|\\s*Iggy.*$/i, ""), 
+                    description: headings[0] || "Website page", 
+                    url: pageName 
+                }; 
+ 
+                const keywordSource = [ 
+                    entry.title, 
+                    entry.description, 
+                    headings.join(" "), 
+                    altText.join(" "), 
+                    linkText.join(" "), 
+                    visibleText 
+                ].join(" "); 
+ 
+                const snippetSource = headings.slice(0, 3).join(" • ") || entry.description; 
+                const indexEntry = { 
+                    ...entry, 
+                    keywords: keywordSource.toLowerCase(), 
+                    snippet: normalizeSearchText(snippetSource).slice(0, 180) 
+                }; 
+ 
+                siteSearchIndex = siteSearchIndex.filter(item => item.url.toLowerCase() !== entry.url.toLowerCase()); 
+                siteSearchIndex.unshift(indexEntry); 
+            } 
+ 
+            function getInternalPageUrls() { 
+                const urls = new Set(searchItems.map(item => item.url)); 
+                document.querySelectorAll("a[href]").forEach(link => { 
+                    const rawHref = link.getAttribute("href"); 
+                    if (!rawHref || rawHref.startsWith("#") || rawHref.startsWith("mailto:") || rawHref.startsWith("tel:") || rawHref.startsWith("javascript:")) return; 
+ 
+                    try { 
+                        const url = new URL(rawHref, window.location.href); 
+                        if (url.origin !== window.location.origin) return; 
+                        if (!/^https?:$/.test(url.protocol) && url.protocol !== "file:") return; 
+ 
+                        const path = url.pathname.split("/").pop(); 
+                        if (path && path.toLowerCase().endsWith(".html")) { 
+                            urls.add(path); 
+                        } 
+                    } catch (_) {} 
+                }); 
+ 
+                return Array.from(urls); 
+            } 
+ 
+            async function expandSearchIndexAcrossWebsite() { 
+                buildCurrentPageIndex(); 
+ 
+                const pageUrls = getInternalPageUrls(); 
+                const fetches = pageUrls.map(async url => { 
+                        try { 
+                            const response = await fetch(url, { cache: "no-store" }); 
+                            if (!response.ok) return null; 
+ 
+                            const html = await response.text(); 
+                            const doc = new DOMParser().parseFromString(html, "text/html"); 
+                            const main = doc.querySelector("main") || doc.body; 
+                            if (!main) return null; 
+ 
+                            main.querySelectorAll("script,style,noscript").forEach(el => el.remove()); 
+ 
+                            const title = normalizeSearchText( 
+                                doc.querySelector("h1")?.textContent || 
+                                doc.title || 
+                                url.replace(/\.html$/i, "").replace(/[-_]+/g, " ") 
+                            ); 
+ 
+                            const headings = Array.from(main.querySelectorAll("h1,h2,h3,h4,h5,h6")) 
+                                .map(el => normalizeSearchText(el.textContent)) 
+                                .filter(Boolean); 
+ 
+                            const paragraphs = Array.from(main.querySelectorAll("p,li")) 
+                                .map(el => normalizeSearchText(el.textContent)) 
+                                .filter(text => text.length > 20); 
+ 
+                            const altText = Array.from(main.querySelectorAll("img[alt]")) 
+                                .map(img => normalizeSearchText(img.getAttribute("alt"))) 
+                                .filter(Boolean); 
+ 
+                            const visibleText = normalizeSearchText(main.innerText || main.textContent); 
+                            const description = paragraphs[0] || headings[1] || "Website information"; 
+ 
+                            return { 
+                                title, 
+                                description: description.slice(0, 180), 
+                                url, 
+                                keywords: [title, headings.join(" "), paragraphs.join(" "), altText.join(" "), visibleText].join(" ").toLowerCase(), 
+                                snippet: normalizeSearchText(headings.slice(0, 2).concat(paragraphs.slice(0, 1)).join(" • ")).slice(0, 220) 
+                            }; 
+                        } catch (_) { 
+                            return null; 
+                        } 
+                    }); 
+ 
+                const fetchedEntries = (await Promise.all(fetches)).filter(Boolean); 
+                const merged = new Map(siteSearchIndex.map(item => [item.url.toLowerCase(), item])); 
+                fetchedEntries.forEach(item => merged.set(item.url.toLowerCase(), item)); 
+                siteSearchIndex = Array.from(merged.values()); 
+            } 
+ 
+            function highlightMatch(text, query) { 
+                const safe = String(text || ""); 
+                const q = String(query || "").trim(); 
+                if (!q) return safe; 
+ 
+                const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); 
+                return safe.replace(new RegExp(`(${escaped})`, "ig"), "<mark>$1</mark>"); 
+            } 
+ 
+            function setupSearch(inputId, resultsId, formId) { 
+                const input = document.getElementById(inputId); 
+                const results = document.getElementById(resultsId); 
+                const form = document.getElementById(formId); 
+ 
+                if (!input || !results || !form) return; 
+ 
+                function renderResults(query) { 
+                    const q = query.trim().toLowerCase(); 
+ 
+                    if (!q) { 
+                        results.innerHTML = ""; 
+                        results.classList.remove("active"); 
+                        return; 
+                    } 
+ 
+                    const terms = q.split(/\s+/).filter(Boolean); 
+                    const matches = siteSearchIndex 
+                        .map(item => { 
+                            const haystack = `${item.title} ${item.description} ${item.keywords || ""}`.toLowerCase(); 
+                            const score = terms.reduce((total, term) => { 
+                                if (!haystack.includes(term)) return total; 
+                                let points = 1; 
+                                if (item.title.toLowerCase().includes(term)) points += 4; 
+                                if (item.description.toLowerCase().includes(term)) points += 2; 
+                                return total + points; 
+                            }, 0); 
+                            return { item, score }; 
+                        }) 
+                        .filter(result => result.score > 0) 
+                        .sort((a, b) => b.score - a.score) 
+                        .slice(0, 10) 
+                        .map(result => result.item); 
+ 
+                    if (!matches.length) { 
+                        results.innerHTML = ` 
+                            <div class="no-search-results"> 
+                                <i class="fas fa-magnifying-glass"></i> 
+                                <span>No matching information found across the website.</span> 
+                            </div>`; 
+                        results.classList.add("active"); 
+                        return; 
+                    } 
+ 
+                    results.innerHTML = matches.map(item => ` 
+                        <a class="search-result" href="${item.url}"> 
+                            <strong>${highlightMatch(item.title, query)}</strong> 
+                            <small>${highlightMatch(item.snippet || item.description, query)}</small> 
+                        </a> 
+                    `).join(""); 
+ 
+                    results.classList.add("active"); 
+                } 
+ 
+                input.addEventListener("input", function () { 
+                    renderResults(this.value); 
+                }); 
+ 
+                form.addEventListener("submit", function (event) { 
+                    event.preventDefault(); 
+ 
+                    const q = input.value.trim().toLowerCase(); 
+                    if (!q) return; 
+ 
+                    const terms = q.split(/\s+/).filter(Boolean); 
+                    const bestMatch = siteSearchIndex 
+                        .map(item => { 
+                            const haystack = `${item.title} ${item.description} ${item.keywords || ""}`.toLowerCase(); 
+                            const score = terms.reduce((total, term) => total + (haystack.includes(term) ? 1 : 0), 0); 
+                            return { item, score }; 
+                        }) 
+                        .sort((a, b) => b.score - a.score)[0]; 
+ 
+                    if (bestMatch && bestMatch.score === terms.length) { 
+                        window.location.href = bestMatch.item.url; 
+                    } else if (bestMatch && bestMatch.score > 0) { 
+                        window.location.href = bestMatch.item.url; 
+                    } else { 
+                        renderResults(input.value); 
+                    } 
+                }); 
+ 
+                document.addEventListener("click", function (event) { 
+                    if (!form.contains(event.target)) { 
+                        results.classList.remove("active"); 
+                    } 
+                }); 
+            } 
+ 
+            setupSearch("desktopSearchInput", "desktopSearchResults", "desktopSearchForm"); 
+            setupSearch("mobileSearchInput", "mobileSearchResults", "mobileSearchForm"); 
+ 
+            // Build the broad site index in the background so the search is useful 
+            // immediately and becomes more comprehensive as internal pages load. 
+            expandSearchIndexAcrossWebsite(); 
+ 
+ 
+            /* ================================================= 
+               REQUEST A QUOTE FORM 
+            ================================================= */ 
+ 
+            const quoteModal = document.getElementById("quoteModal"); 
+            const quoteForm = document.getElementById("quoteForm"); 
+            const quoteClose = document.getElementById("quoteClose"); 
+ 
+            function openQuoteModal() { 
+                if (!quoteModal) return; 
+                quoteModal.classList.add("active"); 
+                quoteModal.setAttribute("aria-hidden", "false"); 
+                document.body.classList.add("overflow-hidden"); 
+ 
+                const nameInput = document.getElementById("quoteName"); 
+                if (nameInput) { 
+                    setTimeout(() => nameInput.focus(), 100); 
+                } 
+            } 
+ 
+            function closeQuoteModal() { 
+                if (!quoteModal) return; 
+                quoteModal.classList.remove("active"); 
+                quoteModal.setAttribute("aria-hidden", "true"); 
+                document.body.classList.remove("overflow-hidden"); 
+            } 
+ 
+            document.querySelectorAll(".quote-trigger").forEach(function (trigger) { 
+                trigger.addEventListener("click", function (event) { 
+                    event.preventDefault(); 
+                    openQuoteModal(); 
+                }); 
+            }); 
+ 
+            if (quoteClose) { 
+                quoteClose.addEventListener("click", closeQuoteModal); 
+            } 
+ 
+            if (quoteModal) { 
+                quoteModal.addEventListener("click", function (event) { 
+                    if (event.target === quoteModal) { 
+                        closeQuoteModal(); 
+                    } 
+                }); 
+            } 
+ 
+            document.addEventListener("keydown", function (event) { 
+                if (event.key === "Escape" && quoteModal && quoteModal.classList.contains("active")) { 
+                    closeQuoteModal(); 
+                } 
+            }); 
+ 
+            if (quoteForm) { 
+                quoteForm.addEventListener("submit", function (event) { 
+                    event.preventDefault(); 
+ 
+                    const formData = new FormData(quoteForm); 
+                    const subject = encodeURIComponent("Quote Request - Iggy-Controls Technologies"); 
+                    const body = encodeURIComponent( 
+                        "Full Name: " + (formData.get("name") || "") + "\n" + 
+                        "Company / Organisation: " + (formData.get("company") || "") + "\n" + 
+                        "Phone Number: " + (formData.get("phone") || "") + "\n" + 
+                        "Email Address: " + (formData.get("email") || "") + "\n" + 
+                        "Service / Quote For: " + (formData.get("service") || "") + "\n" + 
+                        "Quantity: " + (formData.get("quantity") || "") + "\n\n" + 
+                        "Project / Equipment Details:\n" + (formData.get("details") || "") 
+                    ); 
+ 
+                    window.location.href = "mailto:info@iggycontrols.com?subject=" + subject + "&body=" + body; 
+                }); 
+            } 
+ 
+            /* ================================================= 
+               SMOOTH INTERNAL LINKS 
+            ================================================= */ 
+ 
+            document 
+                .querySelectorAll('a[href^="#"]') 
+                .forEach(function (anchor) { 
+ 
+                    anchor.addEventListener( 
+                        "click", 
+                        function (event) { 
+ 
+                            const targetId = 
+                                this.getAttribute("href"); 
+ 
+                            if ( 
+                                !targetId || 
+                                targetId === "#" 
+                            ) { 
+                                return; 
+                            } 
+ 
+                            const target = 
+                                document.querySelector(targetId); 
+ 
+                            if (target) { 
+ 
+                                event.preventDefault(); 
+ 
+                                target.scrollIntoView({ 
+                                    behavior: "smooth", 
+                                    block: "start" 
+                                }); 
+ 
+                            } 
+ 
+                        } 
+                    ); 
+ 
+                }); 
+ 
+        }); 
+    </script> 
+ 
+</body> 
+ 
 </html>
