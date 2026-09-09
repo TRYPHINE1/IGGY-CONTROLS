@@ -354,6 +354,395 @@
             transform: translateY(-2px);
         }
 
+
+        /* =====================================================
+           HEADER SEARCH
+        ===================================================== */
+
+        .header-search {
+            position: relative;
+            width: min(260px, 22vw);
+            min-width: 190px;
+        }
+
+        .header-search input {
+            width: 100%;
+            height: 42px;
+            padding: 0 42px 0 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 999px;
+            background: #f8fafc;
+            color: #0f172a;
+            font-size: 13px;
+            outline: none;
+            transition: all .25s ease;
+        }
+
+        .header-search input:focus {
+            background: #fff;
+            border-color: var(--blue-main);
+            box-shadow: 0 0 0 4px rgba(12, 68, 172, .08);
+        }
+
+        .header-search button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            width: 32px;
+            height: 32px;
+            border: 0;
+            border-radius: 50%;
+            background: var(--blue-main);
+            color: #fff;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+
+        .header-search button:hover {
+            background: var(--red-main);
+            transform: scale(1.05);
+        }
+
+        .search-results {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            width: min(360px, 80vw);
+            max-height: 340px;
+            overflow-y: auto;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, .16);
+            padding: 6px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all .2s ease;
+            z-index: 200;
+        }
+
+        .search-results.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .search-result {
+            display: block;
+            padding: 11px 12px;
+            border-radius: 10px;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .search-result:hover {
+            background: var(--blue-pale);
+            color: var(--blue-main);
+        }
+
+        .search-result small {
+            display: block;
+            margin-top: 2px;
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .no-search-results {
+            padding: 14px 12px;
+            color: #64748b;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* =====================================================
+           REQUEST A QUOTE FORM
+        ===================================================== */
+
+        .quote-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(15, 23, 42, .68);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .25s ease, visibility .25s ease;
+        }
+
+        .quote-modal.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .quote-modal-card {
+            position: relative;
+            width: min(100%, 760px);
+            max-height: min(90vh, 900px);
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(15, 23, 42, .28);
+            transform: translateY(18px) scale(.98);
+            transition: transform .25s ease;
+        }
+
+        .quote-modal.active .quote-modal-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .quote-modal-header {
+            padding: 24px 26px 20px;
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue-main));
+            color: #fff;
+        }
+
+        .quote-modal-header h2 {
+            margin: 0;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 900;
+        }
+
+        .quote-modal-header p {
+            margin: 7px 0 0;
+            color: rgba(255,255,255,.82);
+            font-size: .95rem;
+            line-height: 1.55;
+        }
+
+        .quote-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            border: 0;
+            border-radius: 12px;
+            background: rgba(255,255,255,.12);
+            color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .quote-close:hover {
+            background: rgba(255,255,255,.2);
+            transform: rotate(4deg) scale(1.04);
+        }
+
+        .quote-form {
+            padding: 24px 26px 26px;
+        }
+
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .quote-field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .quote-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .quote-field label {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--blue-dark);
+        }
+
+        .quote-field input,
+        .quote-field select,
+        .quote-field textarea {
+            width: 100%;
+            border: 1px solid #dbe3ec;
+            border-radius: 12px;
+            background: #f8fafc;
+            color: #0f172a;
+            padding: 12px 13px;
+            outline: none;
+            font: inherit;
+            transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .quote-field textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .quote-field input:focus,
+        .quote-field select:focus,
+        .quote-field textarea:focus {
+            background: #fff;
+            border-color: var(--blue-main);
+            box-shadow: 0 0 0 4px rgba(0, 93, 170, .10);
+        }
+
+        .quote-required {
+            color: var(--red-main);
+        }
+
+        .quote-submit {
+            width: 100%;
+            margin-top: 18px;
+            min-height: 50px;
+            border: 0;
+            border-radius: 13px;
+            background: linear-gradient(135deg, var(--red-main), #c80000);
+            color: #fff;
+            font-weight: 900;
+            letter-spacing: .02em;
+            cursor: pointer;
+            box-shadow: 0 12px 24px rgba(237,1,1,.18);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .quote-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 28px rgba(237,1,1,.24);
+        }
+
+        .quote-note {
+            margin-top: 10px;
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 640px) {
+            .quote-modal {
+                align-items: flex-end;
+                padding: 0;
+            }
+
+            .quote-modal-card {
+                width: 100%;
+                max-height: 94vh;
+                border-radius: 22px 22px 0 0;
+            }
+
+            .quote-modal-header,
+            .quote-form {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .quote-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .quote-field.full {
+                grid-column: auto;
+            }
+        }
+
+        /* =====================================================
+           FLOATING REQUEST QUOTE
+        ===================================================== */
+
+        .floating-quote {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 150;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            width: 48px;
+            min-height: 155px;
+            padding: 14px 9px;
+
+            background: var(--red-main);
+            color: #fff;
+            border-radius: 12px 0 0 12px;
+            box-shadow: 0 12px 30px rgba(237, 1, 1, .28);
+
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            white-space: normal;
+            text-align: center;
+
+            /* Keep the vertical treatment ONLY on this button. */
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+
+            transition: width .25s ease, background .25s ease, transform .25s ease;
+        }
+
+        .floating-quote:hover {
+            width: 54px;
+            background: var(--red-dark);
+            color: #fff;
+            transform: translateY(-50%);
+        }
+
+        .floating-quote i {
+            font-size: 14px;
+            transform: rotate(90deg);
+        }
+
+        .floating-quote span {
+            display: block;
+            line-height: 1.15;
+        }
+
+        .mobile-search {
+            position: relative;
+            padding: 14px 0 4px;
+        }
+
+        .mobile-search input {
+            width: 100%;
+            height: 46px;
+            padding: 0 46px 0 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #f8fafc;
+            outline: none;
+        }
+
+        .mobile-search button {
+            position: absolute;
+            right: 6px;
+            top: 20px;
+            width: 34px;
+            height: 34px;
+            border: 0;
+            border-radius: 9px;
+            background: var(--blue-main);
+            color: #fff;
+        }
+
+        @media (max-width: 1279px) and (min-width: 1024px) {
+            .header-search {
+                width: 190px;
+                min-width: 160px;
+            }
+        }
+
         /* Mobile menu */
         #mobileMenu {
             display: none;
@@ -598,25 +987,6 @@
         }
 
         @media (max-width: 767px) {
-            .top-contact-bar {
-                padding: 7px 12px;
-            }
-
-            .top-contact-inner {
-                gap: 4px;
-            }
-
-            .top-contact-links {
-                width: 100%;
-                justify-content: center;
-                gap: 12px;
-                flex-wrap: wrap;
-            }
-
-            .top-social-links {
-                display: none;
-            }
-
             .header-inner {
                 min-height: 68px;
             }
@@ -730,58 +1100,218 @@
                 transition-duration: .01ms !important;
             }
         }
-    </style>
+    
+/* =====================================================
+   MODERN MOBILE SEARCH + STICKY HEADER
+===================================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, .96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 4px 18px rgba(15, 23, 42, .08);
+}
+
+.site-header.scrolled {
+    box-shadow: 0 8px 28px rgba(15, 23, 42, .14);
+}
+
+.mobile-header-search {
+    display: none;
+}
+
+@media (max-width: 767px) {
+
+    /* Search stays directly under the sticky header */
+    .mobile-header-search {
+        display: block;
+        position: sticky;
+        top: 68px;
+        z-index: 999;
+        width: 100%;
+        padding: 8px 12px 10px;
+        background: rgba(255, 255, 255, .94);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(15, 23, 42, .07);
+    }
+
+    .mobile-header-search form {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .mobile-header-search input {
+        width: 100%;
+        height: 46px;
+        padding: 0 52px 0 44px;
+        border: 1px solid #e2e8f0;
+        border-radius: 15px;
+        background: #f1f5f9;
+        color: #0f172a;
+        font-size: 13px;
+        font-weight: 500;
+        outline: none;
+        box-shadow: inset 0 1px 2px rgba(15, 23, 42, .03);
+        transition: .25s ease;
+    }
+
+    .mobile-header-search input:focus {
+        background: #fff;
+        border-color: var(--blue-main);
+        box-shadow:
+            0 0 0 3px rgba(12, 68, 172, .10),
+            0 8px 20px rgba(15, 23, 42, .08);
+    }
+
+    .mobile-header-search input::placeholder {
+        color: #94a3b8;
+    }
+
+    .mobile-header-search form::before {
+        content: "\f002";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--blue-main);
+        font-size: 14px;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .mobile-header-search button {
+        position: absolute;
+        right: 5px;
+        top: 4px;
+        width: 38px;
+        height: 38px;
+        border: 0;
+        border-radius: 11px;
+        background: linear-gradient(135deg, var(--blue-main), var(--blue-dark));
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 5px 12px rgba(12, 68, 172, .20);
+        transition: .2s ease;
+    }
+
+    .mobile-header-search button:active {
+        transform: scale(.94);
+    }
+
+    .mobile-header-search button:hover {
+        background: linear-gradient(135deg, var(--red-main), var(--red-dark));
+    }
+
+    /* Modern mobile result panel */
+    .mobile-header-search .search-results {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 12px;
+        right: 12px;
+        width: auto;
+        max-height: min(55vh, 360px);
+        overflow-y: auto;
+        padding: 7px;
+        background: rgba(255, 255, 255, .98);
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        box-shadow: 0 18px 45px rgba(15, 23, 42, .16);
+        z-index: 1100;
+    }
+
+    .mobile-header-search .search-result {
+        display: block;
+        padding: 12px 13px;
+        border-radius: 11px;
+        color: #1e293b;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .mobile-header-search .search-result:active,
+    .mobile-header-search .search-result:hover {
+        background: var(--blue-pale);
+        color: var(--blue-main);
+    }
+
+    .mobile-header-search .search-result small {
+        display: block;
+        margin-top: 3px;
+        color: #94a3b8;
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 1.35;
+    }
+
+    .mobile-header-search .no-search-results {
+        padding: 16px 10px;
+        color: #64748b;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    /* Keep header content horizontal on phones */
+    .site-header,
+    .site-header * {
+        writing-mode: horizontal-tb;
+        text-orientation: mixed;
+    }
+
+    .floating-quote,
+    .floating-quote * {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+}
+
+@media (max-width: 380px) {
+    .mobile-header-search {
+        padding: 7px 10px 9px;
+    }
+
+    .mobile-header-search input {
+        height: 44px;
+        padding-left: 41px;
+        padding-right: 49px;
+        font-size: 12px;
+        border-radius: 14px;
+    }
+
+    .mobile-header-search button {
+        width: 36px;
+        height: 36px;
+        right: 4px;
+        top: 4px;
+        border-radius: 10px;
+    }
+
+    .mobile-header-search form::before {
+        left: 14px;
+    }
+}
+</style>
 </head>
 
 <body class="bg-slate-50 text-slate-900">
 
-    <!-- =====================================================
-         CONTACT BAR
-    ===================================================== -->
-
-    <div class="top-contact-bar bg-[var(--blue-dark)] text-white py-1 text-sm">
-        <div
-            class="top-contact-inner max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-2">
-
-            <div class="top-contact-links flex items-center gap-6">
-                <a href="mailto:info@iggycontrols.com"
-                    class="flex items-center gap-2 hover:text-[var(--red-light)] transition-colors">
-                    <i class="fas fa-envelope text-[10px]"></i>
-                    <span>info@iggycontrols.com</span>
-                </a>
-
-                <a href="tel:+256742262000"
-                    class="flex items-center gap-2 hover:text-[var(--red-light)] transition-colors">
-                    <i class="fas fa-phone text-[10px]"></i>
-                    <span>+256 742 262 000</span>
-                </a>
-            </div>
-
-            <div class="top-social-links flex items-center gap-4">
-                <a href="#" aria-label="Facebook"
-                    class="hover:text-[var(--blue-light)] transition-colors">
-                    <i class="fab fa-facebook"></i>
-                </a>
-
-                <a href="#" aria-label="Twitter"
-                    class="hover:text-[var(--blue-light)] transition-colors">
-                    <i class="fab fa-twitter"></i>
-                </a>
-
-                <a href="#" aria-label="LinkedIn"
-                    class="hover:text-[var(--blue-light)] transition-colors">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-
-                <a href="#" aria-label="Instagram"
-                    class="hover:text-[var(--red-light)] transition-colors">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-
-        </div>
-    </div>
-
+    <!-- FIXED REQUEST QUOTE BUTTON -->
+    <a href="#quoteForm"
+        class="floating-quote quote-trigger"
+        aria-label="Request a quote">
+        <i class="fas fa-file-invoice-dollar"></i>
+        <span>Request a Quote</span>
+    </a>
 
     <!-- =====================================================
          HEADER
@@ -874,9 +1404,26 @@
                 </div>
 
 
-                <!-- DESKTOP CONTACT -->
+                <!-- DESKTOP SEARCH -->
+                <div class="header-search hidden lg:block" id="desktopSearch">
+                    <form id="desktopSearchForm" role="search">
+                        <input
+                            id="desktopSearchInput"
+                            type="search"
+                            autocomplete="off"
+                            placeholder="Search products, services..."
+                            aria-label="Search products and services">
+                        <button type="submit" aria-label="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div id="desktopSearchResults" class="search-results" aria-live="polite"></div>
+                    </form>
+                </div>
+
+
+                <!-- DESKTOP REQUEST QUOTE -->
                 <div class="desktop-contact hidden lg:flex items-center flex-shrink-0">
-                    <a href="contact.html" class="contact-button">
+                    <a href="contact.html" class="contact-button quote-trigger">
                         Contact Us
                     </a>
                 </div>
@@ -965,7 +1512,7 @@
 
 
                     <div class="pt-4 pb-2">
-                        <a href="contact.html" class="mobile-contact-button">
+                        <a href="Contact.html" class="mobile-contact-button quote-trigger">
                             Contact Us
                         </a>
                     </div>
@@ -977,6 +1524,23 @@
         </nav>
 
     </header>
+<!-- Mobile-visible search -->
+<div class="mobile-header-search">
+  <form id="mobileSearchForm" role="search">
+    <input
+      id="mobileSearchInput"
+      type="search"
+      placeholder="Search products, services..."
+      aria-label="Search products and services"
+      autocomplete="off"
+    >
+    <button type="submit" aria-label="Search">
+      <i class="fas fa-search"></i>
+    </button>
+    <div id="mobileSearchResults" class="search-results" aria-live="polite"></div>
+  </form>
+</div>
+
 
 
     <!-- =====================================================
@@ -984,7 +1548,7 @@
     ===================================================== -->
 
     <section id="home"
-        class="relative min-h-[650px] h-[calc(100vh-40px)] max-h-[900px] flex items-center justify-center text-white overflow-hidden text-center">
+        class="relative min-h-[650px] h-[calc(100vh-76px)] max-h-[900px] flex items-center justify-center text-white overflow-hidden text-center">
 
         <video autoplay muted loop playsinline preload="auto"
             class="hero-video"
@@ -2264,6 +2828,77 @@
 
 
     <!-- =====================================================
+         REQUEST A QUOTE MODAL
+    ===================================================== -->
+
+    <div id="quoteModal" class="quote-modal" aria-hidden="true">
+        <div class="quote-modal-card" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle">
+            <div class="quote-modal-header">
+                <button type="button" class="quote-close" id="quoteClose" aria-label="Close quote form">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2 id="quoteModalTitle">Request a Quote</h2>
+                <p>Tell us what you need and our team will get back to you with a suitable quotation.</p>
+            </div>
+
+            <form id="quoteForm" class="quote-form">
+                <div class="quote-grid">
+                    <div class="quote-field">
+                        <label for="quoteName">Full Name <span class="quote-required">*</span></label>
+                        <input id="quoteName" name="name" type="text" autocomplete="name" required placeholder="Your full name">
+                    </div>
+
+                    <div class="quote-field">
+                        <label for="quoteCompany">Company / Organisation</label>
+                        <input id="quoteCompany" name="company" type="text" autocomplete="organization" placeholder="Company name">
+                    </div>
+
+                    <div class="quote-field">
+                        <label for="quotePhone">Phone Number <span class="quote-required">*</span></label>
+                        <input id="quotePhone" name="phone" type="tel" autocomplete="tel" required placeholder="+256 ...">
+                    </div>
+
+                    <div class="quote-field">
+                        <label for="quoteEmail">Email Address <span class="quote-required">*</span></label>
+                        <input id="quoteEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+                    </div>
+
+                    <div class="quote-field">
+                        <label for="quoteService">What do you need a quote for? <span class="quote-required">*</span></label>
+                        <select id="quoteService" name="service" required>
+                            <option value="">Select a service</option>
+                            <option>Commercial / Industrial Laundry Equipment</option>
+                            <option>Commercial Kitchen Equipment</option>
+                            <option>Equipment Installation</option>
+                            <option>Preventive &amp; Curative Maintenance</option>
+                            <option>Spare Parts</option>
+                            <option>Laundry Chemicals</option>
+                            <option>Consultancy / Laundry Setup</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="quote-field">
+                        <label for="quoteQuantity">Quantity</label>
+                        <input id="quoteQuantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 2 machines">
+                    </div>
+
+                    <div class="quote-field full">
+                        <label for="quoteDetails">Project / Equipment Details <span class="quote-required">*</span></label>
+                        <textarea id="quoteDetails" name="details" required placeholder="Tell us the equipment, specifications, capacity, installation needs, or any other requirements."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="quote-submit">
+                    <i class="fas fa-paper-plane mr-2"></i> Send Quote Request
+                </button>
+
+                <p class="quote-note">Your email app will open with the completed request addressed to info@iggycontrols.com.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- =====================================================
          FLOATING WHATSAPP
     ===================================================== -->
 
@@ -2659,9 +3294,9 @@
                 if (!header) return;
 
                 if (window.scrollY > 10) {
-                    header.classList.add("shadow-lg");
+                    header.classList.add("shadow-lg", "scrolled");
                 } else {
-                    header.classList.remove("shadow-lg");
+                    header.classList.remove("shadow-lg", "scrolled");
                 }
 
             }
@@ -2822,6 +3457,337 @@
 
 
             /* =================================================
+               SITE SEARCH
+            ================================================= */
+
+            const searchItems = [
+                { title: "Home", description: "Main page", url: "index.html" },
+                { title: "About", description: "About Iggy-Controls Technologies", url: "about.html" },
+                { title: "Laundry Solutions", description: "Commercial and industrial laundry equipment", url: "laundry.html" },
+                { title: "Kitchen Solutions", description: "Commercial kitchen equipment", url: "kitchen.html" },
+                { title: "Services", description: "Supply, installation, maintenance and consultancy", url: "services.html" },
+                { title: "Spare Parts", description: "Equipment spare parts and technical support", url: "spareparts.html" },
+                { title: "Chemicals", description: "Laundry chemicals and detergents", url: "chemicals.html" },
+                { title: "Washers", description: "Industrial washer extractors", url: "washers.html" },
+                { title: "Dryers", description: "Commercial and industrial tumble dryers", url: "dryers.html" },
+                { title: "Ironers", description: "Professional ironing equipment", url: "ironers.html" },
+                { title: "Folders", description: "Professional linen folding equipment", url: "folders.html" },
+                { title: "Kitchen Equipment", description: "Commercial kitchen equipment solutions", url: "kitchen-equipment.html" },
+                { title: "Contact", description: "Contact Iggy-Controls Technologies", url: "contact.html" }
+            ];
+
+            // The search index is broader than the navigation labels. It also reads
+            // each internal HTML page and indexes visible text, headings, images and links.
+            let siteSearchIndex = searchItems.map(item => ({
+                ...item,
+                keywords: `${item.title} ${item.description}`,
+                snippet: item.description
+            }));
+
+            const normalizeSearchText = (value) =>
+                (value || "")
+                    .replace(/\s+/g, " ")
+                    .trim();
+
+            function buildCurrentPageIndex() {
+                const pageName = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+                const currentEntry = siteSearchIndex.find(item => item.url.toLowerCase() === pageName);
+                const main = document.querySelector("main") || document.body;
+
+                if (!main) return;
+
+                const visibleText = normalizeSearchText(main.innerText);
+                const headings = Array.from(main.querySelectorAll("h1,h2,h3,h4,h5,h6"))
+                    .map(el => normalizeSearchText(el.textContent))
+                    .filter(Boolean);
+                const altText = Array.from(main.querySelectorAll("img[alt]"))
+                    .map(img => normalizeSearchText(img.getAttribute("alt")))
+                    .filter(Boolean);
+                const linkText = Array.from(main.querySelectorAll("a"))
+                    .map(a => normalizeSearchText(a.textContent))
+                    .filter(Boolean);
+
+                const entry = currentEntry || {
+                    title: document.title.replace(/\\s*\\|\\s*Iggy.*$/i, ""),
+                    description: headings[0] || "Website page",
+                    url: pageName
+                };
+
+                const keywordSource = [
+                    entry.title,
+                    entry.description,
+                    headings.join(" "),
+                    altText.join(" "),
+                    linkText.join(" "),
+                    visibleText
+                ].join(" ");
+
+                const snippetSource = headings.slice(0, 3).join(" • ") || entry.description;
+                const indexEntry = {
+                    ...entry,
+                    keywords: keywordSource.toLowerCase(),
+                    snippet: normalizeSearchText(snippetSource).slice(0, 180)
+                };
+
+                siteSearchIndex = siteSearchIndex.filter(item => item.url.toLowerCase() !== entry.url.toLowerCase());
+                siteSearchIndex.unshift(indexEntry);
+            }
+
+            function getInternalPageUrls() {
+                const urls = new Set(searchItems.map(item => item.url));
+                document.querySelectorAll("a[href]").forEach(link => {
+                    const rawHref = link.getAttribute("href");
+                    if (!rawHref || rawHref.startsWith("#") || rawHref.startsWith("mailto:") || rawHref.startsWith("tel:") || rawHref.startsWith("javascript:")) return;
+
+                    try {
+                        const url = new URL(rawHref, window.location.href);
+                        if (url.origin !== window.location.origin) return;
+                        if (!/^https?:$/.test(url.protocol) && url.protocol !== "file:") return;
+
+                        const path = url.pathname.split("/").pop();
+                        if (path && path.toLowerCase().endsWith(".html")) {
+                            urls.add(path);
+                        }
+                    } catch (_) {}
+                });
+
+                return Array.from(urls);
+            }
+
+            async function expandSearchIndexAcrossWebsite() {
+                buildCurrentPageIndex();
+
+                const pageUrls = getInternalPageUrls();
+                const fetches = pageUrls.map(async url => {
+                        try {
+                            const response = await fetch(url, { cache: "no-store" });
+                            if (!response.ok) return null;
+
+                            const html = await response.text();
+                            const doc = new DOMParser().parseFromString(html, "text/html");
+                            const main = doc.querySelector("main") || doc.body;
+                            if (!main) return null;
+
+                            main.querySelectorAll("script,style,noscript").forEach(el => el.remove());
+
+                            const title = normalizeSearchText(
+                                doc.querySelector("h1")?.textContent ||
+                                doc.title ||
+                                url.replace(/\.html$/i, "").replace(/[-_]+/g, " ")
+                            );
+
+                            const headings = Array.from(main.querySelectorAll("h1,h2,h3,h4,h5,h6"))
+                                .map(el => normalizeSearchText(el.textContent))
+                                .filter(Boolean);
+
+                            const paragraphs = Array.from(main.querySelectorAll("p,li"))
+                                .map(el => normalizeSearchText(el.textContent))
+                                .filter(text => text.length > 20);
+
+                            const altText = Array.from(main.querySelectorAll("img[alt]"))
+                                .map(img => normalizeSearchText(img.getAttribute("alt")))
+                                .filter(Boolean);
+
+                            const visibleText = normalizeSearchText(main.innerText || main.textContent);
+                            const description = paragraphs[0] || headings[1] || "Website information";
+
+                            return {
+                                title,
+                                description: description.slice(0, 180),
+                                url,
+                                keywords: [title, headings.join(" "), paragraphs.join(" "), altText.join(" "), visibleText].join(" ").toLowerCase(),
+                                snippet: normalizeSearchText(headings.slice(0, 2).concat(paragraphs.slice(0, 1)).join(" • ")).slice(0, 220)
+                            };
+                        } catch (_) {
+                            return null;
+                        }
+                    });
+
+                const fetchedEntries = (await Promise.all(fetches)).filter(Boolean);
+                const merged = new Map(siteSearchIndex.map(item => [item.url.toLowerCase(), item]));
+                fetchedEntries.forEach(item => merged.set(item.url.toLowerCase(), item));
+                siteSearchIndex = Array.from(merged.values());
+            }
+
+            function highlightMatch(text, query) {
+                const safe = String(text || "");
+                const q = String(query || "").trim();
+                if (!q) return safe;
+
+                const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                return safe.replace(new RegExp(`(${escaped})`, "ig"), "<mark>$1</mark>");
+            }
+
+            function setupSearch(inputId, resultsId, formId) {
+                const input = document.getElementById(inputId);
+                const results = document.getElementById(resultsId);
+                const form = document.getElementById(formId);
+
+                if (!input || !results || !form) return;
+
+                function renderResults(query) {
+                    const q = query.trim().toLowerCase();
+
+                    if (!q) {
+                        results.innerHTML = "";
+                        results.classList.remove("active");
+                        return;
+                    }
+
+                    const terms = q.split(/\s+/).filter(Boolean);
+                    const matches = siteSearchIndex
+                        .map(item => {
+                            const haystack = `${item.title} ${item.description} ${item.keywords || ""}`.toLowerCase();
+                            const score = terms.reduce((total, term) => {
+                                if (!haystack.includes(term)) return total;
+                                let points = 1;
+                                if (item.title.toLowerCase().includes(term)) points += 4;
+                                if (item.description.toLowerCase().includes(term)) points += 2;
+                                return total + points;
+                            }, 0);
+                            return { item, score };
+                        })
+                        .filter(result => result.score > 0)
+                        .sort((a, b) => b.score - a.score)
+                        .slice(0, 10)
+                        .map(result => result.item);
+
+                    if (!matches.length) {
+                        results.innerHTML = `
+                            <div class="no-search-results">
+                                <i class="fas fa-magnifying-glass"></i>
+                                <span>No matching information found across the website.</span>
+                            </div>`;
+                        results.classList.add("active");
+                        return;
+                    }
+
+                    results.innerHTML = matches.map(item => `
+                        <a class="search-result" href="${item.url}">
+                            <strong>${highlightMatch(item.title, query)}</strong>
+                            <small>${highlightMatch(item.snippet || item.description, query)}</small>
+                        </a>
+                    `).join("");
+
+                    results.classList.add("active");
+                }
+
+                input.addEventListener("input", function () {
+                    renderResults(this.value);
+                });
+
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();
+
+                    const q = input.value.trim().toLowerCase();
+                    if (!q) return;
+
+                    const terms = q.split(/\s+/).filter(Boolean);
+                    const bestMatch = siteSearchIndex
+                        .map(item => {
+                            const haystack = `${item.title} ${item.description} ${item.keywords || ""}`.toLowerCase();
+                            const score = terms.reduce((total, term) => total + (haystack.includes(term) ? 1 : 0), 0);
+                            return { item, score };
+                        })
+                        .sort((a, b) => b.score - a.score)[0];
+
+                    if (bestMatch && bestMatch.score === terms.length) {
+                        window.location.href = bestMatch.item.url;
+                    } else if (bestMatch && bestMatch.score > 0) {
+                        window.location.href = bestMatch.item.url;
+                    } else {
+                        renderResults(input.value);
+                    }
+                });
+
+                document.addEventListener("click", function (event) {
+                    if (!form.contains(event.target)) {
+                        results.classList.remove("active");
+                    }
+                });
+            }
+
+            setupSearch("desktopSearchInput", "desktopSearchResults", "desktopSearchForm");
+            setupSearch("mobileSearchInput", "mobileSearchResults", "mobileSearchForm");
+
+            // Build the broad site index in the background so the search is useful
+            // immediately and becomes more comprehensive as internal pages load.
+            expandSearchIndexAcrossWebsite();
+
+
+            /* =================================================
+               REQUEST A QUOTE FORM
+            ================================================= */
+
+            const quoteModal = document.getElementById("quoteModal");
+            const quoteForm = document.getElementById("quoteForm");
+            const quoteClose = document.getElementById("quoteClose");
+
+            function openQuoteModal() {
+                if (!quoteModal) return;
+                quoteModal.classList.add("active");
+                quoteModal.setAttribute("aria-hidden", "false");
+                document.body.classList.add("overflow-hidden");
+
+                const nameInput = document.getElementById("quoteName");
+                if (nameInput) {
+                    setTimeout(() => nameInput.focus(), 100);
+                }
+            }
+
+            function closeQuoteModal() {
+                if (!quoteModal) return;
+                quoteModal.classList.remove("active");
+                quoteModal.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("overflow-hidden");
+            }
+
+            document.querySelectorAll(".quote-trigger").forEach(function (trigger) {
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    openQuoteModal();
+                });
+            });
+
+            if (quoteClose) {
+                quoteClose.addEventListener("click", closeQuoteModal);
+            }
+
+            if (quoteModal) {
+                quoteModal.addEventListener("click", function (event) {
+                    if (event.target === quoteModal) {
+                        closeQuoteModal();
+                    }
+                });
+            }
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && quoteModal && quoteModal.classList.contains("active")) {
+                    closeQuoteModal();
+                }
+            });
+
+            if (quoteForm) {
+                quoteForm.addEventListener("submit", function (event) {
+                    event.preventDefault();
+
+                    const formData = new FormData(quoteForm);
+                    const subject = encodeURIComponent("Quote Request - Iggy-Controls Technologies");
+                    const body = encodeURIComponent(
+                        "Full Name: " + (formData.get("name") || "") + "\n" +
+                        "Company / Organisation: " + (formData.get("company") || "") + "\n" +
+                        "Phone Number: " + (formData.get("phone") || "") + "\n" +
+                        "Email Address: " + (formData.get("email") || "") + "\n" +
+                        "Service / Quote For: " + (formData.get("service") || "") + "\n" +
+                        "Quantity: " + (formData.get("quantity") || "") + "\n\n" +
+                        "Project / Equipment Details:\n" + (formData.get("details") || "")
+                    );
+
+                    window.location.href = "mailto:info@iggycontrols.com?subject=" + subject + "&body=" + body;
+                });
+            }
+
+            /* =================================================
                SMOOTH INTERNAL LINKS
             ================================================= */
 
@@ -2868,4 +3834,3 @@
 </body>
 
 </html>
-```
